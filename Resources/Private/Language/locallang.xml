@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the HTML5Videoplayer extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_sschhtml5videoplayer_domain_model_video">Video</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.title">Title</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.poster_image">PosterImage</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.mp4_source">Mp4Source</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.web_m_source">WebMSource</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.ogg_source">OggSource</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.flash_source">FlashSource</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.height">height</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.width">width</label>
+                        <label index="tx_sschhtml5videoplayer_domain_model_video.no_playback_capabilities">No video playback capabilities</label>
+                        <label index="tx_sschhtml5videoplayer_domain_model_audio.no_playback_capabilities">No audio playback capabilities</label>
+                        <label index="list_title">HTML5 Audio/Video Player</label>
+			<label index="list_plus_wiz_description">Add either a HTML5 Video Player or a HTML5 Audio Player</label>
+		</languageKey>
+                <languageKey index="de" type="array">
+			<label index="tx_sschhtml5videoplayer_domain_model_video">Video\ndfdf</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.title">Title</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.poster_image">PosterImage</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.mp4_source">Mp4Source</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.web_m_source">WebMSource</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.ogg_source">OggSource</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.flash_source">FlashSource</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.height">height</label>
+			<label index="tx_sschhtml5videoplayer_domain_model_video.width">width</label>
+                        <label index="tx_sschhtml5videoplayer_domain_model_video.no_playback_capabilities">Keine Fähighkeiten das Video abzuspielen.</label>
+                        <label index="list_title">HTML5 Audio/Video Player</label>
+			<label index="list_plus_wiz_description">Add either a HTML5 Video Player or a HTML5 Audio Player</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,51 @@
+<f:comment>
+    <titles>
+        <default>mediaelement.js</default>
+    </titles>
+</f:comment>
+<script type="text/javascript">
+    (function($) {
+        $(document).ready(function() {
+            
+            window.mejs.language.codes['de'] = 'Deutsch'; 
+            
+            $('audio').mediaelementplayer({audioWidth: 380, success: function(me) {
+                    $('#audio-type').html(me.pluginType);
+                }});
+            $('video,audio').mediaelementplayer
+                    ({
+                        startVolume: 0.2,
+                        tracksText: 'Untertitel',
+                        loop: false,
+                        enableAutosize: true,
+                        startLanguage: 'de',
+                        features: ['playpause', 'progress', 'current', 'duration', 'tracks', 'volume', 'fullscreen'],
+                        success: function(mediaElement, domObject, t) {
+
+                            // Hide Controls at the beginning, but only for not audio
+                            if (domObject.tagName != 'AUDIO') {
+                                t.hideControls();
+                            }
+
+
+                            mediaElement.load();
+                            // add event listener
+                            mediaElement.addEventListener('pause', function(e) {
+
+                            }, false);
+                            mediaElement.addEventListener('play', function(e) {
+
+                            }, false);
+
+                            mediaElement.addEventListener('ended', function(e) {
+
+                            }, false);
+                        },
+                        // fires when a problem is detected
+                        error: function() {
+
+                        }
+                    });
+        });
+    })(jQuery);
+</script>

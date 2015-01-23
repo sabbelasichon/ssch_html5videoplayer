@@ -1,0 +1,24 @@
+plugin.tx_sschhtml5videoplayer {
+	view {
+		# cat=plugin.tx_sschhtml5videoplayer/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:ssch_html5videoplayer/Resources/Private/Templates/
+		# cat=plugin.tx_sschhtml5videoplayer/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:ssch_html5videoplayer/Resources/Private/Partials/
+		# cat=plugin.tx_sschhtml5videoplayer/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:ssch_html5videoplayer/Resources/Private/Layouts/
+                # cat=plugin.tx_sschhtml5videoplayer/file; type=string; label=Path to initialization templates (FE)
+                templateRootPathInitializationFiles = EXT:ssch_html5videoplayer/Resources/Private/JavaScripts/
+	}
+	persistence {
+		# cat=plugin.tx_sschhtml5videoplayer//a; type=int+; label=Default storage PID
+		storagePid = 
+	}
+        settings {
+                addHeaderData = 1
+                addJQueryLibrary = 1
+                addMediaElementJs = 1
+                mediaelementjsFolder = EXT:ssch_html5videoplayer/Resources/Public/Vendors/mediaelement/
+                addMediaElementJsInitialization = 0
+                addMediaElementJsInitializationFile = EXT:ssch_html5videoplayer/Resources/Private/JavaScripts/MediaElementJsInitialization.html                
+        }
+}

@@ -1,0 +1,8 @@
+<f:layout name="Default" />
+<f:if condition="{audios}">
+    <f:section name="content">
+        <f:for each="{audios}" as="audio">
+            <f:render partial="Audio/Entry" arguments="{audio: audio}" />
+        </f:for>
+    </f:section>
+</f:if>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>Context Sensitive Help (CSH) for table tx_sschhtml5videoplayer_domain_model_video</description>
+		<type>CSH</type>
+		<csh_table>tx_sschhtml5videoplayer_domain_model_video</csh_table>
+	</meta>
+	<data type="array">
+	<languageKey index="default" type="array">
+			<label index="title.description">Titel des Videos</label>
+			<label index="poster_image.description">Standbild, solange das Video nicht abgespielt wird.</label>
+			<label index="mp4_source.description">Safari, IE9, iPhone, iPad, Android, and Windows Phone 7</label>
+			<label index="web_m_source.description">WebM/VP8 für Firefox4, Opera, und Chrome</label>
+			<label index="ogg_source.description">Ogg/Vorbis füt ältere Firefox und Opera Versionen</label>
+			<label index="height.description">Höhes des Videos</label>
+			<label index="width.description">Breite des Videos</label>
+                        <label index="subtitles.description">Für verschiedene Sprachen können Untertitel in Form einer .srt oder .vtt-Datei hinterlegt werden.</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,14 @@
+# Git ignore file
+nbproject
+nbproject/
+nbproject/project.properties
+nbproject/project.xml
+nbproject/private/
+nbproject/private/config.properties
+nbproject/private/private.properties
+nbproject/private/private.xml
+Temp
+_temp_
+.idea
+/typoscript/constants/constants_locallang_global.ts
+root_directory/

@@ -1,0 +1,705 @@
+<?php
+
+namespace Ssch\SschHtml5videoplayer\Domain\Model;
+
+/* * *************************************************************
+ *  Copyright notice
+ *
+ *  (c) 2011 Sebastian Schreiber <me@schreibersebastian.de>, Sebastian Schreiber
+ *  
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ * ************************************************************* */
+
+/**
+ * Video
+ */
+class Video extends AbstractEntity {
+
+    /**
+     * Title
+     *
+     * @var string $title
+     * @validate NotEmpty
+     */
+    protected $title;
+
+    /**
+     *
+     * @var string
+     */
+    protected $shortTitle;
+
+    /**
+     *
+     * @var string
+     */
+    protected $copyright;
+
+    /**
+     * PosterImage
+     *
+     * @var string $posterImage
+     */
+    protected $posterImage;
+
+    /**
+     * Mp4Source
+     *
+     * @var string $mp4Source
+     */
+    protected $mp4Source;
+
+    /**
+     * WebMSource
+     *
+     * @var string $webMSource
+     */
+    protected $webMSource;
+
+    /**
+     * OggSource
+     *
+     * @var string $oggSource
+     */
+    protected $oggSource;
+
+    /**
+     * FlashSource
+     *
+     * @var string $flashSource
+     */
+    protected $flashSource;
+
+    /**
+     * height
+     *
+     * @var integer $height
+     */
+    protected $height = 240;
+
+    /**
+     * width
+     *
+     * @var integer $width
+     */
+    protected $width = 320;
+
+    /**
+     *
+     * @var string
+     */
+    protected $alt;
+
+    /**
+     *
+     * @var string
+     */
+    protected $longdesc;
+
+    /**
+     *
+     * @var string
+     */
+    protected $caption;
+
+    /**
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Ssch\SschHtml5videoplayer\Domain\Model\Subtitle>
+     */
+    protected $subtitles;
+
+    /**
+     *
+     * @var string
+     */
+    protected $description;
+
+    /**
+     *
+     * @var string
+     */
+    protected $externalSource;
+
+    /**
+     *
+     * @var string
+     */
+    protected $externalType = 'video/youtube';
+
+    /**
+     *
+     * @var string
+     */
+    protected $duration = '00:00:00';
+
+    /**
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Ssch\SschHtml5videoplayer\Domain\Model\Video>      
+     */
+    protected $related;
+
+    /**
+     * @var integer
+     */
+    protected $singlePid;
+
+    /**
+     *
+     * @var \SJBR\StaticInfoTables\Domain\Model\Language
+     */
+    protected $staticLangIsocode;
+
+    /**
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Ssch\SschHtml5videoplayer\Domain\Model\Video>    
+     */
+    protected $versions;
+
+    /**
+     *
+     * @var \Ssch\SschHtml5videoplayer\Domain\Model\Video 
+     */
+    protected $parentid;
+
+    /**
+     *
+     * @var integer
+     */
+    protected $tempWidth;
+
+    /**
+     *
+     * @var integer
+     */
+    protected $tempHeight;
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    protected $images;
+
+    /**
+     *
+     * @return \SJBR\StaticInfoTables\Domain\Model\Language
+     */
+    public function getStaticLangIsocode() {
+        return $this->staticLangIsocode;
+    }
+
+    /**
+     *
+     * @param \SJBR\StaticInfoTables\Domain\Model\Language $staticLangIsocode
+     */
+    public function setStaticLangIsocode($staticLangIsocode) {
+        $this->staticLangIsocode = $staticLangIsocode;
+    }
+
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     * @return void
+     */
+    public function setTitle($title) {
+        $this->title = $title;
+    }
+
+    /**
+     * Returns the title
+     *
+     * @return string
+     */
+    public function getTitle() {
+        return $this->title;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getShortTitle() {
+        return $this->shortTitle;
+    }
+
+    /**
+     *
+     * @param string $shortTitle 
+     */
+    public function setShortTitle($shortTitle) {
+        $this->shortTitle = $shortTitle;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getCopyright() {
+        if ($this->copyright) {
+            return $this->copyright;
+        } elseif ($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
+            return $this->parentid->getCopyright();
+        }
+        return $this->copyright;
+    }
+
+    /**
+     *
+     * @param string $copyright 
+     */
+    public function setCopyright($copyright) {
+        $this->copyright = $copyright;
+    }
+
+    /**
+     * Sets the posterImage
+     *
+     * @param string $posterImage
+     * @return void
+     */
+    public function setPosterImage($posterImage) {
+        $this->posterImage = $posterImage;
+    }
+
+    /**
+     * Returns the posterImage
+     *
+     * @return string
+     */
+    public function getPosterImage() {
+        if ($this->posterImage) {
+            return $this->getFile($this->posterImage);
+        } elseif ($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
+            return $this->parentid->getPosterImage();
+        }        
+    }
+
+    /**
+     * Sets the mp4Source
+     *
+     * @param string $mp4Source
+     * @return void
+     */
+    public function setMp4Source($mp4Source) {
+        $this->mp4Source = $mp4Source;
+    }
+
+    /**
+     * Returns the mp4Source
+     *
+     * @return string
+     */
+    public function getMp4Source() {
+        return $this->getFile($this->mp4Source);
+    }
+
+    /**
+     * Sets the webMSource
+     *
+     * @param string $webMSource
+     * @return void
+     */
+    public function setWebMSource($webMSource) {
+        $this->webMSource = $webMSource;
+    }
+
+    /**
+     * Returns the webMSource
+     *
+     * @return string
+     */
+    public function getWebMSource() {
+        return $this->getFile($this->webMSource);
+    }
+
+    /**
+     * __construct
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->subtitles = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->related = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->versions = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+    /**
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     */
+    public function getSubtitles() {
+        return $this->subtitles;
+    }
+
+    /**
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $subtitles
+     */
+    public function setSubtitles($subtitles) {
+        $this->subtitles = $subtitles;
+    }
+
+    /**
+     * Returns the oggSource
+     *
+     * @return string $oggSource
+     */
+    public function getOggSource() {
+        return $this->getFile($this->oggSource);
+    }
+
+    /**
+     * Sets the oggSource
+     *
+     * @param string $oggSource
+     * @return void
+     */
+    public function setOggSource($oggSource) {
+        $this->oggSource = $oggSource;
+    }
+
+    /**
+     * Returns the flashSource
+     *
+     * @return string $flashSource
+     */
+    public function getFlashSource() {
+        return $this->getMp4Source();
+    }
+
+    /**
+     * Sets the flashSource
+     *
+     * @param string $flashSource
+     * @return void
+     */
+    public function setFlashSource($flashSource) {
+        $this->flashSource = $flashSource;
+    }
+
+    /**
+     * Returns the height
+     *
+     * @return integer $height
+     */
+    public function getHeight() {
+        if ($this->height) {
+            return $this->height;
+        } elseif ($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
+            return $this->parentid->getHeight();
+        }
+        return $this->tempHeight ? $this->tempHeight : $this->height;
+    }
+
+    /**
+     * Sets the height
+     *
+     * @param integer $height
+     * @return void
+     */
+    public function setHeight($height) {
+        $this->height = $height;
+    }
+
+    /**
+     * Returns the width
+     *
+     * @return integer $width
+     */
+    public function getWidth() {
+        if ($this->width) {
+            return $this->width;
+        } elseif ($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
+            return $this->parentid->getWidth();
+        }
+        return $this->tempWidth ? $this->tempWidth : $this->width;
+    }
+
+    /**
+     * Sets the width
+     *
+     * @param integer $width
+     * @return void
+     */
+    public function setWidth($width) {
+        $this->width = $width;
+    }
+
+    /**
+     *
+     * @return boolean
+     */
+    public function getHasHTML5Video() {
+        return !empty($this->mp4Source) || !empty($this->oggSource) || !empty($this->webMSource) ? TRUE : FALSE;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getAlt() {
+        return $this->alt;
+    }
+
+    /**
+     *
+     * @param string $alt
+     */
+    public function setAlt($alt) {
+        $this->alt = $alt;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getLongdesc() {
+        return $this->longdesc;
+    }
+
+    /**
+     *
+     * @param string $longdesc
+     */
+    public function setLongdesc($longdesc) {
+        $this->longdesc = $longdesc;
+    }
+
+    /**
+     * Return the title
+     * @return string 
+     */
+    public function __toString() {
+        return $this->getTitle();
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getCaption() {
+        return $this->caption;
+    }
+
+    /**
+     *
+     * @param string $caption
+     */
+    public function setCaption($caption) {
+        $this->caption = $caption;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getDescription() {
+        return $this->description;
+    }
+
+    /**
+     *
+     * @param string $description
+     */
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getExternalSource() {
+        return $this->externalSource;
+    }
+
+    /**
+     *
+     * @param string $externalSource
+     */
+    public function setExternalSource($externalSource) {
+        $this->externalSource = $externalSource;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getExternalType() {
+        return $this->externalType;
+    }
+
+    /**
+     *
+     * @param string $externalType
+     */
+    public function setExternalType($externalType) {
+        $this->externalType = $externalType;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getDuration() {
+        if ($this->duration) {
+            return $this->duration;
+        } elseif ($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
+            return $this->parentid->getDuration();
+        }
+        return $this->duration;
+    }
+
+    /**
+     *
+     * @param string $duration 
+     */
+    public function setDuration($duration) {
+        $this->duration = $duration;
+    }
+
+    /**
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Ssch\SschHtml5videoplayer\Domain\Model\Video> 
+     */
+    public function getRelated() {
+        return $this->related;
+    }
+
+    /**
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Ssch\SschHtml5videoplayer\Domain\Model\Video> $related 
+     */
+    public function setRelated($related) {
+        $this->related = $related;
+    }
+
+    /**
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Ssch\SschHtml5videoplayer\Domain\Model\Video> 
+     */
+    public function getVersions() {
+        if ($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
+            return $this->getParentid()->getVersions();
+        }
+        if ($this->versions instanceof \TYPO3\CMS\Extbase\Persistence\ObjectStorage) {
+            if ($this->versions->count() > 0) {
+                return array_merge(array($this), $this->versions->toArray());
+            }
+        }
+        return NULL;
+    }
+
+    /**
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Ssch\SschHtml5videoplayer\Domain\Model\Video> $versions 
+     */
+    public function setVersions($versions) {
+        $this->versions = $versions;
+    }
+
+    /**
+     *
+     * @return integer
+     */
+    public function getSinglePid() {
+        return $this->singlePid;
+    }
+
+    /**
+     *
+     * @param integer $singlePid 
+     */
+    public function setSinglePid($singlePid) {
+        $this->singlePid = $singlePid;
+    }
+
+    /**
+     *
+     * @return \Ssch\SschHtml5videoplayer\Domain\Model\Video
+     */
+    public function getParentid() {
+        return $this->parentid;
+    }
+
+    /**
+     *
+     * @param \Ssch\SschHtml5videoplayer\Domain\Model\Video $parentid 
+     */
+    public function setParentid($parentid) {
+        $this->parentid = $parentid;
+    }
+
+    /**
+     * 
+     * @return integer
+     */
+    public function getTempWidth() {
+        return $this->tempWidth;
+    }
+
+    /**
+     * 
+     * @return integer
+     */
+    public function getTempHeight() {
+        return $this->tempHeight;
+    }
+
+    /**
+     * 
+     * @param integer $tempWidth
+     */
+    public function setTempWidth($tempWidth) {
+        $this->tempWidth = $tempWidth;
+    }
+
+    /**
+     * 
+     * @param integer $tempHeight
+     */
+    public function setTempHeight($tempHeight) {
+        $this->tempHeight = $tempHeight;
+    }
+    
+    /**
+     * 
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getImages() {
+        if(NULL === $this->images) {
+            if($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
+                return $this->getParentid()->getImages();
+            }
+        }
+        return $this->images;
+    }
+
+    /**
+     * 
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $images
+     */
+    public function setImages($images) {
+        $this->images = $images;
+    }
+
+
+
+}
+
+?>
