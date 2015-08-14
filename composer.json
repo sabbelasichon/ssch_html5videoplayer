@@ -3,6 +3,18 @@
     "type": "typo3-cms-extension",
     "description": "HTML5 Video- and Audio-Player based on mediaelementjs.com",
     "license": ["GPL-2.0+"],
+    "homepage": "http://typo3.org",
     "keywords": ["TYPO3 CMS", "HTML5 Video and Audio-Player"],
-    "version": "1.2.3"
+    "version": "1.2.3",
+    "require": {
+        "typo3/cms-core": ">=6.2.1,<8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ssch\\SschHtml5videoplayer\\": "Classes"
+        }
+    },
+    "replace": {
+        "ssch-html5videoplayer": "*"
+    }
 }
