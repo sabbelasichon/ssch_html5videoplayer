@@ -1,0 +1,8 @@
+{
+    "name": "ssch/ssch-html5videoplayer",
+    "type": "typo3-cms-extension",
+    "description": "HTML5 Video- and Audio-Player based on mediaelementjs.com",
+    "license": ["GPL-2.0+"],
+    "keywords": ["TYPO3 CMS", "HTML5 Video and Audio-Player"],
+    "version": "1.2.3"
+}

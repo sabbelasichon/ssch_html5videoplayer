@@ -10,7 +10,27 @@
                     <sheetTitle>LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer.pi_flexform.display</sheetTitle>
                 </TCEforms>
                 <type>array</type>
-                <el>                    
+                <el>           
+                    <settings.templateFile>
+                        <TCEforms>
+                            <label>LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer.pi_flexform.template</label>
+                            <config>
+                                <type>select</type>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">Standard</numIndex>
+                                        <numIndex index="1">default</numIndex>
+                                        <numIndex index="2">EXT:ssch_html5videoplayer/Resources/Public/Icons/Default.gif</numIndex>
+                                    </numIndex>
+                                </items>
+                                <itemsProcFunc>\Ssch\SschHtml5videoplayer\UserFuncs\Template->main</itemsProcFunc>
+                                <maxitems>1</maxitems>
+                                <size>1</size>
+                                <multiple>0</multiple>
+                                <path>Audio</path>
+                            </config>
+                        </TCEforms>
+                    </settings.templateFile>         
                     <settings.audioSelection>
                         <TCEforms>
                             <label>LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer.pi_flexform.audio_selection</label>

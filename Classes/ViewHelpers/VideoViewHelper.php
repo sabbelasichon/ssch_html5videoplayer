@@ -57,35 +57,36 @@ class VideoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedV
      * Render content of video tag
      * @param array $settings The settings array
      * @param \Ssch\SschHtml5videoplayer\Domain\Model\Video $video The video object
+     * @param boolean $responsive
      * @return string
      */
-    public function render(array $settings, \Ssch\SschHtml5videoplayer\Domain\Model\Video $video) {
-        $this->tag->forceClosingTag(TRUE);
+    public function render(array $settings, \Ssch\SschHtml5videoplayer\Domain\Model\Video $video, $responsive = FALSE) {
+        $this->tag->forceClosingTag(TRUE);        
+        if (FALSE === $responsive) {
+            $videoWidth = $video->getWidth();
+            $videoHeight = $video->getHeight();
 
-        $videoWidth = $video->getWidth();
-        $videoHeight = $video->getHeight();
+            if ($videoWidth > $videoHeight) {
+                $videoRatio = $videoHeight / $videoWidth;
+            } else {
+                $videoRatio = $videoWidth / $videoHeight;
+            }
+            $settingsVideoWidth = (integer) $settings['videoWidth'];
+            $settingsVideoHeight = (integer) $settings['videoHeight'];
 
-        if ($videoWidth > $videoHeight) {
-            $videoRatio = $videoHeight / $videoWidth;
-        } else {
-            $videoRatio = $videoWidth / $videoHeight;
-        }
-        $settingsVideoWidth = (integer) $settings['videoWidth'];
-        $settingsVideoHeight = (integer) $settings['videoHeight'];
-
-        if ($settingsVideoWidth && $settingsVideoHeight) {
-            $videoWidth = $settingsVideoWidth;
-            $videoHeight = $settingsVideoHeight;
-        } elseif ($settingsVideoWidth) {
-            $videoWidth = $settingsVideoWidth;
-            $videoHeight = $videoWidth * $videoRatio;
-        } elseif ($settingsVideoHeight) {
-            $videoHeight = $settingsVideoHeight;
-            $videoWidth = $videoHeight * $videoRatio;
-        }
-
-        $this->tag->addAttribute('width', floor($videoWidth));
-        $this->tag->addAttribute('height', floor($videoHeight));
+            if ($settingsVideoWidth && $settingsVideoHeight) {
+                $videoWidth = $settingsVideoWidth;
+                $videoHeight = $settingsVideoHeight;
+            } elseif ($settingsVideoWidth) {
+                $videoWidth = $settingsVideoWidth;
+                $videoHeight = $videoWidth * $videoRatio;
+            } elseif ($settingsVideoHeight) {
+                $videoHeight = $settingsVideoHeight;
+                $videoWidth = $videoHeight * $videoRatio;
+            }
+            $this->tag->addAttribute('width', floor($videoWidth));
+            $this->tag->addAttribute('height', floor($videoHeight));
+        } 
 
         $this->tag->setContent($this->renderChildren());
         return $this->tag->render();

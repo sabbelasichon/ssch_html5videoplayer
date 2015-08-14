@@ -114,6 +114,8 @@ CREATE TABLE tx_sschhtml5videoplayer_domain_model_audio (
 
         title varchar(255) DEFAULT '' NOT NULL,
 	audio_source varchar(255) DEFAULT '' NOT NULL,
+        description text NOT NULL,
+        image int(11) unsigned DEFAULT '0' NOT NULL,
 
         tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

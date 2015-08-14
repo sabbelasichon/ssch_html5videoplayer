@@ -7,10 +7,10 @@ if (!defined('TYPO3_MODE')) {
 $TCA['tx_sschhtml5videoplayer_domain_model_audio'] = array(
     'ctrl' => $TCA['tx_sschhtml5videoplayer_domain_model_audio']['ctrl'],
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, audio_source',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, audio_source, image',
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, description;;;richtext[paste|bold|italic|underline|formatblock|class|left|center|right|orderedlist|unorderedlist|outdent|indent|link|image]:rte_transform[mode=ts], audio_source,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
+        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, image, description;;;richtext[paste|bold|italic|underline|formatblock|class|left|center|right|orderedlist|unorderedlist|outdent|indent|link|image]:rte_transform[mode=ts], audio_source,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -140,6 +140,13 @@ $TCA['tx_sschhtml5videoplayer_domain_model_audio'] = array(
                         'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1'
                     )
                 )
+            ),
+        ),
+        'image' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer_domain_model_audio.image',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                    'image', array('maxitems' => 1), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
         ),
     ),

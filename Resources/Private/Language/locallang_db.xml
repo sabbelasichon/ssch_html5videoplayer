@@ -36,6 +36,7 @@
             <label index="tx_sschhtml5videoplayer_domain_model_audio">Audio</label>
             <label index="tx_sschhtml5videoplayer_domain_model_audio.title">Titel</label>
             <label index="tx_sschhtml5videoplayer_domain_model_audio.audio_source">Audio-Quelle</label>
+            <label index="tx_sschhtml5videoplayer_domain_model_audio.image">Bild</label>
             <label index="tx_sschhtml5videoplayer.pi_flexform.audio_selection">Audio-Auswahl</label>
             <label index="tx_sschhtml5videoplayer_domain_model_subtitle.selected">Ausgewählte Sprache/Ausgewählter Track</label>
             <label index="tx_sschhtml5videoplayer_domain_model_video.description">Beschreibung</label>
@@ -46,6 +47,7 @@
             <label index="tx_sschhtml5videoplayer_domain_model_video.duration">Dauer</label>
             <label index="tx_sschhtml5videoplayer_domain_model_video.short_title">Kurztitel</label>
             <label index="tx_sschhtml5videoplayer_domain_model_video.copyright">Copyright</label>
+            <label index="tx_sschhtml5videoplayer.pi_flexform.jsTemplate">Template für die Initialisierung des Players</label>
         </languageKey>
     </data>
 </T3locallang>

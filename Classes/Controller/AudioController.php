@@ -29,6 +29,9 @@ namespace Ssch\SschHtml5videoplayer\Controller;
 /**
  * Controller for the Audio object
  */
+
+use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
+
 class AudioController extends AbstractController {
 
     /**
@@ -49,6 +52,7 @@ class AudioController extends AbstractController {
             $audioUid = intval($this->settings['audioSelection']);
             $audio = $this->audioRepository->findByUid($audioUid);
         }
+        $this->view->assign('data', $this->configurationManager->getContentObject()->data);
         $this->view->assign('audio', $audio);
     }
 
@@ -58,7 +62,28 @@ class AudioController extends AbstractController {
      * @return string The rendered list action
      */
     public function listAction() {
-        $this->view->assign('audios', $this->audioRepository->findAll());
+        if ($this->settings['audioSelection']) {
+            $audios = $this->audioRepository->findByUids($this->settings['audioSelection']);
+            $audios = $this->sorterUtility->sortElementsAsDefinedInFlexForms($this->settings['audioSelection'], $audios);
+        } else {
+            $audios = $this->audioRepository->findAll();
+        }
+        $this->view->assign('data', $this->configurationManager->getContentObject()->data);
+        $this->view->assign('audios', $audios);
+    }
+    
+    /**
+     * 
+     * @param \Ssch\SschHtml5videoplayer\Controller\ViewInterface $view
+     */
+    protected function initializeView(ViewInterface $view) {
+        // Set template
+        if ($this->settings['templateFile']) {
+            $templateFile = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Audio/' . $this->settings['templateFile']);
+            if (TRUE === file_exists($templateFile)) {
+                $view->setTemplatePathAndFilename($templateFile);
+            }
+        }
     }
 
 }

@@ -41,9 +41,10 @@ class VideoController extends AbstractController {
      * Displays a single Video
      *
      * @param \Ssch\SschHtml5videoplayer\Domain\Model\Video $video the Video to display
+     * @param boolean $backButton
      * @return string The rendered view
      */
-    public function showAction(\Ssch\SschHtml5videoplayer\Domain\Model\Video $video = NULL) {
+    public function showAction(\Ssch\SschHtml5videoplayer\Domain\Model\Video $video = NULL, $backButton = FALSE) {
         if (NULL === $video) {
             $videoUid = intval($this->settings['videoSelection']);
             $video = $this->videoRepository->findByUid($videoUid);
@@ -53,7 +54,9 @@ class VideoController extends AbstractController {
                 $video->setTempWidth($this->settings['videoWidth']);
                 $video->setTempHeight($this->settings['videoHeight']);
             }
+            $this->view->assign('data', $this->configurationManager->getContentObject()->data);
             $this->view->assign('video', $video);
+            $this->view->assign('backButton', $backButton);
         }
     }
 
@@ -69,6 +72,7 @@ class VideoController extends AbstractController {
         } else {
             $videos = $this->videoRepository->findAll();
         }
+        $this->view->assign('data', $this->configurationManager->getContentObject()->data);
         $this->view->assign('videos', $videos);
     }
 

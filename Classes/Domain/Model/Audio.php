@@ -38,6 +38,7 @@ class Audio extends AbstractEntity {
      * @validate NotEmpty
      */
     protected $title;
+
     /**
      *
      * @var string
@@ -49,6 +50,13 @@ class Audio extends AbstractEntity {
      * @var string
      */
     protected $description;
+
+    /**
+     * image
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    protected $image = NULL;
 
     /**
      *
@@ -106,7 +114,24 @@ class Audio extends AbstractEntity {
         $this->description = $description;
     }
 
+    /**
+     * Returns the image
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     */
+    public function getImage() {
+        return $this->image;
+    }
 
+    /**
+     * Sets the image
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     * @return void
+     */
+    public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image) {
+        $this->image = $image;
+    }
 
 }
 

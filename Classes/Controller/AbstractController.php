@@ -69,7 +69,7 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
                 $this->addHeaderData('jQuery(document).ready(function($) { $("video,audio").mediaelementplayer() });', 'script');
             } elseif ($this->settings['addMediaElementJsInitializationFile']) {
                 $initializationFile = $this->getFileAbsFileName($this->settings['addMediaElementJsInitializationFile']);
-                $fluidView = $this->objectManager->create('\TYPO3\CMS\Fluid\View\StandaloneView');
+                $fluidView = $this->objectManager->create('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
                 /* @var $fluidView \TYPO3\CMS\Fluid\View\StandaloneView */
                 $fluidView->setTemplatePathAndFilename($initializationFile);
                 $fluidView->setPartialRootPath(dirname($initializationFile));

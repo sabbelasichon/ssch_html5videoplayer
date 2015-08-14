@@ -57,24 +57,30 @@ class Template {
             case 'JavaScripts':
                 $fullPath = TRUE;
                 $extFileList = 'html,htm,js';                
-                $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPathInitializationFiles'];
+                $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPathInitializationFiles'];                
+                break;
+            case 'Audio':
+                $extFileList = 'html,htm';
+                $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Audio/';                                
                 break;
             default:
                 $extFileList = 'html,htm';
                 $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Video/';
                 break;
-        }        
+        }       
+        
         
         
         // Finding value for the path containing the template files
-        $readPath = GeneralUtility::getFileAbsFileName($pathToFiles);        
+        $readPath = GeneralUtility::getFileAbsFileName($pathToFiles);                
+        
         
 
         // If that direcotry is valid, is a directory then select files in it:
         if (is_dir($readPath)) {            
+            #\TYPO3\CMS\Core\Utility\DebugUtility::debug($readPath);
             //getting all HTML files in the directory:
             $templateFiles = GeneralUtility::getFilesInDir($readPath, $extFileList, 1, 1);
-
             // Start up the HTML parser:
             $parseHTML = GeneralUtility::makeInstance('\TYPO3\CMS\Core\Html\HtmlParser');
             /* @var $parserHTML \TYPO3\CMS\Core\Html\HtmlParser */
