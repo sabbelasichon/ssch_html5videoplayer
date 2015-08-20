@@ -10,22 +10,18 @@ build_settings:
     - "PHPCI/Languages" # PHPCS fails on character counts for non-Latin languages
   
 test:
-  php_parallel_lint:
-      ignore:
-        # Only ignore vendor
-        - vendor/
-  php_mess_detector:
-    allowed_warnings: 0
-    rules:
-      - phpmd.xml
-  php_code_sniffer:
-    standard: phpcs.xml
-    allowed_warnings: 0
-    allowed_errors: 0
-  php_loc:
-  php_unit:
-  php_docblock_checker:
-    allowed_warnings: 0
+  #php_mess_detector:
+  #  allowed_warnings: 0
+  #  rules:
+  #    - phpmd.xml
+  #php_code_sniffer:
+  #  standard: phpcs.xml
+  #  allowed_warnings: 0
+  #  allowed_errors: 0
+  #php_loc:
+  #php_unit:
+  #php_docblock_checker:
+  #  allowed_warnings: 0
 
 failure:
   email:
