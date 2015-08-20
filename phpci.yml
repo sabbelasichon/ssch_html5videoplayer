@@ -8,12 +8,7 @@ build_settings:
     - "PHPCI/Migrations" # Ignore the migrations directory, as both PHPMD and PHPCS can't cope with them.
     - "PHPCI/Model/Base" # These files are auto-generated, and sometimes hit PHPMD complexity thresholds.
     - "PHPCI/Languages" # PHPCS fails on character counts for non-Latin languages
-
-setup:
-  composer:
-    action: "install"
-    prefer_dist: false
-
+  
 test:
   php_parallel_lint:
       ignore:
