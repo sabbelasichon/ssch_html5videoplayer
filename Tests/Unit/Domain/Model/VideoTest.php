@@ -29,7 +29,7 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\Domain\Model;
 /**
  * Video
  */
-class VideoTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+class VideoTest extends \PHPUnit_Framework_TestCase {
 
     /**
      *
