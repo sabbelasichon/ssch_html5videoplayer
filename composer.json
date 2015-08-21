@@ -7,7 +7,7 @@
     "keywords": ["TYPO3 CMS", "HTML5 Video and Audio-Player"],
     "version": "1.2.3",
     "autoload": {
-        "psr-1": {
+        "psr-4": {
             "Ssch\\SschHtml5videoplayer\\": "Classes"
         }
     },

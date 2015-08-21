@@ -12,3 +12,4 @@ _temp_
 .idea
 /typoscript/constants/constants_locallang_global.ts
 root_directory/
+/vendor/
