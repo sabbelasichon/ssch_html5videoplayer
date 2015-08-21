@@ -13,7 +13,7 @@ setup:
     action: "install"
 test:
   php_code_sniffer:
-    standard: "PSR4"
+    standard: "PSR1"
   php_mess_detector:
       allow_failures: true
   php_unit:
