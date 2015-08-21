@@ -12,20 +12,20 @@ setup:
   composer:
     action: "install"
 test:
-  php_code_sniffer:
-    standard: "PSR1,PSR2"
-    ignore:
-        - "class.ext_update.php"        
-        - "Configuration"
+  #php_code_sniffer:
+  #  standard: "PSR1,PSR2"
+  #  ignore:
+  #      - "class.ext_update.php"        
+  #      - "Configuration"
   #php_mess_detector:
   #    allow_failures: true
   php_unit:
       directory: "Tests/"  
-  php_cpd:
-      allow_failures: true
-      ignore:
-        - "class.ext_update.php"        
-        - "Configuration"      
+  #php_cpd:
+  #    allow_failures: true
+  #    ignore:
+  #      - "class.ext_update.php"        
+  #      - "Configuration"      
 #failure:
 #  email:
 #    committer: true
