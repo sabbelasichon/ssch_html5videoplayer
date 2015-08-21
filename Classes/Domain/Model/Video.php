@@ -447,7 +447,6 @@ class Video extends AbstractEntity {
         $this->longdesc = $longdesc;
     }
 
-    
     /**
      *
      * @return string
@@ -464,7 +463,6 @@ class Video extends AbstractEntity {
         $this->caption = $caption;
     }
 
-    
     /**
      *
      * @return string

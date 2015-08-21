@@ -26,8 +26,6 @@ namespace Ssch\SschHtml5videoplayer\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-
-
 class Subtitle extends AbstractEntity {
 
     /**
