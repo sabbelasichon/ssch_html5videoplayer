@@ -20,7 +20,8 @@ test:
   #php_mess_detector:
   #    allow_failures: true
   php_unit:
-      directory: "Tests/"  
+      config: 
+        - "phpunit.xml"
   #php_cpd:
   #    allow_failures: true
   #    ignore:
