@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 /* * *************************************************************
  *
  *  Copyright notice
@@ -30,7 +33,7 @@
  */
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class ext_update {
+class ext_update extends \TYPO3\CMS\Backend\Module\BaseScriptClass {
 
     /**
      * @return void

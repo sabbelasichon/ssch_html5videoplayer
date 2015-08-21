@@ -32,24 +32,10 @@ namespace Ssch\SschHtml5videoplayer\Domain\Model;
 class Audio extends AbstractEntity {
 
     /**
-     * Title
-     *
-     * @var string $title
-     * @validate NotEmpty
-     */
-    protected $title;
-
-    /**
      *
      * @var string
      */
     protected $audioSource;
-
-    /**
-     *
-     * @var string
-     */
-    protected $description;
 
     /**
      * image
@@ -57,22 +43,6 @@ class Audio extends AbstractEntity {
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $image = NULL;
-
-    /**
-     *
-     * @return string
-     */
-    public function getTitle() {
-        return $this->title;
-    }
-
-    /**
-     *
-     * @param string $title
-     */
-    public function setTitle($title) {
-        $this->title = $title;
-    }
 
     /**
      *
@@ -88,30 +58,6 @@ class Audio extends AbstractEntity {
      */
     public function setAudioSource($audioSource) {
         $this->audioSource = $audioSource;
-    }
-
-    /**
-     * Return the title
-     * @return string 
-     */
-    public function __toString() {
-        return $this->getTitle();
-    }
-
-    /**
-     *
-     * @return string
-     */
-    public function getDescription() {
-        return $this->description;
-    }
-
-    /**
-     *
-     * @param string $description
-     */
-    public function setDescription($description) {
-        $this->description = $description;
     }
 
     /**

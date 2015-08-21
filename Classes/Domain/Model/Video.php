@@ -32,14 +32,6 @@ namespace Ssch\SschHtml5videoplayer\Domain\Model;
 class Video extends AbstractEntity {
 
     /**
-     * Title
-     *
-     * @var string $title
-     * @validate NotEmpty
-     */
-    protected $title;
-
-    /**
      *
      * @var string
      */
@@ -128,12 +120,6 @@ class Video extends AbstractEntity {
      *
      * @var string
      */
-    protected $description;
-
-    /**
-     *
-     * @var string
-     */
     protected $externalSource;
 
     /**
@@ -211,25 +197,6 @@ class Video extends AbstractEntity {
     }
 
     /**
-     * Sets the title
-     *
-     * @param string $title
-     * @return void
-     */
-    public function setTitle($title) {
-        $this->title = $title;
-    }
-
-    /**
-     * Returns the title
-     *
-     * @return string
-     */
-    public function getTitle() {
-        return $this->title;
-    }
-
-    /**
      *
      * @return string
      */
@@ -286,7 +253,7 @@ class Video extends AbstractEntity {
             return $this->getFile($this->posterImage);
         } elseif ($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
             return $this->parentid->getPosterImage();
-        }        
+        }
     }
 
     /**
@@ -480,14 +447,7 @@ class Video extends AbstractEntity {
         $this->longdesc = $longdesc;
     }
 
-    /**
-     * Return the title
-     * @return string 
-     */
-    public function __toString() {
-        return $this->getTitle();
-    }
-
+    
     /**
      *
      * @return string
@@ -504,22 +464,7 @@ class Video extends AbstractEntity {
         $this->caption = $caption;
     }
 
-    /**
-     *
-     * @return string
-     */
-    public function getDescription() {
-        return $this->description;
-    }
-
-    /**
-     *
-     * @param string $description
-     */
-    public function setDescription($description) {
-        $this->description = $description;
-    }
-
+    
     /**
      *
      * @return string
@@ -676,14 +621,14 @@ class Video extends AbstractEntity {
     public function setTempHeight($tempHeight) {
         $this->tempHeight = $tempHeight;
     }
-    
+
     /**
      * 
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     public function getImages() {
-        if(NULL === $this->images) {
-            if($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
+        if (NULL === $this->images) {
+            if ($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
                 return $this->getParentid()->getImages();
             }
         }
@@ -697,8 +642,6 @@ class Video extends AbstractEntity {
     public function setImages($images) {
         $this->images = $images;
     }
-
-
 
 }
 

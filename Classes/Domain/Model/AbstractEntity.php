@@ -31,6 +31,39 @@ use TYPO3\CMS\Core\Resource\ResourceFactory;
 class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
     /**
+     * Title
+     *
+     * @var string $title
+     * @validate NotEmpty
+     */
+    protected $title;
+
+    /**
+     *
+     * @var string
+     */
+    protected $description;
+
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     * @return void
+     */
+    public function setTitle($title) {
+        $this->title = $title;
+    }
+
+    /**
+     * Returns the title
+     *
+     * @return string
+     */
+    public function getTitle() {
+        return $this->title;
+    }
+
+    /**
      * 
      * @param string $file
      * @return string
@@ -43,6 +76,30 @@ class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
             }
         }
         return $file;
+    }
+
+    /**
+     * Return the title
+     * @return string 
+     */
+    public function __toString() {
+        return $this->getTitle();
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getDescription() {
+        return $this->description;
+    }
+
+    /**
+     *
+     * @param string $description
+     */
+    public function setDescription($description) {
+        $this->description = $description;
     }
 
 }
