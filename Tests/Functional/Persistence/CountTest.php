@@ -29,7 +29,7 @@ namespace Ssch\SschHtml5videoplayer\Tests\Functional\Persistence;
 /**
  * Video
  */
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class CountTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 
@@ -50,23 +50,22 @@ class CountTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
     protected $persistentManager;
 
     /**
-     * Sets up this test suite.
+     * @return void
      */
     public function setUp() {
         parent::setUp();
-
         $this->importDataSet(ORIGINAL_ROOT . 'typo3conf/ext/ssch_html5videoplayer/Tests/Functional/Persistence/Fixtures/videos.xml');
 
         $this->objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
         $this->persistentManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager');
-        $this->videoRepository = $this->objectManager->get('Ssch\\SschHtml5videoplayer\\Domain\\Repository\\VideoRepository');
+        $this->videoRepository = $this->objectManager->get('Ssch\SschHtml5videoplayer\\Domain\\Repository\\VideoRepository');
     }
 
     /**
      * @test
      */
-    public function count() {
-        $this->videoRepository->countAll();                
+    public function countAll() {
+        $this->videoRepository->countAll();
     }
 
 }
