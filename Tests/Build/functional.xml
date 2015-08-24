@@ -1,7 +1,7 @@
 <phpunit
         backupGlobals="false"
         backupStaticAttributes="false"
-        bootstrap="../../../../../typo3/sysext/core/Build/UnitTestsBootstrap.php"
+        bootstrap="../../../../../typo3/sysext/core/Build/FunctionalTestsBootstrap.php"
         colors="true"
         convertErrorsToExceptions="true"
         convertWarningsToExceptions="true"
@@ -15,7 +15,7 @@
 
     <testsuites>
         <testsuite name="EXT:ssch_html5videoplayer">
-            <directory>../Unit/</directory>            
+            <directory>../Functional/</directory>
         </testsuite>
     </testsuites>
 </phpunit>

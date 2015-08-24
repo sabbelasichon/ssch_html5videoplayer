@@ -53,7 +53,8 @@ class CountTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
      * @return void
      */
     public function setUp() {
-        parent::setUp();
+        parent::setUp(); 
+        
         $this->importDataSet(ORIGINAL_ROOT . 'typo3conf/ext/ssch_html5videoplayer/Tests/Functional/Persistence/Fixtures/videos.xml');
 
         $this->objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
