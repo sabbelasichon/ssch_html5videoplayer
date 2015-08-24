@@ -16,6 +16,7 @@
     <testsuites>
         <testsuite name="EXT:ssch_html5videoplayer">
             <directory>../Unit/</directory>
+            <directory>../Functional/</directory>
         </testsuite>
     </testsuites>
 </phpunit>

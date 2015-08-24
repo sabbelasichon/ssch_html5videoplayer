@@ -42,29 +42,117 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
      */
     public function setUp() {
         parent::setUp();
-        $this->viewHelper = $this->getAccessibleMock('Ssch\\SschHtml5videoplayer\\ViewHelpers\\VideoViewHelper');
+        $this->viewHelper = $this->getAccessibleMock('Ssch\\SschHtml5videoplayer\\ViewHelpers\\VideoViewHelper', array('renderChildren'));
         $this->injectDependenciesIntoViewHelper($this->viewHelper);
-        $this->viewHelper->initializeArguments();        
+        $this->viewHelper->initializeArguments();
     }
 
     /**
      * @test
      */
-    public function renderProvidesVideoTag() {
+    public function renderProvidesVideoTagWithWithAndHeightFromSettings() {
         $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(TRUE);
         $this->tagBuilder->expects($this->once())->method('render');
         $this->tagBuilder->expects($this->once())->method('setContent');
+        $this->tagBuilder->expects($this->exactly(2))->method('addAttribute')->withConsecutive(
+                array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(150))
+        );
 
 
         $settings = array();
         $settings['videoWidth'] = 300;
         $settings['videoHeight'] = 150;
-        $video = new \Ssch\SschHtml5videoplayer\Domain\Model\Video();
-        $video->setHeight(100);
-        $video->setWidth(100);
-        
+        $video = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', array('getHeight', 'getWidth'));
+        $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
+        $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));
+
         $this->viewHelper->initialize();
-        $this->viewHelper->render($settings, $video);        
+        $this->viewHelper->render($settings, $video);
+    }
+
+    /**
+     * @test
+     */
+    public function renderProvidesVideoTagWithWidthFromSettingsAndHeightFromVideo() {
+        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(TRUE);
+        $this->tagBuilder->expects($this->once())->method('render');
+        $this->tagBuilder->expects($this->once())->method('setContent');
+        $this->tagBuilder->expects($this->exactly(2))->method('addAttribute')->withConsecutive(
+                array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(300))
+        );
+
+
+        $settings = array();
+        $settings['videoWidth'] = 300;
+        $video = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', array('getHeight', 'getWidth'));
+        $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
+        $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));
+
+        $this->viewHelper->initialize();
+        $this->viewHelper->render($settings, $video);
+    }
+
+    /**
+     * @test
+     */
+    public function renderProvidesVideoTagWithHeightFromSettingsAndWidthFromVideo() {
+        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(TRUE);
+        $this->tagBuilder->expects($this->once())->method('render');
+        $this->tagBuilder->expects($this->once())->method('setContent');
+        $this->tagBuilder->expects($this->exactly(2))->method('addAttribute')->withConsecutive(
+                array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(300))
+        );
+
+
+        $settings = array();
+        $settings['videoHeight'] = 300;
+        $video = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', array('getHeight', 'getWidth'));
+        $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
+        $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));
+
+        $this->viewHelper->initialize();
+        $this->viewHelper->render($settings, $video);
+    }
+
+    /**
+     * @test
+     */
+    public function renderProvidesVideoTagWithWidthAndHeightFromVideo() {
+        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(TRUE);
+        $this->tagBuilder->expects($this->once())->method('render');
+        $this->tagBuilder->expects($this->once())->method('setContent');
+        $this->tagBuilder->expects($this->exactly(2))->method('addAttribute')->withConsecutive(
+                array($this->equalTo('width'), $this->equalTo(100)), array($this->equalTo('height'), $this->equalTo(100))
+        );
+
+
+        $settings = array();
+        $video = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', array('getHeight', 'getWidth'));
+        $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
+        $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));
+
+        $this->viewHelper->initialize();
+        $this->viewHelper->render($settings, $video);
+    }
+
+    /**
+     * @test
+     */
+    public function renderProvidesCorrectVideoTagOutput() {
+
+        $this->tagBuilder->expects($this->once())->method('render')->will($this->returnValue('<video width="100" height="100">'));
+
+        $settings = array();
+        $video = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', array('getHeight', 'getWidth'));
+        $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
+        $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));
+
+        $this->viewHelper->initialize();
+        self::assertSame('<video width="100" height="100">', $this->viewHelper->render($settings, $video));
+    }
+
+    public function tearDown() {
+        parent::tearDown();
     }
 
 }

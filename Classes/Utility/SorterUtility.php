@@ -48,6 +48,7 @@ class SorterUtility {
             }
             return $sortedRecords;
         }
+        return NULL;
     }
 
     /**

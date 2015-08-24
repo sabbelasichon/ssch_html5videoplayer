@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+	<tx_sschhtml5videoplayer_domain_model_video>
+		<uid>1</uid>
+		<pid>0</pid>
+		<name>Video 1</name>
+		<deleted>0</deleted>
+	</tx_sschhtml5videoplayer_domain_model_video>	        
+        <tx_sschhtml5videoplayer_domain_model_video>
+		<uid>2</uid>
+		<pid>0</pid>
+		<name>Video 1</name>
+		<deleted>0</deleted>
+	</tx_sschhtml5videoplayer_domain_model_video>	
+        <tx_sschhtml5videoplayer_domain_model_video>
+		<uid>3</uid>
+		<pid>0</pid>
+		<name>Video 1</name>
+		<deleted>0</deleted>
+	</tx_sschhtml5videoplayer_domain_model_video>	
+</dataset>

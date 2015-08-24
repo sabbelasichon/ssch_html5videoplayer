@@ -85,19 +85,11 @@ class VideoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedV
                 $videoWidth = $videoHeight * $videoRatio;
             }
             $this->tag->addAttribute('width', floor($videoWidth));
-            $this->tag->addAttribute('height', floor($videoHeight));
+            $this->tag->addAttribute('height', floor($videoHeight));            
         } 
 
         $this->tag->setContent($this->renderChildren());
         return $this->tag->render();
-    }
-    
-    /**
-     * 
-     * @param type $tagBuilder
-     */
-    public function setTagBuilder($tagBuilder) {
-        $this->tag = $tagBuilder;
     }
 
 }
