@@ -91,6 +91,14 @@ class VideoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedV
         $this->tag->setContent($this->renderChildren());
         return $this->tag->render();
     }
+    
+    /**
+     * 
+     * @param type $tagBuilder
+     */
+    public function setTagBuilder($tagBuilder) {
+        $this->tag = $tagBuilder;
+    }
 
 }
 

@@ -29,11 +29,11 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\Domain\Model;
 /**
  * Video
  */
-class VideoTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+class AbstractEntityTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
     /**
      *
-     * @var \Ssch\SschHtml5videoplayer\Domain\Model\Video
+     * @var \Ssch\SschHtml5videoplayer\Domain\Model\AbstractEntity
      */
     protected $subject = NULL;
 
@@ -41,32 +41,23 @@ class VideoTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
      * @return void
      */
     public function setUp() {
-        $this->subject = new \Ssch\SschHtml5videoplayer\Domain\Model\Video();
+        $this->subject = $this->getMockForAbstractClass('Ssch\\SschHtml5videoplayer\\Domain\\Model\\AbstractEntity');
     }
 
     /**
      * @test
      */
-    public function defaultExternalTypeIsYoutube() {
-        self::assertSame('video/youtube', $this->subject->getExternalType());
+    public function setTitle() {
+        $this->subject->setTitle('Anything');
+        self::assertSame('Anything', $this->subject->getTitle());
     }
 
     /**
      * @test
      */
-    public function setAndGetExternalType() {
-        $this->subject->setExternalType('anything');
-        self::assertSame('anything', $this->subject->getExternalType());
-    }
-
-    /**
-     * @test
-     */
-    public function setAndGetCopyrightFromParentVideo() {
-        $parentVideo = new \Ssch\SschHtml5videoplayer\Domain\Model\Video();
-        $parentVideo->setCopyright('Copyright from parent video');
-        $this->subject->setParentid($parentVideo);
-        self::assertSame('Copyright from parent video', $this->subject->getCopyright());
+    public function setDescription() {
+        $this->subject->setDescription('Anything');
+        self::assertSame('Anything', $this->subject->getDescription());
     }
 
 }

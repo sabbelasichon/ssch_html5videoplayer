@@ -47,7 +47,7 @@ class Labels {
                 if ($row[0]['language']) {
                     $parts[] = '(' . $row[0]['language'] . ')';
                 }
-                if($row[0]['title2']) {
+                if ($row[0]['title2']) {
                     $parts[] = '(Elterndatensatz: ' . $row[0]['title2'] . ')';
                 }
                 $params['title'] = implode(' ', $parts);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ssch\SschHtml5videoplayer\Tests\Unit\Domain\Model;
+namespace Ssch\SschHtml5videoplayer\Tests\Unit\ViewHelpers;
 
 /* * *************************************************************
  *  Copyright notice
@@ -29,44 +29,42 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\Domain\Model;
 /**
  * Video
  */
-class VideoTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHelperBaseTestcase {
 
     /**
      *
-     * @var \Ssch\SschHtml5videoplayer\Domain\Model\Video
+     * @var \Ssch\SschHtml5videoplayer\ViewHelpers\VideoViewHelper
      */
-    protected $subject = NULL;
+    protected $viewHelper;
 
     /**
      * @return void
      */
     public function setUp() {
-        $this->subject = new \Ssch\SschHtml5videoplayer\Domain\Model\Video();
+        parent::setUp();
+        $this->viewHelper = $this->getAccessibleMock('Ssch\\SschHtml5videoplayer\\ViewHelpers\\VideoViewHelper');
+        $this->injectDependenciesIntoViewHelper($this->viewHelper);
+        $this->viewHelper->initializeArguments();        
     }
 
     /**
      * @test
      */
-    public function defaultExternalTypeIsYoutube() {
-        self::assertSame('video/youtube', $this->subject->getExternalType());
-    }
+    public function renderProvidesVideoTag() {
+        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(TRUE);
+        $this->tagBuilder->expects($this->once())->method('render');
+        $this->tagBuilder->expects($this->once())->method('setContent');
 
-    /**
-     * @test
-     */
-    public function setAndGetExternalType() {
-        $this->subject->setExternalType('anything');
-        self::assertSame('anything', $this->subject->getExternalType());
-    }
 
-    /**
-     * @test
-     */
-    public function setAndGetCopyrightFromParentVideo() {
-        $parentVideo = new \Ssch\SschHtml5videoplayer\Domain\Model\Video();
-        $parentVideo->setCopyright('Copyright from parent video');
-        $this->subject->setParentid($parentVideo);
-        self::assertSame('Copyright from parent video', $this->subject->getCopyright());
+        $settings = array();
+        $settings['videoWidth'] = 300;
+        $settings['videoHeight'] = 150;
+        $video = new \Ssch\SschHtml5videoplayer\Domain\Model\Video();
+        $video->setHeight(100);
+        $video->setWidth(100);
+        
+        $this->viewHelper->initialize();
+        $this->viewHelper->render($settings, $video);        
     }
 
 }

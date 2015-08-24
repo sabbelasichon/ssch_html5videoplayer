@@ -28,7 +28,7 @@ namespace Ssch\SschHtml5videoplayer\Domain\Model;
 
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 
-class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
     /**
      * Title

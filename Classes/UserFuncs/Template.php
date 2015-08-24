@@ -56,28 +56,28 @@ class Template {
         switch ($params['config']['path']) {
             case 'JavaScripts':
                 $fullPath = TRUE;
-                $extFileList = 'html,htm,js';                
-                $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPathInitializationFiles'];                
+                $extFileList = 'html,htm,js';
+                $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPathInitializationFiles'];
                 break;
             case 'Audio':
                 $extFileList = 'html,htm';
-                $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Audio/';                                
+                $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Audio/';
                 break;
             default:
                 $extFileList = 'html,htm';
                 $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Video/';
                 break;
-        }       
-        
-        
-        
+        }
+
+
+
         // Finding value for the path containing the template files
-        $readPath = GeneralUtility::getFileAbsFileName($pathToFiles);                
-        
-        
+        $readPath = GeneralUtility::getFileAbsFileName($pathToFiles);
+
+
 
         // If that direcotry is valid, is a directory then select files in it:
-        if (is_dir($readPath)) {            
+        if (is_dir($readPath)) {
             #\TYPO3\CMS\Core\Utility\DebugUtility::debug($readPath);
             //getting all HTML files in the directory:
             $templateFiles = GeneralUtility::getFilesInDir($readPath, $extFileList, 1, 1);
@@ -104,12 +104,12 @@ class Template {
                     if (is_file($testImageFilename)) {
                         $selectorBoxItemIcon = '../' . substr($testImageFilename, strlen(PATH_site));
                     }
-                    
-                    if(TRUE === $fullPath) {
+
+                    if (TRUE === $fullPath) {
                         $pathToFile = $htmlFilePath;
                     } else {
                         $pathToFile = basename($htmlFilePath);
-                    }                    
+                    }
                     $params["items"][] = array($selectorBoxItemTitle, $pathToFile, $selectorBoxItemIcon);
                 }
             }
