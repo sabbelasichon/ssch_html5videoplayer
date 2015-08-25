@@ -44,6 +44,16 @@ class AudioTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
         $this->subject = new \Ssch\SschHtml5videoplayer\Domain\Model\Audio();
     }
     
+    /**
+     * @test
+     */
+    public function getAndSetImage() {
+        $image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        /* @var $image \TYPO3\CMS\Extbase\Domain\Model\FileReference */
+        $this->subject->setImage($image);
+        self::assertInstanceOf('\TYPO3\CMS\Extbase\Domain\Model\FileReference', $this->subject->getImage());
+    }
+    
     
 
 }

@@ -43,7 +43,31 @@ class SubtitleTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
     public function setUp() {
         $this->subject = new \Ssch\SschHtml5videoplayer\Domain\Model\Subtitle();
     }
-    
-    
+
+    /**
+     * @test
+     */
+    public function getAndSetSelected() {
+        $this->subject->setSelected(TRUE);
+        self::assertTrue($this->subject->getSelected());
+    }
+
+    /**
+     * @test
+     */
+    public function getAndSetTrack() {
+        $track = 'fileadmin/user_upload/track.srt';
+        $this->subject->setTrack($track);
+        self::assertSame($track, $this->subject->getTrack());
+    }
+
+    /**
+     * @test
+     */
+    public function getAndSetLanguageIsoCode() {
+        $staticLangIsocode = $this->getMockBuilder('SJBR\StaticInfoTables\Domain\Model\Language')->getMock();
+        $this->subject->setStaticLangIsocode($staticLangIsocode);
+        self::assertInstanceOf('SJBR\StaticInfoTables\Domain\Model\Language', $this->subject->getStaticLangIsocode());
+    }
 
 }

@@ -1,5 +1,2 @@
-- Define which file-types are allowed for the single fields
-- Make every video skinnable
-- Implement linkhandler functionality to assigns links to a single video, either inline or to a new page
-- RealUrl
 - https://support.google.com/webmasters/answer/2413309?hl=de
+- Skins for mediaelementjs to select via FlexForms
