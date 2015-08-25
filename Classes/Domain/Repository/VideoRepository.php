@@ -29,6 +29,5 @@ namespace Ssch\SschHtml5videoplayer\Domain\Repository;
 /**
  * Controller for the Video object
  */
-class VideoRepository extends AbstractRepository {
-    
+class VideoRepository extends AbstractRepository {   
 }
