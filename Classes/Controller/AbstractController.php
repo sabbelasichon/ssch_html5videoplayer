@@ -42,9 +42,7 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
      */
     public function initializeAction() {
         $this->settings['baseUrl'] = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
-
         if ($this->settings['addHeaderData']) {
-
             $mediaElementJsFolder = $this->getFileAbsFileName($this->settings['mediaelementjsFolder']);
             if ($this->settings['addJQueryLibrary']) {
                 $jQueryLibrary = $mediaElementJsFolder . 'build/jquery.js';
@@ -64,6 +62,12 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
 
                 $mediaElementJsCss = $mediaElementJsFolder . 'build/mediaelementplayer.min.css';
                 $this->addHeaderData($mediaElementJsCss);
+                
+                if($this->settings['skin']) {
+                    $mediaElementSkinCss = $mediaElementJsFolder . 'build/mejs-skins.css';
+                    $this->addHeaderData($mediaElementSkinCss);
+                }
+                
             }
             if ($this->settings['addMediaElementJsInitialization'] && !$this->settings['addMediaElementJsInitializationFile']) {
                 $this->addHeaderData('jQuery(document).ready(function($) { $("video,audio").mediaelementplayer() });', 'script');
@@ -71,6 +75,7 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
                 $initializationFile = $this->getFileAbsFileName($this->settings['addMediaElementJsInitializationFile']);
                 $fluidView = $this->objectManager->create('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
                 /* @var $fluidView \TYPO3\CMS\Fluid\View\StandaloneView */
+                $fluidView->assign('settings', $this->settings);
                 $fluidView->setTemplatePathAndFilename($initializationFile);
                 $fluidView->setPartialRootPath(dirname($initializationFile));
                 $this->addHeaderData($fluidView->render(), 'none');
@@ -103,7 +108,7 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
         }
     }
 
-    /*************************
+    /*     * ***********************
      *
      * TYPO3 SPECIFIC FUNCTIONS
      *

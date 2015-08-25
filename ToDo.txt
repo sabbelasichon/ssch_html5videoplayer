@@ -1,2 +1,13 @@
 - https://support.google.com/webmasters/answer/2413309?hl=de
-- Skins for mediaelementjs to select via FlexForms
+- Separation of FlexForms-Settings in different Tabs
+- .xml to .xlf
+- section content to uppercase
+- simpler js as standard initialization template
+- Standard height and width
+- Gallery View/Template
+- Bootstramp Templates???
+- Plugin-Wizard with versatile Display configuration
+- Documentation
+
+
+- Create extraction service for FAL

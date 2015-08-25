@@ -87,6 +87,9 @@ class VideoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedV
             $this->tag->addAttribute('width', floor($videoWidth));
             $this->tag->addAttribute('height', floor($videoHeight));            
         } 
+        if($settings['skin']) {
+            $this->tag->addAttribute('class', $settings['skin']);
+        }
 
         $this->tag->setContent($this->renderChildren());
         return $this->tag->render();

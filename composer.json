@@ -1,0 +1,23 @@
+{
+    "name": "ssch/ssch-html5videoplayer",
+    "type": "typo3-cms-extension",
+    "description": "HTML5 audio and video player extension, based on extbase & fluid for TYPO3 CMS",
+    "homepage": "http://typo3.org",
+    "license": ["GPL-2.0+"],
+    "version": "1.2.3",
+    "require": {
+        "james-heinrich/getid3": "*",
+        "composer/installers": "~1.0" 
+    },
+    "autoload": {
+        "psr-4": {
+            "Ssch\\SschHtmlvideoplayer\\": "Classes"
+        }
+    },
+    "config": {
+        "vendor-dir": "Vendors"
+    },
+    "replace": {
+        "ssch_html5videoplayer": "*"
+    }
+}

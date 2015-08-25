@@ -48,6 +48,7 @@
             <label index="tx_sschhtml5videoplayer_domain_model_video.short_title">Kurztitel</label>
             <label index="tx_sschhtml5videoplayer_domain_model_video.copyright">Copyright</label>
             <label index="tx_sschhtml5videoplayer.pi_flexform.jsTemplate">Template für die Initialisierung des Players</label>
+            <label index="tx_sschhtml5videoplayer.pi_flexform.skin">Skin</label>
         </languageKey>
     </data>
 </T3locallang>

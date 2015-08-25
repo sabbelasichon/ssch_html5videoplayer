@@ -54,14 +54,15 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
         $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(TRUE);
         $this->tagBuilder->expects($this->once())->method('render');
         $this->tagBuilder->expects($this->once())->method('setContent');
-        $this->tagBuilder->expects($this->exactly(2))->method('addAttribute')->withConsecutive(
-                array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(150))
+        $this->tagBuilder->expects($this->exactly(3))->method('addAttribute')->withConsecutive(
+                array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(150)), array($this->equalTo('class'), $this->equalTo('mejs-skin'))
         );
 
 
         $settings = array();
         $settings['videoWidth'] = 300;
         $settings['videoHeight'] = 150;
+        $settings['skin'] = 'mejs-skin';
         $video = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', array('getHeight', 'getWidth'));
         $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
         $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));

@@ -15,3 +15,4 @@ root_directory/
 /vendor/
 phpci.yml
 !/Resources/Public/Vendors/mediaelement/build/
+/Vendors/
