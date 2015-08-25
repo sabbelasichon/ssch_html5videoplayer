@@ -36,9 +36,6 @@ class Template {
     function main(&$params, &$pObj) {
         global $BE_USER;
 
-
-
-
         $thePageId = $params['row']['pid'];
         $template = GeneralUtility::makeInstance('\TYPO3\CMS\Core\TypoScript\ExtendedTemplateService');   // Defined global here!
         /* @var $template \TYPO3\CMS\Core\TypoScript\ExtendedTemplateService */
