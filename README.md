@@ -18,4 +18,4 @@ HTML5 Video- and Audioplayer based on mediaelementjs.com is an extension for TYP
 ## Feedback and updates
 
 This extension is hosted in GitHub. Please report feedback, bugs and change requests directly at 
-https://github.com/derhansen/
+https://github.com/sabbelasichon/ssch_html5videoplayer
