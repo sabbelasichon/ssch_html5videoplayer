@@ -8,11 +8,24 @@ build_settings:
     - "PHPCI/Migrations" # Ignore the migrations directory, as both PHPMD and PHPCS can't cope with them.
     - "PHPCI/Model/Base" # These files are auto-generated, and sometimes hit PHPMD complexity thresholds.
     - "PHPCI/Languages" # PHPCS fails on character counts for non-Latin languages
+copy_build:
+    directory: "/www/145253_73765/rp-hosting/4371/5372/phpci/typo3/typo3conf/ext/ssch_html5videoplayer"
+    wipe: true;
 setup:
   #composer:
   #  action: "install"
   #env:
   #  APPLICATION_ENV: "development"
+  #typo3_install:
+  #      version: master
+  #      verbose: false
+  #typo3_extension_prepare:
+  #      extension: vhs
+  #     source: temp
+  #      verbose: false
+  #typo3_extension_install:
+  #      extension: vhs
+  #      verbose: false
 test:
   #php_code_sniffer:
   #  standard: 
@@ -36,5 +49,6 @@ test:
 
 #complete:
 #success:
+    
 #failure:
     
