@@ -91,5 +91,3 @@ class VideoController extends AbstractController {
     }
 
 }
-
-?>

@@ -87,5 +87,3 @@ class AudioController extends AbstractController {
     }
 
 }
-
-?>

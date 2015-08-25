@@ -103,5 +103,3 @@ class Subtitle extends AbstractEntity {
     }
 
 }
-
-?>

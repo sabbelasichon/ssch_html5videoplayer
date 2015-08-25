@@ -642,5 +642,3 @@ class Video extends AbstractEntity {
     }
 
 }
-
-?>

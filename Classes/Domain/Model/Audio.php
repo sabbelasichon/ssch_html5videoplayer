@@ -80,5 +80,3 @@ class Audio extends AbstractEntity {
     }
 
 }
-
-?>

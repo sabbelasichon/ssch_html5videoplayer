@@ -103,5 +103,3 @@ abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEn
     }
 
 }
-
-?>

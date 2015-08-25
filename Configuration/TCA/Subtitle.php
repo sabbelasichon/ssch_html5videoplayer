@@ -138,4 +138,3 @@ $TCA['tx_sschhtml5videoplayer_domain_model_subtitle'] = array(
         ),
     ),
 );
-?>

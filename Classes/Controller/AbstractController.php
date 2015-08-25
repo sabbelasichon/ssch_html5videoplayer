@@ -126,5 +126,3 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
     }
 
 }
-
-?>

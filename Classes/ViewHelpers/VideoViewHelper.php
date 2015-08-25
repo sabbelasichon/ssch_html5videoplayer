@@ -93,5 +93,3 @@ class VideoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedV
     }
 
 }
-
-?>

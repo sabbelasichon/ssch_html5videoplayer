@@ -32,5 +32,3 @@ namespace Ssch\SschHtml5videoplayer\Domain\Repository;
 class AudioRepository extends AbstractRepository {
     
 }
-
-?>
