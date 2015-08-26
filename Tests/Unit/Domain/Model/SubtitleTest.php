@@ -56,9 +56,9 @@ class SubtitleTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
      * @test
      */
     public function getAndSetTrack() {
-        $track = 'fileadmin/user_upload/track.srt';
-        $this->subject->setTrack($track);
-        self::assertSame($track, $this->subject->getTrack());
+        $trackMock = $this->getMock('\TYPO3\CMS\Extbase\Domain\Model\FileReference');
+        $this->subject->setTrack($trackMock);
+        self::assertSame($trackMock, $this->subject->getTrack());
     }
 
     /**
