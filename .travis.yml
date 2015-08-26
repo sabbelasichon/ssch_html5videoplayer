@@ -38,9 +38,11 @@ before_script:
   - git clone --single-branch --branch $TYPO3_BRANCH --depth 1 https://github.com/TYPO3/TYPO3.CMS.git typo3_core
   - mv typo3_core/* .
   - if [ "$GITHUB_COMPOSER_AUTH" ]; then composer config -g github-oauth.github.com $GITHUB_COMPOSER_AUTH; fi
+  - composer self-update
   - composer install
   - mkdir -p uploads typo3temp typo3conf/ext
   - mv ssch_html5videoplayer typo3conf/ext/
+  - composer install
 
 script:
   - >
