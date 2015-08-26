@@ -63,7 +63,6 @@ class VideoControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
         $view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
         $view->expects($this->at(0))->method('assign')->with('data', $data);
         $view->expects($this->at(1))->method('assign')->with('video', $videoMock);
-        $view->expects($this->at(2))->method('assign')->with('backButton', FALSE);
         $this->inject($this->subject, 'view', $view);
 
         $configurationManagerMock = $this->getMock('TYPO3\CMS\\Extbase\\Configuration\\ConfigurationManager', array('getContentObject', 'getConfiguration'), array(), '', FALSE);

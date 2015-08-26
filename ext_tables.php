@@ -121,4 +121,8 @@ $TCA['tx_sschhtml5videoplayer_domain_model_audio'] = array(
         'iconfile' => TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_sschhtml5videoplayer_domain_model_audio.gif'
     ),
 );
-?>
+
+
+if (TYPO3_MODE == 'BE') {
+    $GLOBALS['TBE_MODULES_EXT']['xMOD_db_new_content_el']['addElClasses']['Ssch\\SschHtml5videoplayer\\Wizicon'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('ssch_html5videoplayer') . 'Classes/Wizicon.php';
+}

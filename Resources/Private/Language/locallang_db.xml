@@ -49,6 +49,14 @@
             <label index="tx_sschhtml5videoplayer_domain_model_video.copyright">Copyright</label>
             <label index="tx_sschhtml5videoplayer.pi_flexform.jsTemplate">Template für die Initialisierung des Players</label>
             <label index="tx_sschhtml5videoplayer.pi_flexform.skin">Skin</label>
+            <label index="list_title_sschhtml5videoplayer_pi1">Video - Liste</label>
+            <label index="list_title_sschhtml5videoplayer_pi2">Video - Details</label>
+            <label index="list_title_sschhtml5videoplayer_pi3">Audio - List</label>
+            <label index="list_title_sschhtml5videoplayer_pi4">Audio - Details</label>
+            <label index="list_plus_wiz_description_sschhtml5videoplayer_pi1">Add a HTML5 Video Player to show movies from your movie database</label>
+            <label index="list_plus_wiz_description_sschhtml5videoplayer_pi2">Add a HTML5 Video Player to show movies from your movie database</label>
+            <label index="list_plus_wiz_description_sschhtml5videoplayer_pi3">Add a HTML5 Audio Player to show audio from your audio database</label>
+            <label index="list_plus_wiz_description_sschhtml5videoplayer_pi4">Add a HTML5 Audio Player to show audio from your audio database</label>
         </languageKey>
     </data>
 </T3locallang>

@@ -65,7 +65,7 @@ class MetadataExtractor implements ExtractorInterface {
      * @return integer
      */
     public function getPriority() {
-        return 15;
+        return 100;
     }
 
     /**
@@ -75,7 +75,7 @@ class MetadataExtractor implements ExtractorInterface {
      * @return integer
      */
     public function getExecutionPriority() {
-        return 15;
+        return 1;
     }
 
     /**
@@ -97,13 +97,26 @@ class MetadataExtractor implements ExtractorInterface {
      * @return array
      */
     public function extractMetaData(File $file, array $previousExtractedData = array()) {
-        $metadata = array();
-        
+
+        $metaData = array();
+
         $getId3Engine = new \getID3();
-        $fileInfo = $getId3Engine->analyze($file->getPublicUrl());
-        \TYPO3\CMS\Core\Utility\DebugUtility::debug($fileInfo);
-        
-        return $metadata;
+        $fileInfo = $getId3Engine->analyze($file->getStorage()->getFileForLocalProcessing($file));
+
+        if (isset($fileInfo['playtime_seconds'])) {
+            $metaData['duration'] = (float) $fileInfo['playtime_seconds'];
+        }
+        if (isset($fileInfo['video'])) {
+            if (isset($fileInfo['video']['resolution_x'])) {
+                $metaData['width'] = (integer) $fileInfo['video']['resolution_x'];
+            }
+            if (isset($fileInfo['video']['resolution_y'])) {
+                $metaData['height'] = (integer) $fileInfo['video']['resolution_y'];
+            }
+        }
+        \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Metadata extracted for file ' . $file->getName(), 'ssch_html5videoplayer', 4, $metaData);
+
+        return $metaData;
     }
 
 }

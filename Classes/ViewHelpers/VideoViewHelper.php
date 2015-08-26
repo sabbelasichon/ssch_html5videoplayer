@@ -63,29 +63,31 @@ class VideoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedV
     public function render(array $settings, \Ssch\SschHtml5videoplayer\Domain\Model\Video $video, $responsive = FALSE) {
         $this->tag->forceClosingTag(TRUE);        
         if (FALSE === $responsive) {
-            $videoWidth = $video->getWidth();
-            $videoHeight = $video->getHeight();
+            
+            $settingsVideoWidth = $settings['videoWidth'] ? $settings['videoWidth'] : $settings['video']['defaultWidth'];
+            $settingsVideoHeight = $settings['videoHeight'] ? $settings['videoHeight'] : $settings['video']['defaultHeight'];
+            $videoWidth = $video->getWidth() ? $video->getWidth() : $settingsVideoWidth;
+            $videoHeight = $video->getHeight() ? $video->getHeight() : $settingsVideoHeight;
 
             if ($videoWidth > $videoHeight) {
                 $videoRatio = $videoHeight / $videoWidth;
             } else {
                 $videoRatio = $videoWidth / $videoHeight;
             }
-            $settingsVideoWidth = (integer) $settings['videoWidth'];
-            $settingsVideoHeight = (integer) $settings['videoHeight'];
-
-            if ($settingsVideoWidth && $settingsVideoHeight) {
+            
+            if ($settingsVideoWidth > 0 && $settingsVideoHeight > 0) {
                 $videoWidth = $settingsVideoWidth;
                 $videoHeight = $settingsVideoHeight;
-            } elseif ($settingsVideoWidth) {
+            } elseif ($settingsVideoWidth > 0) {
                 $videoWidth = $settingsVideoWidth;
                 $videoHeight = $videoWidth * $videoRatio;
-            } elseif ($settingsVideoHeight) {
+            } elseif ($settingsVideoHeight > 0) {
                 $videoHeight = $settingsVideoHeight;
                 $videoWidth = $videoHeight * $videoRatio;
             }
+            
             $this->tag->addAttribute('width', floor($videoWidth));
-            $this->tag->addAttribute('height', floor($videoHeight));            
+            $this->tag->addAttribute('height',  floor($videoHeight));            
         } 
         if($settings['skin']) {
             $this->tag->addAttribute('class', $settings['skin']);

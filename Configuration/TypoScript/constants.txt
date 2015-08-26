@@ -18,7 +18,12 @@ plugin.tx_sschhtml5videoplayer {
                 addJQueryLibrary = 1
                 addMediaElementJs = 1
                 mediaelementjsFolder = EXT:ssch_html5videoplayer/Resources/Public/Vendors/mediaelement/
-                addMediaElementJsInitialization = 0
+                addMediaElementJsInitialization = 1
                 addMediaElementJsInitializationFile = EXT:ssch_html5videoplayer/Resources/Private/JavaScripts/MediaElementJsInitialization.html                
+                
+                video {
+                    defaultWidth = 200
+                    defaultHeight = 200
+                }
         }
 }

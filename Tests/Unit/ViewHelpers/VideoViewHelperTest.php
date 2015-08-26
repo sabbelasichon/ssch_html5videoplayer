@@ -135,6 +135,30 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
         $this->viewHelper->initialize();
         $this->viewHelper->render($settings, $video);
     }
+    
+    /**
+     * @test
+     */
+    public function renderProvidesVideoTagWithWidthAndHeightFromDefaultSettings() {
+        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(TRUE);
+        $this->tagBuilder->expects($this->once())->method('render');
+        $this->tagBuilder->expects($this->once())->method('setContent');
+        $this->tagBuilder->expects($this->exactly(3))->method('addAttribute')->withConsecutive(
+                array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(150)), array($this->equalTo('class'), $this->equalTo('mejs-skin'))
+        );
+
+
+        $settings = array();
+        $settings['video']['defaultWidth'] = 300;
+        $settings['video']['defaultHeight'] = 150;
+        $settings['skin'] = 'mejs-skin';
+        $video = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', array('getHeight', 'getWidth'));
+        $video->expects($this->any())->method('getHeight')->will($this->returnValue(0));
+        $video->expects($this->any())->method('getWidth')->will($this->returnValue(0));
+
+        $this->viewHelper->initialize();
+        $this->viewHelper->render($settings, $video);
+    }
 
     /**
      * @test

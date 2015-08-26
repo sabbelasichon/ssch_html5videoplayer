@@ -15,5 +15,14 @@ plugin.tx_sschhtml5videoplayer {
                 mediaelementjsFolder = {$plugin.tx_sschhtml5videoplayer.settings.mediaelementjsFolder}
                 addMediaElementJsInitialization = {$plugin.tx_sschhtml5videoplayer.settings.addMediaElementJsInitialization}
                 addMediaElementJsInitializationFile = {$plugin.tx_sschhtml5videoplayer.settings.addMediaElementJsInitializationFile}
+                
+                video {
+                    defaultWidth = {$plugin.tx_sschhtml5videoplayer.settings.video.defaultWidth}
+                    defaultHeight = {$plugin.tx_sschhtml5videoplayer.settings.video.defaultHeight}
+                }
+
+                audio {
+                    
+                }
         }
 }

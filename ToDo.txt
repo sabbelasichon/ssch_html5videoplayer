@@ -1,13 +1,24 @@
-- https://support.google.com/webmasters/answer/2413309?hl=de
-- Separation of FlexForms-Settings in different Tabs
-- .xml to .xlf
-- section content to uppercase
-- simpler js as standard initialization template
-- Standard height and width
+- .xml to .xlf => extdeveval
 - Gallery View/Template
-- Bootstramp Templates???
-- Plugin-Wizard with versatile Display configuration
+- Register own skins
+- Different resolutions / download file
+- Full featured examples with bootstrap
+- Making a build to upload on ter
+- Downloads of videos
+- Make it library agnostic
+- Extendable via extender
+
+
+
 - Documentation
+.htaccess exmplae for the mime-types
+http://www.picssel.com/play-mp4-videos-with-mediaelement-js-in-fancybox/
+http://coolestguidesontheplanet.com/videodrome/mediaelementjs/
+.videocontent {
+	width:80%;
+	max-width: 640px;
+	margin: 0 auto;
+}
 
-
-- Create extraction service for FAL
+Schema for Video
+- https://support.google.com/webmasters/answer/2413309?hl=de

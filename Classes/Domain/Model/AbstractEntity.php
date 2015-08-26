@@ -79,6 +79,23 @@ abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEn
     }
 
     /**
+     * 
+     * @param string $file
+     * @return \TYPO3\CMS\Core\Resource\File
+     */
+    public function getFalFile($propertyName) {
+        if (\TYPO3\CMS\Extbase\Reflection\ObjectAccess::isPropertyGettable($this, $propertyName)) {
+            $file = \TYPO3\CMS\Extbase\Reflection\ObjectAccess::getProperty($this, $propertyName, TRUE);
+            if (\TYPO3\CMS\Core\Utility\GeneralUtility::isFirstPartOfStr($file, 'file:')) {
+                list($identifier, $fileUid) = \TYPO3\CMS\Core\Utility\GeneralUtility::revExplode(':', $file, 2);
+                if (\TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($fileUid)) {
+                    return ResourceFactory::getInstance()->getFileObject($fileUid);
+                }
+            }
+        }
+    }
+
+    /**
      * Return the title
      * @return string 
      */

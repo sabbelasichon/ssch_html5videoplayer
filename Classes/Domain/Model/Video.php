@@ -164,18 +164,6 @@ class Video extends AbstractEntity {
     protected $parentid;
 
     /**
-     *
-     * @var integer
-     */
-    protected $tempWidth;
-
-    /**
-     *
-     * @var integer
-     */
-    protected $tempHeight;
-
-    /**
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $images;
@@ -370,7 +358,6 @@ class Video extends AbstractEntity {
         } elseif ($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
             return $this->parentid->getHeight();
         }
-        return $this->tempHeight ? $this->tempHeight : $this->height;
     }
 
     /**
@@ -393,8 +380,7 @@ class Video extends AbstractEntity {
             return $this->width;
         } elseif ($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
             return $this->parentid->getWidth();
-        }
-        return $this->tempWidth ? $this->tempWidth : $this->width;
+        }        
     }
 
     /**
@@ -586,38 +572,6 @@ class Video extends AbstractEntity {
      */
     public function setParentid($parentid) {
         $this->parentid = $parentid;
-    }
-
-    /**
-     * 
-     * @return integer
-     */
-    public function getTempWidth() {
-        return $this->tempWidth;
-    }
-
-    /**
-     * 
-     * @return integer
-     */
-    public function getTempHeight() {
-        return $this->tempHeight;
-    }
-
-    /**
-     * 
-     * @param integer $tempWidth
-     */
-    public function setTempWidth($tempWidth) {
-        $this->tempWidth = $tempWidth;
-    }
-
-    /**
-     * 
-     * @param integer $tempHeight
-     */
-    public function setTempHeight($tempHeight) {
-        $this->tempHeight = $tempHeight;
     }
 
     /**
