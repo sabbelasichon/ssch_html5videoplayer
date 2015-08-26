@@ -7,13 +7,13 @@
         <displayCode>
             <ROOT>
                 <TCEforms>
-                    <sheetTitle>LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer.pi_flexform.display</sheetTitle>
+                    <sheetTitle>LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer.pi_flexform.display</sheetTitle>
                 </TCEforms>
                 <type>array</type>
                 <el>           
                     <settings.templateFile>
                         <TCEforms>
-                            <label>LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer.pi_flexform.template</label>
+                            <label>LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer.pi_flexform.template</label>
                             <config>
                                 <type>select</type>
                                 <items type="array">
@@ -33,7 +33,7 @@
                     </settings.templateFile> 
                     <settings.skin>
                         <TCEforms>
-                            <label>LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer.pi_flexform.skin</label>
+                            <label>LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer.pi_flexform.skin</label>
                             <config>
                                 <type>select</type>
                                 <items type="array">
@@ -58,7 +58,7 @@
                     </settings.skin>       
                     <settings.audioSelection>
                         <TCEforms>
-                            <label>LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer.pi_flexform.audio_selection</label>
+                            <label>LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer.pi_flexform.audio_selection</label>
                             <config>
                                 <type>select</type>
                                 <foreign_table>tx_sschhtml5videoplayer_domain_model_audio</foreign_table>

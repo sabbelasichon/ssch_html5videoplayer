@@ -30,18 +30,18 @@ foreach ($pluginsWithFlexForms as $pluginWithFlexForm) {
     $pluginSignature = strtolower($extensionName) . $pluginSuffix;
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = 'layout,select_key,recursive';
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/' . $pluginWithFlexForm . '.xml');
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/' . $pluginWithFlexForm . '.xlf');
 }
 
 
 TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'HTML5Videoplayer');
 
 
-TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_sschhtml5videoplayer_domain_model_video', 'EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_csh_tx_sschhtml5videoplayer_domain_model_video.xml');
+TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_sschhtml5videoplayer_domain_model_video', 'EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_csh_tx_sschhtml5videoplayer_domain_model_video.xlf');
 TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sschhtml5videoplayer_domain_model_video');
 $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
     'ctrl' => array(
-        'title' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer_domain_model_video',
+        'title' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video',
         'label' => 'title',
         'label_userFunc' => 'EXT:ssch_html5videoplayer/Classes/UserFuncs/Labels.php:\Ssch\SschHtml5videoplayer\UserFuncs\Labels->getLabel',
         'tstamp' => 'tstamp',
@@ -67,11 +67,11 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
     ),
 );
 
-TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_sschhtml5videoplayer_domain_model_subtitle', 'EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_csh_tx_sschhtml5videoplayer_domain_model_subtitle.xml');
+TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_sschhtml5videoplayer_domain_model_subtitle', 'EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_csh_tx_sschhtml5videoplayer_domain_model_subtitle.xlf');
 TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sschhtml5videoplayer_domain_model_subtitle');
 $TCA['tx_sschhtml5videoplayer_domain_model_subtitle'] = array(
     'ctrl' => array(
-        'title' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer_domain_model_subtitle',
+        'title' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_subtitle',
         'label' => 'track',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -95,11 +95,11 @@ $TCA['tx_sschhtml5videoplayer_domain_model_subtitle'] = array(
     ),
 );
 
-TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_sschhtml5videoplayer_domain_model_audio', 'EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_csh_tx_sschhtml5videoplayer_domain_model_audio.xml');
+TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_sschhtml5videoplayer_domain_model_audio', 'EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_csh_tx_sschhtml5videoplayer_domain_model_audio.xlf');
 TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sschhtml5videoplayer_domain_model_audio');
 $TCA['tx_sschhtml5videoplayer_domain_model_audio'] = array(
     'ctrl' => array(
-        'title' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer_domain_model_audio',
+        'title' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio',
         'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',

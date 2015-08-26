@@ -18,21 +18,21 @@ $TCA['tx_sschhtml5videoplayer_domain_model_audio'] = array(
     'columns' => array(
         'sys_language_uid' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.language',
+            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
             'config' => array(
                 'type' => 'select',
                 'foreign_table' => 'sys_language',
                 'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => array(
-                    array('LLL:EXT:lang/locallang_general.xml:LGL.allLanguages', -1),
-                    array('LLL:EXT:lang/locallang_general.xml:LGL.default_value', 0)
+                    array('LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1),
+                    array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0)
                 ),
             ),
         ),
         'l10n_parent' => array(
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.l18n_parent',
+            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
             'config' => array(
                 'type' => 'select',
                 'items' => array(
@@ -48,7 +48,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_audio'] = array(
             ),
         ),
         't3ver_label' => array(
-            'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.versionLabel',
+            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.versionLabel',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
@@ -57,7 +57,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_audio'] = array(
         ),
         'hidden' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
+            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => array(
                 'type' => 'check',
             ),
@@ -65,7 +65,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_audio'] = array(
         'starttime' => array(
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.starttime',
+            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
             'config' => array(
                 'type' => 'input',
                 'size' => 13,
@@ -81,7 +81,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_audio'] = array(
         'endtime' => array(
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.endtime',
+            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
             'config' => array(
                 'type' => 'input',
                 'size' => 13,
@@ -96,7 +96,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_audio'] = array(
         ),
         'title' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer_domain_model_audio.title',
+            'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio.title',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
@@ -105,7 +105,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_audio'] = array(
         ),
         'description' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer_domain_model_video.description',
+            'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.description',
             'config' => array(
                 'type' => 'text',
                 'cols' => 40,
@@ -125,7 +125,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_audio'] = array(
         ),
         'audio_source' => array(
             'exclude' => 0,
-            'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer_domain_model_audio.audio_source',
+            'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio.audio_source',
             'config' => array(
                 'type' => 'input',
                 'size' => 255,
@@ -144,7 +144,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_audio'] = array(
         ),
         'image' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xml:tx_sschhtml5videoplayer_domain_model_audio.image',
+            'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio.image',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                     'image', array('maxitems' => 1), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),

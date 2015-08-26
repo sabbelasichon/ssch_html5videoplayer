@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-08-26T13:11:02Z" product-name="">
+		<header/>
+		<body>
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video" xml:space="preserve">
+				<source>Video</source>
+			</trans-unit>
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.title" xml:space="preserve">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.poster_image" xml:space="preserve">
+				<source>PosterImage</source>
+			</trans-unit>
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.mp4_source" xml:space="preserve">
+				<source>Mp4Source</source>
+			</trans-unit>
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.web_m_source" xml:space="preserve">
+				<source>WebMSource</source>
+			</trans-unit>
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.ogg_source" xml:space="preserve">
+				<source>OggSource</source>
+			</trans-unit>
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.flash_source" xml:space="preserve">
+				<source>FlashSource</source>
+			</trans-unit>
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.height" xml:space="preserve">
+				<source>height</source>
+			</trans-unit>
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.width" xml:space="preserve">
+				<source>width</source>
+			</trans-unit>
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.no_playback_capabilities" xml:space="preserve">
+				<source>No video playback capabilities</source>
+			</trans-unit>
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_audio.no_playback_capabilities" xml:space="preserve">
+				<source>No audio playback capabilities</source>
+			</trans-unit>
+			<trans-unit id="list_title" xml:space="preserve">
+				<source>HTML5 Audio/Video Player</source>
+			</trans-unit>
+			<trans-unit id="list_plus_wiz_description" xml:space="preserve">
+				<source>Add either a HTML5 Video Player or a HTML5 Audio Player</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

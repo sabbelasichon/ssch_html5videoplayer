@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-08-26T13:10:49Z" product-name="">
+		<header/>
+		<body>
+			<trans-unit id="track.description" xml:space="preserve">
+				<source>Track</source>
+			</trans-unit>
+			<trans-unit id="selected.description" xml:space="preserve">
+				<source>Ausgewählte Sprache</source>
+			</trans-unit>
+			<trans-unit id="static_lang_isocode.description" xml:space="preserve">
+				<source>Ländercode bspw. wie de, en oder us</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

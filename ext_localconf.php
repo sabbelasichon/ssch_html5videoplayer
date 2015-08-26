@@ -49,3 +49,6 @@ foreach($pluginsWithExtensionSummary as $pluginWithExtensionSummary) {
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['list_type_Info']['sschhtml5videoplayer_' . $pluginWithExtensionSummary][] = 'Ssch\\SschHtml5videoplayer\\Hooks\\CmsLayout->getExtensionSummary';
 }
 
+if (TYPO3_MODE === 'BE') {
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] = 'Ssch\\SschHtml5videoplayer\\Command\\UpgradeCommandController';
+}

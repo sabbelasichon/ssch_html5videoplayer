@@ -1,14 +1,14 @@
-- .xml to .xlf => extdeveval
-- Gallery View/Template
-- Register own skins
 - Different resolutions / download file
-- Full featured examples with bootstrap
-- Making a build to upload on ter
-- Downloads of videos
-- Make it library agnostic
+- Full featured examples with bootstrap (Gallery, Download, Captions and so on)
+
+
+
+
+
+
+Future Prio2:
+- Register own skins
 - Extendable via extender
-
-
 
 - Documentation
 .htaccess exmplae for the mime-types

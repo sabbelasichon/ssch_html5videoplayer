@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-08-26T13:10:49Z" product-name="">
+		<header/>
+		<body>
+			<trans-unit id="title.description" xml:space="preserve">
+				<source>Titel des Videos</source>
+			</trans-unit>
+			<trans-unit id="poster_image.description" xml:space="preserve">
+				<source>Standbild, solange das Video nicht abgespielt wird.</source>
+			</trans-unit>
+			<trans-unit id="mp4_source.description" xml:space="preserve">
+				<source>Safari, IE9, iPhone, iPad, Android, and Windows Phone 7</source>
+			</trans-unit>
+			<trans-unit id="web_m_source.description" xml:space="preserve">
+				<source>WebM/VP8 für Firefox4, Opera, und Chrome</source>
+			</trans-unit>
+			<trans-unit id="ogg_source.description" xml:space="preserve">
+				<source>Ogg/Vorbis füt ältere Firefox und Opera Versionen</source>
+			</trans-unit>
+			<trans-unit id="height.description" xml:space="preserve">
+				<source>Höhes des Videos</source>
+			</trans-unit>
+			<trans-unit id="width.description" xml:space="preserve">
+				<source>Breite des Videos</source>
+			</trans-unit>
+			<trans-unit id="subtitles.description" xml:space="preserve">
+				<source>Für verschiedene Sprachen können Untertitel in Form einer .srt oder .vtt-Datei hinterlegt werden.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
