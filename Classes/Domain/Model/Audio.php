@@ -33,7 +33,7 @@ class Audio extends AbstractEntity {
 
     /**
      *
-     * @var string
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $audioSource;
 
@@ -46,17 +46,17 @@ class Audio extends AbstractEntity {
 
     /**
      *
-     * @return string
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     public function getAudioSource() {
-        return $this->getFile($this->audioSource);
+        return $this->audioSource;
     }
 
     /**
      *
-     * @param string $audioSource
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $audioSource
      */
-    public function setAudioSource($audioSource) {
+    public function setAudioSource(\TYPO3\CMS\Extbase\Domain\Model\FileReference $audioSource) {
         $this->audioSource = $audioSource;
     }
 
@@ -77,6 +77,14 @@ class Audio extends AbstractEntity {
      */
     public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image) {
         $this->image = $image;
+    }
+    
+    /**
+     * 
+     * @return string
+     */
+    public function getUrl() {
+        return $this->audioSource->getOriginalResource()->getPublicUrl();
     }
 
 }

@@ -1,161 +1,155 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-08-26T13:10:49Z" product-name="">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-08-26T13:10:49Z" product-name="ssch_html5videoplayer">
 		<header/>
 		<body>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video">
 				<source>Video</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.title" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.title">
 				<source>Titel</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.caption" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.caption">
 				<source>Bildunterschrift</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.poster_image" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.poster_image">
 				<source>Startbild</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.mp4_source" xml:space="preserve">
-				<source>Mp4-Datei</source>
-			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.web_m_source" xml:space="preserve">
-				<source>WebM-Datei</source>
-			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.ogg_source" xml:space="preserve">
-				<source>Ogg-Datei</source>
-			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.flash_source" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.flash_source">
 				<source>Flash Source</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.height" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.height">
 				<source>Höhe</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.width" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.width">
 				<source>Breite</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.alt" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.alt">
 				<source>Kurze Beschreibung (Alt-Attribut)</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.longdesc" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.longdesc">
 				<source>Link zur Langbeschreibung</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.display" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.display">
 				<source>Einstellungen</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.Video->show" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.Video->show">
 				<source>Einzelnes Video anzeigen</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.Video->showFull" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.Video->showFull">
 				<source>Einzelnes Video mit Beschreibung/Relationen anzeigen</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.Video->list" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.Video->list">
 				<source>Alle Videos (ggf. nur ausgewählte) anzeigen</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.Video->listGallery" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.Video->listGallery">
 				<source>Alle Videos als Galerie anzeigen</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.Video->teaser" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.Video->teaser">
 				<source>Einzelnes Video als Teaser anzeigen</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.Video->stage" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.Video->stage">
 				<source>Einzelnes Video auf Bühne</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.Audio->show" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.Audio->show">
 				<source>Einzelne Audio anzeigen</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.Audio->list" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.Audio->list">
 				<source>Alle Audio (ggf. nur ausgewählte) anzeigen</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.video_selection" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.video_selection">
 				<source>Video-Auswahl</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.video_width" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.video_width">
 				<source>Breite des Videos</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.video_height" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.video_height">
 				<source>Höhe des Videos</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_subtitle" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_subtitle">
 				<source>Untertitel</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.subtitles" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.subtitles">
 				<source>Untertitel</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_subtitle.track" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_subtitle.track">
 				<source>Track</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_audio" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_audio">
 				<source>Audio</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_audio.title" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_audio.title">
 				<source>Titel</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_audio.audio_source" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_audio.audio_source">
 				<source>Audio-Quelle</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_audio.image" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_audio.image">
 				<source>Bild</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.audio_selection" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.audio_selection">
 				<source>Audio-Auswahl</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_subtitle.selected" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_subtitle.selected">
 				<source>Ausgewählte Sprache/Ausgewählter Track</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.description" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.description">
 				<source>Beschreibung</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.external_source" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.external_source">
 				<source>Externe Quelle</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.related" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.related">
 				<source>Related Videos</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.single_pid" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.single_pid">
 				<source>Detailansicht</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.versions" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.versions">
 				<source>Sprachvarianten</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.duration" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.duration">
 				<source>Dauer</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.short_title" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.short_title">
 				<source>Kurztitel</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.copyright" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.copyright">
 				<source>Copyright</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.jsTemplate" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.jsTemplate">
 				<source>Template für die Initialisierung des Players</source>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.skin" xml:space="preserve">
+			<trans-unit id="tx_sschhtml5videoplayer.pi_flexform.skin">
 				<source>Skin</source>
 			</trans-unit>
-			<trans-unit id="list_title_sschhtml5videoplayer_pi1" xml:space="preserve">
+			<trans-unit id="list_title_sschhtml5videoplayer_pi1">
 				<source>Video - Liste</source>
 			</trans-unit>
-			<trans-unit id="list_title_sschhtml5videoplayer_pi2" xml:space="preserve">
+			<trans-unit id="list_title_sschhtml5videoplayer_pi2">
 				<source>Video - Details</source>
 			</trans-unit>
-			<trans-unit id="list_title_sschhtml5videoplayer_pi3" xml:space="preserve">
+			<trans-unit id="list_title_sschhtml5videoplayer_pi3">
 				<source>Audio - List</source>
 			</trans-unit>
-			<trans-unit id="list_title_sschhtml5videoplayer_pi4" xml:space="preserve">
+			<trans-unit id="list_title_sschhtml5videoplayer_pi4">
 				<source>Audio - Details</source>
 			</trans-unit>
-			<trans-unit id="list_plus_wiz_description_sschhtml5videoplayer_pi1" xml:space="preserve">
+			<trans-unit id="list_plus_wiz_description_sschhtml5videoplayer_pi1">
 				<source>Add a HTML5 Video Player to show movies from your movie database</source>
 			</trans-unit>
-			<trans-unit id="list_plus_wiz_description_sschhtml5videoplayer_pi2" xml:space="preserve">
+			<trans-unit id="list_plus_wiz_description_sschhtml5videoplayer_pi2">
 				<source>Add a HTML5 Video Player to show movies from your movie database</source>
 			</trans-unit>
-			<trans-unit id="list_plus_wiz_description_sschhtml5videoplayer_pi3" xml:space="preserve">
+			<trans-unit id="list_plus_wiz_description_sschhtml5videoplayer_pi3">
 				<source>Add a HTML5 Audio Player to show audio from your audio database</source>
 			</trans-unit>
-			<trans-unit id="list_plus_wiz_description_sschhtml5videoplayer_pi4" xml:space="preserve">
+			<trans-unit id="list_plus_wiz_description_sschhtml5videoplayer_pi4">
 				<source>Add a HTML5 Audio Player to show audio from your audio database</source>
 			</trans-unit>
+                        <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.videos">
+                            <source>Videos</source>
+                        </trans-unit>
 		</body>
 	</file>
 </xliff>

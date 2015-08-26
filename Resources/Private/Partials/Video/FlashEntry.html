@@ -1,8 +1,8 @@
 <f:if condition="{video.flashSource}">
     <!-- Flash fallback for non-HTML5 browsers without JavaScript -->
-    <object width="{video.width}" height="{video.height}" type="application/x-shockwave-flash" data="{settings.baseUrl}typo3conf/ext/ssch_html5videoplayer/Resources/Public/Vendors/mediaelement/build/flashmediaelement.swf">
-        <param name="movie" value="{settings.baseUrl}typo3conf/ext/ssch_html5videoplayer/Resources/Public/Vendors/mediaelement/build/flashmediaelement.swf" />
-        <param name="flashvars" value="controls=true&poster={settings.baseUrl}{video.posterImage}&file={settings.baseUrl}{video.flashSource}" />
+    <object width="{video.width}" height="{video.height}" type="application/x-shockwave-flash" data="{settings.baseUrl}{settings.mediaelementjsFolderRelative}build/flashmediaelement.swf">
+        <param name="movie" value="{settings.baseUrl}{settings.mediaelementjsFolderRelative}build/flashmediaelement.swf" />
+        <param name="flashvars" value="controls=true&poster={settings.baseUrl}{video.posterImage.originalResource.publicUrl}&file={settings.baseUrl}{video.flashSource}" />
         <param name="allowFullScreen" value="true" /> 
         <!-- Image as a last resort -->
         <f:if condition="{video.posterImage}">

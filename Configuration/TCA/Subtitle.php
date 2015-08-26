@@ -95,24 +95,12 @@ $TCA['tx_sschhtml5videoplayer_domain_model_subtitle'] = array(
             ),
         ),
         'track' => array(
-            'exclude' => 0,
+            'exclude' => 1,
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_subtitle.track',
-            'config' => array(
-                'type' => 'input',
-                'size' => 255,
-                'eval' => 'trim',
-                'wizards' => array(
-                    '_PADDING' => 2,
-                    'link' => array(
-                        'type' => 'popup',
-                        'title' => 'Link',
-                        'icon' => 'link_popup.gif',
-                        'script' => 'browse_links.php?mode=wizard',
-                        'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1'
-                    )
-                )
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                    'track', array('maxitems' => 1), 'vtt, srt'
             ),
-        ),
+        ),      
         'static_lang_isocode' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_tca.php:sys_language.isocode',

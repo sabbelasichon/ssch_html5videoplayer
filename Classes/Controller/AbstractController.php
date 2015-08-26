@@ -42,8 +42,9 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
      */
     public function initializeAction() {
         $this->settings['baseUrl'] = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
+        $mediaElementJsFolder = $this->getFileAbsFileName($this->settings['mediaelementjsFolder']);
+        $this->settings['mediaelementjsFolderRelative'] = $mediaElementJsFolder;
         if ($this->settings['addHeaderData']) {
-            $mediaElementJsFolder = $this->getFileAbsFileName($this->settings['mediaelementjsFolder']);
             if ($this->settings['addJQueryLibrary']) {
                 $jQueryLibrary = $mediaElementJsFolder . 'build/jquery.js';
                 $this->addHeaderData($jQueryLibrary, 'js');
@@ -62,12 +63,11 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
 
                 $mediaElementJsCss = $mediaElementJsFolder . 'build/mediaelementplayer.min.css';
                 $this->addHeaderData($mediaElementJsCss);
-                
-                if($this->settings['skin']) {
+
+                if ($this->settings['skin']) {
                     $mediaElementSkinCss = $mediaElementJsFolder . 'build/mejs-skins.css';
                     $this->addHeaderData($mediaElementSkinCss);
                 }
-                
             }
             if ($this->settings['addMediaElementJsInitialization'] && !$this->settings['addMediaElementJsInitializationFile']) {
                 $this->addHeaderData('(function($) { $(document).ready(function() { $(\'video,audio\').mediaelementplayer(); });})(jQuery);', 'script');

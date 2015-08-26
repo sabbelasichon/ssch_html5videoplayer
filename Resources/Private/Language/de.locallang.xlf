@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-08-26T13:17:47Z" product-name="">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-08-26T13:17:47Z" product-name="ssch_html5videoplayer">
 		<header/>
 		<body>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video" xml:space="preserve" approved="yes">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video" approved="yes">
 				<source>Video</source>
 				<target>Video\ndfdf</target>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.title" xml:space="preserve" approved="yes">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.title" approved="yes">
 				<source>Title</source>
 				<target>Title</target>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.poster_image" xml:space="preserve" approved="yes">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.poster_image" approved="yes">
 				<source>PosterImage</source>
 				<target>PosterImage</target>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.mp4_source" xml:space="preserve" approved="yes">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.mp4_source" approved="yes">
 				<source>Mp4Source</source>
 				<target>Mp4Source</target>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.web_m_source" xml:space="preserve" approved="yes">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.web_m_source" approved="yes">
 				<source>WebMSource</source>
 				<target>WebMSource</target>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.ogg_source" xml:space="preserve" approved="yes">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.ogg_source" approved="yes">
 				<source>OggSource</source>
 				<target>OggSource</target>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.flash_source" xml:space="preserve" approved="yes">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.flash_source" approved="yes">
 				<source>FlashSource</source>
 				<target>FlashSource</target>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.height" xml:space="preserve" approved="yes">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.height" approved="yes">
 				<source>height</source>
 				<target>height</target>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.width" xml:space="preserve" approved="yes">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.width" approved="yes">
 				<source>width</source>
 				<target>width</target>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.no_playback_capabilities" xml:space="preserve" approved="yes">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.no_playback_capabilities" approved="yes">
 				<source>No video playback capabilities</source>
 				<target>Keine Fähighkeiten das Video abzuspielen.</target>
 			</trans-unit>
-			<trans-unit id="tx_sschhtml5videoplayer_domain_model_audio.no_playback_capabilities" xml:space="preserve" approved="yes">
+			<trans-unit id="tx_sschhtml5videoplayer_domain_model_audio.no_playback_capabilities" approved="yes">
 				<source>No audio playback capabilities</source>
 				<target></target>
 			</trans-unit>
-			<trans-unit id="list_title" xml:space="preserve" approved="yes">
+			<trans-unit id="list_title" approved="yes">
 				<source>HTML5 Audio/Video Player</source>
 				<target>HTML5 Audio/Video Player</target>
 			</trans-unit>
-			<trans-unit id="list_plus_wiz_description" xml:space="preserve" approved="yes">
+			<trans-unit id="list_plus_wiz_description" approved="yes">
 				<source>Add either a HTML5 Video Player or a HTML5 Audio Player</source>
 				<target>Add either a HTML5 Video Player or a HTML5 Audio Player</target>
 			</trans-unit>

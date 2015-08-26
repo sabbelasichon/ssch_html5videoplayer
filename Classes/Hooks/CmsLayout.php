@@ -2,7 +2,6 @@
 
 namespace Ssch\SschHtml5videoplayer\Hooks;
 
-
 /* * *************************************************************
  *  Copyright notice
  *
@@ -32,7 +31,6 @@ use TYPO3\CMS\Lang\LanguageService;
 use TYPO3\CMS\Core\Database\DatabaseConnection;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-
 class CmsLayout {
 
     /**
@@ -48,8 +46,7 @@ class CmsLayout {
     public function getExtensionSummary(array $params) {
 
         $LL = $this->includeLocalLang();
-        
-        $result = '<strong><cite>&rarr; ' . $this->getLanguage()->getLLL('list_title_' .$params['row']['list_type'] , $LL) . ' </cite></strong>';
+        $result = '<strong><cite>&rarr; ' . $this->getLanguage()->getLLL('list_title_' . $params['row']['list_type'], $LL) . ' </cite></strong>';
         $this->flexformData = GeneralUtility::xml2array($params['row']['pi_flexform']);
         if ($this->getFieldFromFlexform('settings.videoWidth')) {
             $result .= '<br /><strong>Width:</strong>: ' . $this->getFieldFromFlexform('settings.videoWidth');
@@ -140,11 +137,10 @@ class CmsLayout {
      * @return  array   The array with language labels
      */
     protected function includeLocalLang() {
-        $llFile = ExtensionManagementUtility::extPath('ssch_html5videoplayer') . '/Resources/Private/Language/locallang_db.xlf';
-        $parser = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Localization\\Parser\\LocallangXmlParser');
-        /* @var $parser \TYPO3\CMS\Core\Localization\Parser\LocallangXmlParser */
-        $LOCAL_LANG = $parser->getParsedData($llFile, $GLOBALS['LANG']->lang);
-        return $LOCAL_LANG;
+        $llFile = ExtensionManagementUtility::extPath('ssch_html5videoplayer') . 'Resources/Private/Language/locallang_db.xlf';
+        $parser = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Localization\\LocalizationFactory');
+        /* @var $parser \TYPO3\CMS\Core\Localization\LocalizationFactory */
+        return $parser->getParsedData($llFile, $this->getLanguage()->lang, 'utf-8', 1);        
     }
 
 }

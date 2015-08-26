@@ -72,11 +72,10 @@ class Wizicon {
      * @return  array   The array with language labels
      */
     protected function includeLocalLang() {
-        $llFile = ExtensionManagementUtility::extPath('ssch_html5videoplayer') . '/Resources/Private/Language/locallang_db.xlf';
-        $parser = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Localization\\Parser\\LocallangXmlParser');
-        /* @var $parser \TYPO3\CMS\Core\Localization\Parser\LocallangXmlParser */
-        $LOCAL_LANG = $parser->getParsedData($llFile, $GLOBALS['LANG']->lang);
-        return $LOCAL_LANG;
+        $llFile = ExtensionManagementUtility::extPath('ssch_html5videoplayer') . 'Resources/Private/Language/locallang_db.xlf';
+        $parser = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Localization\\LocalizationFactory');
+        /* @var $parser \TYPO3\CMS\Core\Localization\LocalizationFactory */
+        return $parser->getParsedData($llFile, $this->getLanguage()->lang, 'utf-8', 1);        
     }
 
 }

@@ -30,7 +30,7 @@ class Subtitle extends AbstractEntity {
 
     /**
      *
-     * @var string
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $track;
 
@@ -48,17 +48,17 @@ class Subtitle extends AbstractEntity {
 
     /**
      *
-     * @return string
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     public function getTrack() {
-        return $this->getFile($this->track);
+        return $this->track;
     }
 
     /**
      *
-     * @param string $track
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $track
      */
-    public function setTrack($track) {
+    public function setTrack(\TYPO3\CMS\Extbase\Domain\Model\FileReference $track) {
         $this->track = $track;
     }
 
@@ -100,6 +100,22 @@ class Subtitle extends AbstractEntity {
      */
     public function __toString() {
         return $this->getTrack();
+    }
+
+    /**
+     * 
+     * @return string
+     */
+    public function getUrl() {
+        return $this->getTrack()->getOriginalResource()->getPublicUrl();
+    }
+
+    /**
+     * 
+     * @return string
+     */
+    public function getExtension() {
+        return $this->getTrack()->getOriginalResource()->getExtension();
     }
 
 }

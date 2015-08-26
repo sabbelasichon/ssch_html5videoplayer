@@ -44,9 +44,6 @@ class VideoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedV
      */
     public function initializeArguments() {
         parent::initializeArguments();
-        $this->registerTagAttribute('width', 'int', 'The width of the video', FALSE);
-        $this->registerTagAttribute('height', 'int', 'The height of the video', FALSE);
-        $this->registerTagAttribute('poster', 'string', 'The poster image of the video', FALSE);
         $this->registerTagAttribute('preload', 'string', 'Preload video', FALSE);
         $this->registerTagAttribute('controls', 'string', 'Controls of video', FALSE);
         $this->registerTagAttribute('rel', 'string', 'Rel attribute for the nivo-slider', FALSE);
@@ -61,9 +58,10 @@ class VideoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedV
      * @return string
      */
     public function render(array $settings, \Ssch\SschHtml5videoplayer\Domain\Model\Video $video, $responsive = FALSE) {
-        $this->tag->forceClosingTag(TRUE);        
+        $this->tag->forceClosingTag(TRUE);
         if (FALSE === $responsive) {
-            
+
+            // The width and height cascade: settings, video, default
             $settingsVideoWidth = $settings['videoWidth'] ? $settings['videoWidth'] : $settings['video']['defaultWidth'];
             $settingsVideoHeight = $settings['videoHeight'] ? $settings['videoHeight'] : $settings['video']['defaultHeight'];
             $videoWidth = $video->getWidth() ? $video->getWidth() : $settingsVideoWidth;
@@ -74,22 +72,25 @@ class VideoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedV
             } else {
                 $videoRatio = $videoWidth / $videoHeight;
             }
-            
-            if ($settingsVideoWidth > 0 && $settingsVideoHeight > 0) {
+
+            if ($settings['videoWidth'] > 0 && $settings['videoHeight'] > 0) {
                 $videoWidth = $settingsVideoWidth;
                 $videoHeight = $settingsVideoHeight;
-            } elseif ($settingsVideoWidth > 0) {
+            } elseif ($settings['videoWidth'] > 0) {
                 $videoWidth = $settingsVideoWidth;
                 $videoHeight = $videoWidth * $videoRatio;
-            } elseif ($settingsVideoHeight > 0) {
+            } elseif ($settings['videoHeight'] > 0) {
                 $videoHeight = $settingsVideoHeight;
                 $videoWidth = $videoHeight * $videoRatio;
             }
-            
+
             $this->tag->addAttribute('width', floor($videoWidth));
-            $this->tag->addAttribute('height',  floor($videoHeight));            
-        } 
-        if($settings['skin']) {
+            $this->tag->addAttribute('height', floor($videoHeight));
+        }
+        if ($video->getPosterImage()) {
+            $this->tag->addAttribute('poster', $video->getPosterImage()->getOriginalResource()->getPublicUrl());
+        }
+        if ($settings['skin']) {
             $this->tag->addAttribute('class', $settings['skin']);
         }
 

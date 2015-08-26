@@ -1,27 +1,22 @@
 {namespace sschhtml5videoplayer=Ssch\SschHtml5videoplayer\ViewHelpers}
 <f:if condition="{video}">
-    <sschhtml5videoplayer:video settings="{settings}" video="{video}" poster="{video.posterImage}" controls="controls" preload="none">
-        <f:if condition="{video.mp4Source}">
+    <sschhtml5videoplayer:video settings="{settings}" video="{video}" controls="controls" preload="none">
+        <f:comment>
             <!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
-            <source src="{video.mp4Source}" type="video/mp4" />
-        </f:if>
-        <f:if condition="{video.webMSource}">
             <!-- WebM/VP8 for Firefox4, Opera, and Chrome -->
-            <source src="{video.webMSource}" type="video/webm" />
-        </f:if>
-        <f:if condition="{video.oggSource}">
-            <!-- Ogg/Vorbis for older Firefox and Opera versions -->
-            <source src="{video.oggSource}" type="video/ogg" />
-        </f:if>               
+            <!-- Ogg/Vorbis for older Firefox and Opera versions -->                        
+        </f:comment>
+        <f:for each="{video.videos}" as="videoFal">
+            <source src="{videoFal.originalResource.publicUrl}" type="video/{videoFal.originalResource.extension}" />                        
+        </f:for>        
         <f:if condition="{video.externalSource}">
             <!-- External Source from youtube or vimeo -->
             <source type="{video.externalType}" src="{video.externalSource}">
         </f:if>
-
         <!-- Subtitles -->
         <f:if condition="{video.subtitles}">
             <f:for each="{video.subtitles}" as="subtitle">                
-                <track srclang="{subtitle.staticLangIsocode.isoCodeA2}" kind="subtitles" type="text/vtt" src="{subtitle.track}" />                
+                <track srclang="{subtitle.staticLangIsocode.isoCodeA2}" kind="subtitles" type="text/{subtitle.extension}" src="{subtitle.url}" />                
             </f:for>
         </f:if>
         <f:render partial="Video/FlashEntry" arguments="{video: video}" />

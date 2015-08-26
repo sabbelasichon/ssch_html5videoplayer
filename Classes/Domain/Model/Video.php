@@ -46,7 +46,7 @@ class Video extends AbstractEntity {
     /**
      * PosterImage
      *
-     * @var string $posterImage
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $posterImage
      */
     protected $posterImage;
 
@@ -55,28 +55,28 @@ class Video extends AbstractEntity {
      *
      * @var string $mp4Source
      */
-    protected $mp4Source;
+    protected $mp4Source = NULL;
 
     /**
      * WebMSource
      *
      * @var string $webMSource
      */
-    protected $webMSource;
+    protected $webMSource = NULL;
 
     /**
      * OggSource
      *
      * @var string $oggSource
      */
-    protected $oggSource;
+    protected $oggSource = NULL;
 
     /**
      * FlashSource
      *
      * @var string $flashSource
      */
-    protected $flashSource;
+    protected $flashSource = NULL;
 
     /**
      * height
@@ -170,6 +170,12 @@ class Video extends AbstractEntity {
 
     /**
      *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>     
+     */
+    protected $videos;    
+
+    /**
+     *
      * @return \SJBR\StaticInfoTables\Domain\Model\Language
      */
     public function getStaticLangIsocode() {
@@ -224,62 +230,24 @@ class Video extends AbstractEntity {
     /**
      * Sets the posterImage
      *
-     * @param string $posterImage
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $posterImage
      * @return void
      */
-    public function setPosterImage($posterImage) {
+    public function setPosterImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $posterImage) {
         $this->posterImage = $posterImage;
     }
 
     /**
      * Returns the posterImage
      *
-     * @return string
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     public function getPosterImage() {
         if ($this->posterImage) {
-            return $this->getFile($this->posterImage);
+            return $this->posterImage;
         } elseif ($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
             return $this->parentid->getPosterImage();
         }
-    }
-
-    /**
-     * Sets the mp4Source
-     *
-     * @param string $mp4Source
-     * @return void
-     */
-    public function setMp4Source($mp4Source) {
-        $this->mp4Source = $mp4Source;
-    }
-
-    /**
-     * Returns the mp4Source
-     *
-     * @return string
-     */
-    public function getMp4Source() {
-        return $this->getFile($this->mp4Source);
-    }
-
-    /**
-     * Sets the webMSource
-     *
-     * @param string $webMSource
-     * @return void
-     */
-    public function setWebMSource($webMSource) {
-        $this->webMSource = $webMSource;
-    }
-
-    /**
-     * Returns the webMSource
-     *
-     * @return string
-     */
-    public function getWebMSource() {
-        return $this->getFile($this->webMSource);
     }
 
     /**
@@ -288,9 +256,17 @@ class Video extends AbstractEntity {
      * @return void
      */
     public function __construct() {
+        $this->initStorageObjects();
+    }
+
+    /**
+     * @return void
+     */
+    protected function initStorageObjects() {
         $this->subtitles = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->related = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->versions = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->videos = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -307,44 +283,6 @@ class Video extends AbstractEntity {
      */
     public function setSubtitles($subtitles) {
         $this->subtitles = $subtitles;
-    }
-
-    /**
-     * Returns the oggSource
-     *
-     * @return string $oggSource
-     */
-    public function getOggSource() {
-        return $this->getFile($this->oggSource);
-    }
-
-    /**
-     * Sets the oggSource
-     *
-     * @param string $oggSource
-     * @return void
-     */
-    public function setOggSource($oggSource) {
-        $this->oggSource = $oggSource;
-    }
-
-    /**
-     * Returns the flashSource
-     *
-     * @return string $flashSource
-     */
-    public function getFlashSource() {
-        return $this->getMp4Source();
-    }
-
-    /**
-     * Sets the flashSource
-     *
-     * @param string $flashSource
-     * @return void
-     */
-    public function setFlashSource($flashSource) {
-        $this->flashSource = $flashSource;
     }
 
     /**
@@ -380,7 +318,7 @@ class Video extends AbstractEntity {
             return $this->width;
         } elseif ($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
             return $this->parentid->getWidth();
-        }        
+        }
     }
 
     /**
@@ -593,6 +531,22 @@ class Video extends AbstractEntity {
      */
     public function setImages($images) {
         $this->images = $images;
+    }
+
+    /**
+     * 
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    public function getVideos() {
+        return $this->videos;
+    }
+
+    /**
+     * 
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $videos
+     */
+    public function setVideos($videos) {
+        $this->videos = $videos;
     }
 
 }

@@ -1,6 +1,16 @@
-- Different resolutions / download file
 - Full featured examples with bootstrap (Gallery, Download, Captions and so on)
-- Real Fal Relations
+- Deployment Strategy for git, build
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9,6 +19,9 @@
 Future Prio2:
 - Register own skins
 - Extendable via extender
+- Different Resolutions
+- Special Label-Function for subtitle with video - language - uid
+- Search Wizard for Related Videos
 
 - Documentation
 .htaccess exmplae for the mime-types

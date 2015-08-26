@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-08-26T13:10:49Z" product-name="">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-08-26T13:10:49Z" product-name="ssch_html5videoplayer">
 		<header/>
 		<body>
-			<trans-unit id="title.description" xml:space="preserve">
+			<trans-unit id="title.description">
 				<source>Titel der Audio-Datei</source>
 			</trans-unit>
-			<trans-unit id="audio_source.description" xml:space="preserve">
+			<trans-unit id="audio_source.description">
 				<source>MP3-Datei</source>
 			</trans-unit>
 		</body>

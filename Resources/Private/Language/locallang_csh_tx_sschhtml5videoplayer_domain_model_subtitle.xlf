@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-08-26T13:10:49Z" product-name="">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-08-26T13:10:49Z" product-name="ssch_html5videoplayer">
 		<header/>
 		<body>
-			<trans-unit id="track.description" xml:space="preserve">
+			<trans-unit id="track.description">
 				<source>Track</source>
 			</trans-unit>
-			<trans-unit id="selected.description" xml:space="preserve">
+			<trans-unit id="selected.description">
 				<source>Ausgewählte Sprache</source>
 			</trans-unit>
-			<trans-unit id="static_lang_isocode.description" xml:space="preserve">
+			<trans-unit id="static_lang_isocode.description">
 				<source>Ländercode bspw. wie de, en oder us</source>
 			</trans-unit>
 		</body>
