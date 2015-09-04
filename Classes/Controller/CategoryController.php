@@ -1,12 +1,12 @@
 <?php
 
-namespace Ssch\SschHtml5videoplayer\Domain\Repository;
+namespace Ssch\SschHtml5videoplayer\Controller;
 
 /* * *************************************************************
  *  Copyright notice
  *
  *  (c) 2011 Sebastian Schreiber <me@schreibersebastian.de>, Sebastian Schreiber
- *
+ *  
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -28,7 +28,14 @@ namespace Ssch\SschHtml5videoplayer\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-abstract class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class CategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+
+    /**
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
+     * @inject
+     */
+    protected $categoryRepository;
 
     /**
      *
@@ -38,39 +45,28 @@ abstract class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Reposit
     protected $categoryService;
 
     /**
-     * Finds all opjects
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * 
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+     * @return void
      */
-    public function findAll() {
-        $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(FALSE);
-        return $query->execute();
-    }
-
-    /**
-     * Get a list of addresses
-     * @param string $uids A comma separeted list of uids
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-     */
-    public function findByUids($uids) {
-        $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(FALSE);
-        $query->matching($query->in('uid', GeneralUtility::intExplode(',', $uids)));
-        return $query->execute();
+    public function filterAction(\TYPO3\CMS\Extbase\Domain\Model\Category $category = NULL) {
+        $this->view->assign('categories', $this->getCategories());
+        $this->view->assign('category', $category);
+        $controller = 'Video';
+        $this->view->assign('controller', $controller);
     }
 
     /**
      * 
-     * @param string $categoryUids Comma separeted list of categories
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findByCategories($categoryUids) {
-        $categories = $this->categoryService->getSubCategories($categoryUids);
-        $query = $this->createQuery();
+    protected function getCategories() {
+        $categories = $this->categoryService->getSubCategories($this->settings['categories']);
+        $categories = GeneralUtility::removeArrayEntryByValue($categories, $this->settings['categories']);
+        $query = $this->categoryRepository->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(FALSE);
         $constraints = array();
-        $constraints[] = $query->in('categories.uid', $categories);
+        $constraints[] = $query->in('uid', $categories);
         $query->matching($query->logicalAnd($constraints));
         return $query->execute();
     }

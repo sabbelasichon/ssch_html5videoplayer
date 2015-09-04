@@ -29,7 +29,7 @@ namespace Ssch\SschHtml5videoplayer\Domain\Model;
 /**
  * Video
  */
-class Audio extends AbstractEntity {
+class Audio extends AbstractVideoAudioEntity {
 
     /**
      *
@@ -43,6 +43,13 @@ class Audio extends AbstractEntity {
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $image = NULL;
+    
+    /**
+     * @return void
+     */
+    public function __construct() {
+        parent::__construct();
+    }
 
     /**
      *

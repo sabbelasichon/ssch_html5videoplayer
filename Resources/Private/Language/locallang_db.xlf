@@ -150,6 +150,9 @@
                         <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.videos">
                             <source>Videos</source>
                         </trans-unit>
+                        <trans-unit id="tx_sschhtml5videoplayer_domain_model_audio.categories">
+                            <source>Categories</source>
+                        </trans-unit>
 		</body>
 	</file>
 </xliff>

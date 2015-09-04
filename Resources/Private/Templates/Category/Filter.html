@@ -1,0 +1,11 @@
+<f:if condition="{categories}">
+    <ul class="list-group">
+        <f:for each="{categories}" as="categoryItem">
+            <li class="list-group-item">
+            <f:link.action action="list" controller="{controller}" arguments="{category: categoryItem.uid}">
+                {categoryItem.title}
+            </f:link.action>
+            </li>
+        </f:for>
+    </ul>
+</f:if>

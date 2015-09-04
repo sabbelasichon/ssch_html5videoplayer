@@ -20,10 +20,14 @@ if (!defined('TYPO3_MODE')) {
         $_EXTKEY, 'Pi4', 'Audio - Details'
 );
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+        $_EXTKEY, 'Pi5', 'Category - Filter'
+);
+
 
 // Flexforms
 $extensionName = \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($_EXTKEY);
-$pluginsWithFlexForms = array('Pi1', 'Pi2', 'Pi3', 'Pi4');
+$pluginsWithFlexForms = array('Pi1', 'Pi2', 'Pi3', 'Pi4', 'Pi5');
 
 foreach ($pluginsWithFlexForms as $pluginWithFlexForm) {
     $pluginSuffix = '_' . lcfirst($pluginWithFlexForm);
@@ -34,7 +38,7 @@ foreach ($pluginsWithFlexForms as $pluginWithFlexForm) {
 }
 
 
-TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'HTML5Videoplayer');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'HTML5Videoplayer');
 
 
 TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_sschhtml5videoplayer_domain_model_video', 'EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_csh_tx_sschhtml5videoplayer_domain_model_video.xlf');

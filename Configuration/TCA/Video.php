@@ -22,7 +22,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, single_pid, caption, duration, poster_image, videos, external_source, copyright, height, width, subtitles, downloads, images, static_lang_isocode',
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, static_lang_isocode, title, short_title, caption, copyright, duration, single_pid, description;;;richtext[paste|bold|italic|underline|formatblock|class|left|center|right|orderedlist|unorderedlist|outdent|indent|link|image]:rte_transform[mode=ts], poster_image, videos, external_source, width, height, downloads, images, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.subtitles,subtitles, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.versions,versions, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.related,related,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
+        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, static_lang_isocode, title, short_title, caption, copyright, duration, single_pid, description;;;richtext[paste|bold|italic|underline|formatblock|class|left|center|right|orderedlist|unorderedlist|outdent|indent|link|image]:rte_transform[mode=ts], poster_image, videos, external_source, width, height, downloads, images, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.subtitles,subtitles, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.versions,versions, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.related,related, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio.categories, categories,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -239,7 +239,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                     'videos', array('maxitems' => 45), 'mp4,ogg,ogv,webm'
             ),
-        ),        
+        ),
         'external_source' => array(
             'exclude' => 0,
             'l10n_mode' => 'mergeIfNotBlank',
@@ -368,6 +368,36 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                         'type' => 'suggest',
                     ),
                 ),
+            )
+        ),
+        'categories' => array(
+            'exclude' => 1,
+            'l10n_mode' => 'mergeIfNotBlank',
+            'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio.categories',
+            'config' => array(
+                'type' => 'select',
+                'renderMode' => 'tree',
+                'treeConfig' => array(
+                    'parentField' => 'parent',
+                    'appearance' => array(
+                        'showHeader' => TRUE,
+                        'allowRecursiveMode' => TRUE,
+                        'expandAll' => TRUE,
+                        'maxLevels' => 99,
+                    ),
+                ),
+                'MM' => 'sys_category_record_mm',
+                'MM_match_fields' => array(
+                    'fieldname' => 'categories',
+                    'tablenames' => 'tx_sschhtml5videoplayer_domain_model_video',
+                ),
+                'MM_opposite_field' => 'items',
+                'foreign_table' => 'sys_category',
+                'foreign_table_where' => ' AND (sys_category.sys_language_uid = 0 OR sys_category.l10n_parent = 0) ORDER BY sys_category.sorting',
+                'size' => 10,
+                'autoSizeMax' => 20,
+                'minitems' => 0,
+                'maxitems' => 20,
             )
         ),
         'downloads' => $downloadsTca,

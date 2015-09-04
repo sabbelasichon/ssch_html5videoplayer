@@ -35,7 +35,14 @@ class VideoController extends AbstractController {
      * @var \Ssch\SschHtml5videoplayer\Domain\Repository\VideoRepository
      * @inject
      */
-    protected $videoRepository = NULL;
+    protected $videoRepository;
+    
+    /**
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
+     * @inject
+     */
+    protected $categoryRepository;
 
     /**
      * Displays a single Video
@@ -56,13 +63,17 @@ class VideoController extends AbstractController {
 
     /**
      * action list
-     *
+     * @param integer $category
      * @return string The rendered list action
      */
-    public function listAction() {
+    public function listAction($category = NULL) {           
         if ($this->settings['videoSelection']) {
             $videos = $this->videoRepository->findByUids($this->settings['videoSelection']);
             $videos = $this->sorterUtility->sortElementsAsDefinedInFlexForms($this->settings['videoSelection'], $videos);
+        } elseif ($category !== NULL) {
+            $videos = $this->videoRepository->findByCategories($category);
+        } elseif ($this->settings['categories']) {
+            $videos = $this->videoRepository->findByCategories($this->settings['categories']);
         } else {
             $videos = $this->videoRepository->findAll();
         }

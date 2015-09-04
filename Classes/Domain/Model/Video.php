@@ -29,7 +29,7 @@ namespace Ssch\SschHtml5videoplayer\Domain\Model;
 /**
  * Video
  */
-class Video extends AbstractEntity {
+class Video extends AbstractVideoAudioEntity {
 
     /**
      *
@@ -256,6 +256,7 @@ class Video extends AbstractEntity {
      * @return void
      */
     public function __construct() {
+        parent::__construct();
         $this->initStorageObjects();
     }
 

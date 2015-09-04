@@ -43,7 +43,7 @@ class Wizicon {
         $LL = $this->includeLocalLang();
 
 
-        $pluginsWithWizards = array('pi1', 'pi2', 'pi3', 'pi4');
+        $pluginsWithWizards = array('pi1', 'pi2', 'pi3', 'pi4', 'pi5');
 
         foreach ($pluginsWithWizards as $pluginWithWizard) {
             $pluginWithWizardWithPrefix = 'sschhtml5videoplayer_' . $pluginWithWizard;
