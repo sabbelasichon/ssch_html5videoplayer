@@ -135,6 +135,9 @@
 			<trans-unit id="list_title_sschhtml5videoplayer_pi4">
 				<source>Audio - Details</source>
 			</trans-unit>
+                        <trans-unit id="list_title_sschhtml5videoplayer_pi5">
+				<source>Category - filter</source>
+			</trans-unit>
 			<trans-unit id="list_plus_wiz_description_sschhtml5videoplayer_pi1">
 				<source>Add a HTML5 Video Player to show movies from your movie database</source>
 			</trans-unit>
@@ -146,6 +149,9 @@
 			</trans-unit>
 			<trans-unit id="list_plus_wiz_description_sschhtml5videoplayer_pi4">
 				<source>Add a HTML5 Audio Player to show audio from your audio database</source>
+			</trans-unit>
+                        <trans-unit id="list_plus_wiz_description_sschhtml5videoplayer_pi5">
+				<source>Add a HTML5 Audio Player to show audio from your movie database based on category</source>
 			</trans-unit>
                         <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.videos">
                             <source>Videos</source>
