@@ -1,6 +1,4 @@
-<?php
-
-namespace Ssch\SschHtml5videoplayer\Controller;
+<?php namespace Ssch\SschHtml5videoplayer\Controller;
 
 /* * *************************************************************
  *  Copyright notice
@@ -25,10 +23,11 @@ namespace Ssch\SschHtml5videoplayer\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
-
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class VideoController extends AbstractController {
+class VideoController extends AbstractController
+{
 
     /**
      *
@@ -36,7 +35,7 @@ class VideoController extends AbstractController {
      * @inject
      */
     protected $videoRepository;
-    
+
     /**
      *
      * @var \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
@@ -50,7 +49,8 @@ class VideoController extends AbstractController {
      * @param \Ssch\SschHtml5videoplayer\Domain\Model\Video $video the Video to display
      * @return string The rendered view
      */
-    public function showAction(\Ssch\SschHtml5videoplayer\Domain\Model\Video $video = NULL) {
+    public function showAction(\Ssch\SschHtml5videoplayer\Domain\Model\Video $video = NULL)
+    {
         if (NULL === $video) {
             $videoUid = intval($this->settings['videoSelection']);
             $video = $this->videoRepository->findByUid($videoUid);
@@ -66,10 +66,11 @@ class VideoController extends AbstractController {
      * @param integer $category
      * @return string The rendered list action
      */
-    public function listAction($category = NULL) {           
+    public function listAction($category = NULL)
+    {
         if ($this->settings['videoSelection']) {
-            $videos = $this->videoRepository->findByUids($this->settings['videoSelection']);
-            $videos = $this->sorterUtility->sortElementsAsDefinedInFlexForms($this->settings['videoSelection'], $videos);
+            $videoObjects = $this->videoRepository->findByUids($this->settings['videoSelection']);
+            $videos = $this->sorterUtility->sortElementsAsDefinedInFlexForms($this->settings['videoSelection'], $videoObjects);
         } elseif ($category !== NULL) {
             $videos = $this->videoRepository->findByCategories($category);
         } elseif ($this->settings['categories']) {
@@ -83,16 +84,16 @@ class VideoController extends AbstractController {
 
     /**
      * 
-     * @param \Ssch\SschHtml5videoplayer\Controller\ViewInterface $view
+     * @param ViewInterface $view
      */
-    protected function initializeView(ViewInterface $view) {
+    protected function initializeView(ViewInterface $view)
+    {
         // Set template
         if ($this->settings['templateFile']) {
-            $templateFile = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Video/' . $this->settings['templateFile']);
+            $templateFile = GeneralUtility::getFileAbsFileName($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Video/' . $this->settings['templateFile']);
             if (TRUE === file_exists($templateFile)) {
                 $view->setTemplatePathAndFilename($templateFile);
             }
         }
     }
-
 }

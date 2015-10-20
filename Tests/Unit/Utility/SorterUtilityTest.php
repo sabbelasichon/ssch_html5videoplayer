@@ -29,6 +29,7 @@ namespace Ssch\SschHtml5videoplayer\Tests\Utility;
 /**
  * Video
  */
+
 class SorterUtilityTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
     /**

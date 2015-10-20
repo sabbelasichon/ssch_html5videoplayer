@@ -72,7 +72,7 @@ class SorterUtility {
                 return $record;
             }
         }
-        return;
+        return NULL;
     }
     
     /**

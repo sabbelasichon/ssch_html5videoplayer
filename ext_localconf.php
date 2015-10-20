@@ -4,8 +4,6 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-require_once \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Vendors' . DIRECTORY_SEPARATOR . 'autoload.php';
-
 // Register basic metadata extractor. Will feed the file with a "title" when indexing, e.g. upload, through scheduler
 \TYPO3\CMS\Core\Resource\Index\ExtractorRegistry::getInstance()->registerExtractionService('Ssch\SschHtml5videoplayer\Index\MetadataExtractor');
 

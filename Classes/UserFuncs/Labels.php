@@ -30,7 +30,8 @@ class Labels {
 
     /**
      *
-     * @param array $params 
+     * @param array $params
+     * @return void
      */
     public function getLabel(&$params) {
 

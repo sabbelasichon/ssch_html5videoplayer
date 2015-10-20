@@ -26,6 +26,8 @@ namespace Ssch\SschHtml5videoplayer\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 abstract class AbstractVideoAudioEntity extends AbstractEntity {
 
     /**
@@ -46,7 +48,7 @@ abstract class AbstractVideoAudioEntity extends AbstractEntity {
      * @return void
      */
     protected function initStorageObjects() {
-        $this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->categories = new ObjectStorage();
     }
 
     /**

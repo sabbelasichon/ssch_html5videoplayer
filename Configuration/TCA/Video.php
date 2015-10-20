@@ -19,7 +19,7 @@ $downloadsTca = array(
 $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
     'ctrl' => $TCA['tx_sschhtml5videoplayer_domain_model_video']['ctrl'],
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, single_pid, caption, duration, poster_image, videos, external_source, copyright, height, width, subtitles, downloads, images, static_lang_isocode',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, single_pid, caption, duration, poster_image, videos, external_source, external_type, copyright, height, width, subtitles, downloads, images, static_lang_isocode',
     ),
     'types' => array(
         '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, static_lang_isocode, title, short_title, caption, copyright, duration, single_pid, description;;;richtext[paste|bold|italic|underline|formatblock|class|left|center|right|orderedlist|unorderedlist|outdent|indent|link|image]:rte_transform[mode=ts], poster_image, videos, external_source, width, height, downloads, images, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.subtitles,subtitles, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.versions,versions, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.related,related, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio.categories, categories,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
@@ -238,6 +238,21 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.videos',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                     'videos', array('maxitems' => 45), 'mp4,ogg,ogv,webm'
+            ),
+        ),
+        'external_type' => array(
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.external_type',
+            'config' => array(
+                'type' => 'select',
+                'items' => array(
+                    array('', ''),
+                    array('LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.external_type.I', 'video/youtube'),
+                    array('LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.external_type.II', 'video/vimeo'),                        
+                ),
+                'size' => 1,
+                'maxitems' => 1,
+                'eval' => ''
             ),
         ),
         'external_source' => array(

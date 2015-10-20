@@ -1,6 +1,4 @@
-<?php
-
-namespace Ssch\SschHtml5videoplayer\Controller;
+<?php namespace Ssch\SschHtml5videoplayer\Controller;
 
 /* * *************************************************************
  *  Copyright notice
@@ -25,10 +23,11 @@ namespace Ssch\SschHtml5videoplayer\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
-
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+abstract class AbstractController extends ActionController
+{
 
     /**
      *
@@ -40,7 +39,8 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
     /**
      * @return void
      */
-    public function initializeAction() {
+    public function initializeAction()
+    {
         $this->settings['baseUrl'] = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
         $mediaElementJsFolder = $this->getFileAbsFileName($this->settings['mediaelementjsFolder']);
         $this->settings['mediaelementjsFolderRelative'] = $mediaElementJsFolder;
@@ -73,7 +73,7 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
                 $this->addHeaderData('(function($) { $(document).ready(function() { $(\'video,audio\').mediaelementplayer(); });})(jQuery);', 'script');
             } elseif ($this->settings['addMediaElementJsInitializationFile']) {
                 $initializationFile = $this->getFileAbsFileName($this->settings['addMediaElementJsInitializationFile']);
-                $fluidView = $this->objectManager->create('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
+                $fluidView = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
                 /* @var $fluidView \TYPO3\CMS\Fluid\View\StandaloneView */
                 $fluidView->assign('settings', $this->settings);
                 $fluidView->setTemplatePathAndFilename($initializationFile);
@@ -89,7 +89,8 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
      * @param string $type Css, Js, script
      * @return void
      */
-    protected function addHeaderData($data, $type = 'css') {
+    protected function addHeaderData($data, $type = 'css')
+    {
         switch ($type) {
             case 'css':
                 $data = '<link rel="stylesheet" type="text/css" media="all" href="' . $data . '" />';
@@ -107,7 +108,6 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
             $this->response->addAdditionalHeaderData($data);
         }
     }
-
     /*     * ***********************
      *
      * TYPO3 SPECIFIC FUNCTIONS
@@ -125,9 +125,9 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
      * @param boolean $relToTYPO3_mainDir If $relToTYPO3_mainDir is set, then relative paths are relative to PATH_typo3 constant - otherwise (default) they are relative to PATH_site
      * @return string Returns the absolute filename of $filename if valid, otherwise blank string.
      */
-    public function getFileAbsFileName($filename, $onlyRelative = TRUE, $relToTYPO3_mainDir = FALSE) {
-        $filename = GeneralUtility::getFileAbsFileName($filename);
-        return str_replace(PATH_site, '', $filename);
+    public function getFileAbsFileName($filename, $onlyRelative = TRUE, $relToTYPO3_mainDir = FALSE)
+    {
+        $absFilename = GeneralUtility::getFileAbsFileName($filename, $onlyRelative, $relToTYPO3_mainDir);
+        return str_replace(PATH_site, '', $absFilename);
     }
-
 }

@@ -248,6 +248,7 @@ class Video extends AbstractVideoAudioEntity {
         } elseif ($this->parentid instanceof \Ssch\SschHtml5videoplayer\Domain\Model\Video) {
             return $this->parentid->getPosterImage();
         }
+        return NULL;
     }
 
     /**

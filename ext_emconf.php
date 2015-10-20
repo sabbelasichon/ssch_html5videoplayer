@@ -8,11 +8,11 @@ $EM_CONF[$_EXTKEY] = array(
     'author_email' => 'me@schreibersebastian.de',
     'author_company' => 'Sebastian Schreiber',
     'state' => 'stable',
-    'version' => '1.2.5',
+    'version' => '1.2.7',
     'constraints' => array(
         'depends' => array(
             'typo3' => '6.2.0-6.2.99',
-            'static_info_tables' => '',
+            'static_info_tables' => '6.2',
         ),
         'suggests' => array(
             'filemetadata' => '',

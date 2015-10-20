@@ -99,6 +99,15 @@
 			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.external_source">
 				<source>Externe Quelle</source>
 			</trans-unit>
+                        <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.external_type">
+                            <source>Externer Typ</source>
+                        </trans-unit>
+                        <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.external_type.I">
+                            <source>Youtube</source>
+                        </trans-unit>
+                        <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.external_type.II">
+                            <source>Vimeo</source>
+                        </trans-unit>
 			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.related">
 				<source>Related Videos</source>
 			</trans-unit>
