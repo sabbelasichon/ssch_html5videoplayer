@@ -69,7 +69,6 @@ class VideoController extends AbstractController
      */
     public function listAction($category = NULL)
     {
-        $getId3Engine = new \getID3();
         if ($this->settings['videoSelection']) {
             $videoObjects = $this->videoRepository->findByUids($this->settings['videoSelection']);
             $videos = $this->sorterUtility->sortElementsAsDefinedInFlexForms($this->settings['videoSelection'], $videoObjects);
