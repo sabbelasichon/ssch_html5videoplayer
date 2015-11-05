@@ -51,6 +51,7 @@ class VideoController extends AbstractController
      */
     public function showAction(\Ssch\SschHtml5videoplayer\Domain\Model\Video $video = NULL)
     {
+
         if (NULL === $video) {
             $videoUid = intval($this->settings['videoSelection']);
             $video = $this->videoRepository->findByUid($videoUid);
@@ -68,6 +69,7 @@ class VideoController extends AbstractController
      */
     public function listAction($category = NULL)
     {
+        $getId3Engine = new \getID3();
         if ($this->settings['videoSelection']) {
             $videoObjects = $this->videoRepository->findByUids($this->settings['videoSelection']);
             $videos = $this->sorterUtility->sortElementsAsDefinedInFlexForms($this->settings['videoSelection'], $videoObjects);
