@@ -4,9 +4,9 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-$composerAutoload = __DIR__ . '/Libraries/autoload.php';
-if (file_exists($composerAutoload)) {
-    require_once $composerAutoload;
+$composerAutoloadFile = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Libraries' . DIRECTORY_SEPARATOR . 'autoload.php';
+if (file_exists($composerAutoloadFile)) {
+    require_once $composerAutoloadFile;
 }
 
 // Register basic metadata extractor. Will feed the file with a "title" when indexing, e.g. upload, through scheduler
