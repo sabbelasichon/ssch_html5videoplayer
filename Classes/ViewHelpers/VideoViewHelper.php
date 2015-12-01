@@ -47,6 +47,7 @@ class VideoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedV
         $this->registerTagAttribute('preload', 'string', 'Preload video', FALSE);
         $this->registerTagAttribute('controls', 'string', 'Controls of video', FALSE);
         $this->registerTagAttribute('rel', 'string', 'Rel attribute for the nivo-slider', FALSE);
+        $this->registerTagAttribute('poster', 'string', 'The poster image of the video', FALSE);
         $this->registerUniversalTagAttributes();
     }
 
