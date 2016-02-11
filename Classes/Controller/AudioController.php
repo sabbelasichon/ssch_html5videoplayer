@@ -62,11 +62,12 @@ class AudioController extends AbstractController {
      * @return string The rendered list action
      */
     public function listAction() {
+        $this->audioRepository->setOrderings($this->settings['orderBy'], $this->settings['orderDirection']);
         if ($this->settings['audioSelection']) {
             $audios = $this->audioRepository->findByUids($this->settings['audioSelection']);
             $audios = $this->sorterUtility->sortElementsAsDefinedInFlexForms($this->settings['audioSelection'], $audios);
         } else {
-            $audios = $this->audioRepository->findAll(, $this->settings['orderDirection']);
+            $audios = $this->audioRepository->findAll();
         }
         $this->view->assign('data', $this->configurationManager->getContentObject()->data);
         $this->view->assign('audios', $audios);
