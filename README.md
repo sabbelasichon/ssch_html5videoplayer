@@ -1,4 +1,4 @@
-HTML5 Video- and Audioplayer based on mediaelementjs.com
+TYPO3 HTML5 Video- and Audioplayer based on mediaelementjs.com
 =================================
 
 ## What is it?
