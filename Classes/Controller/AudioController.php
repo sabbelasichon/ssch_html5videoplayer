@@ -66,7 +66,7 @@ class AudioController extends AbstractController {
             $audios = $this->audioRepository->findByUids($this->settings['audioSelection']);
             $audios = $this->sorterUtility->sortElementsAsDefinedInFlexForms($this->settings['audioSelection'], $audios);
         } else {
-            $audios = $this->audioRepository->findAll();
+            $audios = $this->audioRepository->findAll(, $this->settings['orderDirection']);
         }
         $this->view->assign('data', $this->configurationManager->getContentObject()->data);
         $this->view->assign('audios', $audios);

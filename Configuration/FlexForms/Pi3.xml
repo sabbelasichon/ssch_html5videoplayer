@@ -72,7 +72,63 @@
                                 <allowNonIdValues>1</allowNonIdValues>
                             </config>
                         </TCEforms>
-                    </settings.audioSelection>                    
+                    </settings.audioSelection>
+                    <!-- order -->
+                    <settings.orderBy>
+                        <TCEforms>
+                            <label>LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer.pi_flexform.orderBy</label>
+                            <config>
+                                <type>select</type>
+                                <itemsProcFunc>GeorgRinger\News\Hooks\ItemsProcFunc->user_orderBy</itemsProcFunc>
+                                <items>
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0"></numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer.pi_flexform.orderBy.sorting</numIndex>
+                                        <numIndex index="1">sorting</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer.pi_flexform.orderBy.tstamp</numIndex>
+                                        <numIndex index="1">tstamp</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3">
+                                        <numIndex index="0">LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer.pi_flexform.orderBy.crdate</numIndex>
+                                        <numIndex index="1">crdate</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4">
+                                        <numIndex index="0">LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer.pi_flexform.orderBy.title</numIndex>
+                                        <numIndex index="1">title</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.orderBy>
+
+                    <!-- order direction  -->
+                    <settings.orderDirection>
+                        <TCEforms>
+                            <label>LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer.pi_flexform.orderDirection</label>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0"></numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer.pi_flexform.asc</numIndex>
+                                        <numIndex index="1">asc</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer.pi_flexform.desc</numIndex>
+                                        <numIndex index="1">desc</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.orderDirection>
                 </el>
             </ROOT>
         </displayCode>

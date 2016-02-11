@@ -27,8 +27,10 @@ namespace Ssch\SschHtml5videoplayer\Domain\Repository;
  * ************************************************************* */
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 
-abstract class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+abstract class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+{
 
     /**
      *
@@ -39,12 +41,14 @@ abstract class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Reposit
 
     /**
      * Finds all opjects
-     *
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @internal param null $orderBy
      */
-    public function findAll() {
+    public function findAll()
+    {
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(FALSE);
+        $query->getQuerySettings()->setRespectStoragePage(false);
+
         return $query->execute();
     }
 
@@ -53,26 +57,53 @@ abstract class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Reposit
      * @param string $uids A comma separeted list of uids
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findByUids($uids) {
+    public function findByUids($uids)
+    {
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(FALSE);
+        $query->getQuerySettings()->setRespectStoragePage(false);
         $query->matching($query->in('uid', GeneralUtility::intExplode(',', $uids)));
+
         return $query->execute();
     }
 
     /**
-     * 
+     *
      * @param string $categoryUids Comma separeted list of categories
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findByCategories($categoryUids) {
+    public function findByCategories($categoryUids)
+    {
         $categories = $this->categoryService->getSubCategories($categoryUids);
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(FALSE);
+        $query->getQuerySettings()->setRespectStoragePage(false);
         $constraints = array();
         $constraints[] = $query->in('categories.uid', $categories);
         $query->matching($query->logicalAnd($constraints));
+
         return $query->execute();
     }
+
+    /**
+     * @param string $orderBy
+     * @param null $orderDirection
+     */
+    public function setOrderings($orderBy = null, $orderDirection = null)
+    {
+        if (null !== $orderBy) {
+            $orderDirection = $orderDirection === 'asc' ? QueryInterface::ORDER_ASCENDING : QueryInterface::ORDER_DESCENDING;
+            switch ($orderBy) {
+                case 'sorting':
+                case 'crdate':
+                case 'title':
+                case 'tstamp':
+                    $this->setDefaultOrderings(array($orderBy => $orderDirection));
+                    break;
+                default:
+                    throw new \InvalidArgumentException(sprintf('The orderBy %s is not allowed', $orderBy));
+                    break;
+            }
+        }
+    }
+
 
 }

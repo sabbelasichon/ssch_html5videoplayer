@@ -69,6 +69,7 @@ class VideoController extends AbstractController
      */
     public function listAction($category = NULL)
     {
+        $this->videoRepository->setOrderings($this->settings['orderBy'], $this->settings['orderDirection']);
         if ($this->settings['videoSelection']) {
             $videoObjects = $this->videoRepository->findByUids($this->settings['videoSelection']);
             $videos = $this->sorterUtility->sortElementsAsDefinedInFlexForms($this->settings['videoSelection'], $videoObjects);
