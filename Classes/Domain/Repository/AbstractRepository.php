@@ -99,7 +99,7 @@ abstract class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Reposit
                     $this->setDefaultOrderings(array($orderBy => $orderDirection));
                     break;
                 default:
-                    throw new \InvalidArgumentException(sprintf('The orderBy %s is not allowed', $orderBy));
+                    $this->setDefaultOrderings(array('sorting' => $orderDirection));
                     break;
             }
         }
