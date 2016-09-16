@@ -4,5 +4,5 @@
     "description": "HTML5 audio and video player extension, based on extbase & fluid for TYPO3 CMS",
     "homepage": "http://typo3.org",
     "license": ["GPL-2.0+"],
-    "version": "1.2.9"
+    "version": "1.3.0"
 }
