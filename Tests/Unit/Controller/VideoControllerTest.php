@@ -75,8 +75,7 @@ class VideoControllerTest extends UnitTestCase
         $view->expects($this->at(1))->method('assign')->with('video', $videoMock);
         $this->inject($this->subject, 'view', $view);
 
-        $configurationManagerMock = $this->getMock(ConfigurationManagerInterface::class,
-            array('getContentObject', 'getConfiguration'), array(), '', false);
+        $configurationManagerMock = $this->getMock(ConfigurationManagerInterface::class, array(), array(), '', false);
         $configurationManagerMock->expects($this->once())->method('getContentObject')->will($this->returnValue($contentObject));
         $this->inject($this->subject, 'configurationManager', $configurationManagerMock);
 
@@ -103,8 +102,7 @@ class VideoControllerTest extends UnitTestCase
         $videoRepositoryMock->expects($this->once())->method('findAll')->will($this->returnValue($allVideos));
         $this->inject($this->subject, 'videoRepository', $videoRepositoryMock);
 
-        $configurationManagerMock = $this->getMock(ConfigurationManagerInterface::class,
-            array('getContentObject', 'getConfiguration'), array(), '', false);
+        $configurationManagerMock = $this->getMock(ConfigurationManagerInterface::class, array(), array(), '', false);
         $configurationManagerMock->expects($this->once())->method('getContentObject')->will($this->returnValue($contentObject));
         $this->inject($this->subject, 'configurationManager', $configurationManagerMock);
 

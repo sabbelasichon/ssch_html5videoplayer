@@ -74,8 +74,7 @@ class AudioControllerTest extends UnitTestCase
         $view->expects($this->at(1))->method('assign')->with('audio', $audioMock);
         $this->inject($this->subject, 'view', $view);
 
-        $configurationManagerMock = $this->getMock(ConfigurationManagerInterface::class,
-            array('getContentObject', 'getConfiguration'), array(), '', false);
+        $configurationManagerMock = $this->getMock(ConfigurationManagerInterface::class, array(), array(), '', false);
         $configurationManagerMock->expects($this->once())->method('getContentObject')->will($this->returnValue($contentObject));
         $this->inject($this->subject, 'configurationManager', $configurationManagerMock);
 
@@ -101,8 +100,7 @@ class AudioControllerTest extends UnitTestCase
         $audioRepositoryMock->expects($this->once())->method('findAll')->will($this->returnValue($allAudios));
         $this->inject($this->subject, 'audioRepository', $audioRepositoryMock);
 
-        $configurationManagerMock = $this->getMock(ConfigurationManagerInterface::class,
-            array('getContentObject', 'getConfiguration'), array(), '', false);
+        $configurationManagerMock = $this->getMock(ConfigurationManagerInterface::class, array(), array(), '', false);
         $configurationManagerMock->expects($this->once())->method('getContentObject')->will($this->returnValue($contentObject));
         $this->inject($this->subject, 'configurationManager', $configurationManagerMock);
 
