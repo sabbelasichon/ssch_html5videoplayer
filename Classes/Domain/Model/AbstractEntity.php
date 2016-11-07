@@ -26,65 +26,64 @@ namespace Ssch\SschHtml5videoplayer\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-use TYPO3\CMS\Core\Resource\ResourceFactory;
-
-abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
-
+abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
     /**
-     * Title
+     * Title.
      *
-     * @var string $title
+     * @var string
      * @validate NotEmpty
      */
     protected $title;
 
     /**
-     *
      * @var string
      */
     protected $description;
 
     /**
-     * Sets the title
+     * Sets the title.
      *
      * @param string $title
-     * @return void
      */
-    public function setTitle($title) {
+    public function setTitle($title)
+    {
         $this->title = $title;
     }
 
     /**
-     * Returns the title
+     * Returns the title.
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return $this->title;
     }
 
     /**
-     * Return the title
-     * @return string 
+     * Return the title.
+     *
+     * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getTitle();
     }
 
     /**
-     *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
     /**
-     *
      * @param string $description
      */
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
     }
-
 }

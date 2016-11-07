@@ -26,16 +26,16 @@ namespace Ssch\SschHtml5videoplayer\Tests\Service;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-/**
- * Video
- */
-class CategoryServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+class CategoryServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+{
 
     /**
      * @test
      */
-    public function getSubCategories() {
-        $categoryServiceMock = $this->getMock('Ssch\\SschHtml5videoplayer\\Service\\CategoryService', array('getTreeListOfAnyTable'));
+    public function getSubCategories()
+    {
+        $categoryServiceMock = $this->getMock('Ssch\\SschHtml5videoplayer\\Service\\CategoryService',
+            array('getTreeListOfAnyTable'));
         /* @var $categoryServiceMock \Ssch\SschHtml5videoplayer\Service\CategoryService */
         $categoryServiceMock->expects($this->any())->method('getTreeListOfAnyTable')->will($this->returnValue(100));
 

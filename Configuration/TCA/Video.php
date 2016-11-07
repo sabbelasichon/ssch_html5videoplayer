@@ -6,13 +6,15 @@ if (!defined('TYPO3_MODE')) {
 $imagesTca = array(
     'exclude' => 1,
     'label' => 'Bilder',
-    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('images', array('maxitems' => 1), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('images',
+        array('maxitems' => 1), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
     ),
 );
 $downloadsTca = array(
     'exclude' => 1,
     'label' => 'Downloads',
-    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('downloads', array('maxitems' => 10)
+    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('downloads',
+        array('maxitems' => 10)
     ),
 );
 
@@ -37,7 +39,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => array(
                     array('LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1),
-                    array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0)
+                    array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0),
                 ),
             ),
         ),
@@ -65,7 +67,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
-            )
+            ),
         ),
         'hidden' => array(
             'exclude' => 1,
@@ -86,7 +88,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'checkbox' => 0,
                 'default' => 0,
                 'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
+                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y')),
                 ),
             ),
         ),
@@ -102,7 +104,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'checkbox' => 0,
                 'default' => 0,
                 'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
+                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y')),
                 ),
             ),
         ),
@@ -113,7 +115,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
+                'eval' => 'trim,required',
             ),
         ),
         'short_title' => array(
@@ -123,7 +125,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
             ),
         ),
         'copyright' => array(
@@ -133,7 +135,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
             ),
         ),
         'static_lang_isocode' => array(
@@ -150,7 +152,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
-            )
+            ),
         ),
         'caption' => array(
             'exclude' => 1,
@@ -159,7 +161,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
             ),
         ),
         'duration' => array(
@@ -169,7 +171,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
             ),
         ),
         'description' => array(
@@ -200,7 +202,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
             'config' => array(
                 'type' => 'input',
                 'size' => 255,
-                'eval' => 'trim,required'
+                'eval' => 'trim,required',
             ),
         ),
         'longdesc' => array(
@@ -220,24 +222,24 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                         'title' => 'Link',
                         'icon' => 'link_popup.gif',
                         'script' => 'browse_links.php?mode=wizard',
-                        'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1'
-                    )
-                )
-            )
+                        'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
+                    ),
+                ),
+            ),
         ),
         'poster_image' => array(
             'exclude' => 0,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.poster_image',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                    'poster_image', array('maxitems' => 1), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+                'poster_image', array('maxitems' => 1), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
         ),
         'videos' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.videos',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                    'videos', array('maxitems' => 45), 'mp4,ogg,ogv,webm'
+                'videos', array('maxitems' => 45), 'mp4,ogg,ogv,webm'
             ),
         ),
         'external_type' => array(
@@ -247,12 +249,18 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'type' => 'select',
                 'items' => array(
                     array('', ''),
-                    array('LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.external_type.I', 'video/youtube'),
-                    array('LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.external_type.II', 'video/vimeo'),                        
+                    array(
+                        'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.external_type.I',
+                        'video/youtube',
+                    ),
+                    array(
+                        'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.external_type.II',
+                        'video/vimeo',
+                    ),
                 ),
                 'size' => 1,
                 'maxitems' => 1,
-                'eval' => ''
+                'eval' => '',
             ),
         ),
         'external_source' => array(
@@ -270,9 +278,9 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                         'title' => 'Link',
                         'icon' => 'link_popup.gif',
                         'script' => 'browse_links.php?mode=wizard',
-                        'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1'
-                    )
-                )
+                        'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
+                    ),
+                ),
             ),
         ),
         'height' => array(
@@ -282,7 +290,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
             'config' => array(
                 'type' => 'input',
                 'size' => 4,
-                'eval' => 'int'
+                'eval' => 'int',
             ),
         ),
         'width' => array(
@@ -292,7 +300,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
             'config' => array(
                 'type' => 'input',
                 'size' => 4,
-                'eval' => 'int'
+                'eval' => 'int',
             ),
         ),
         'subtitles' => array(
@@ -316,7 +324,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                     "showAllLocalizationLink" => 1,
                     "showSynchronizationLink" => 1,
                 ),
-            )
+            ),
         ),
         'versions' => array(
             'exclude' => 0,
@@ -339,7 +347,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                     "showAllLocalizationLink" => 1,
                     "showSynchronizationLink" => 1,
                 ),
-            )
+            ),
         ),
         'parentid' => Array(
             'config' => Array(
@@ -364,7 +372,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'minitems' => 0,
                 'maxitems' => 50,
                 'MM' => 'tx_sschhtml5videoplayer_video_video_mm',
-            )
+            ),
         ),
         'single_pid' => array(
             'exclude' => 1,
@@ -383,7 +391,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                         'type' => 'suggest',
                     ),
                 ),
-            )
+            ),
         ),
         'categories' => array(
             'exclude' => 1,
@@ -395,9 +403,9 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'treeConfig' => array(
                     'parentField' => 'parent',
                     'appearance' => array(
-                        'showHeader' => TRUE,
-                        'allowRecursiveMode' => TRUE,
-                        'expandAll' => TRUE,
+                        'showHeader' => true,
+                        'allowRecursiveMode' => true,
+                        'expandAll' => true,
                         'maxLevels' => 99,
                     ),
                 ),
@@ -413,9 +421,9 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'autoSizeMax' => 20,
                 'minitems' => 0,
                 'maxitems' => 20,
-            )
+            ),
         ),
         'downloads' => $downloadsTca,
-        'images' => $imagesTca
+        'images' => $imagesTca,
     ),
 );

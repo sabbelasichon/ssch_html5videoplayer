@@ -29,16 +29,18 @@ namespace Ssch\SschHtml5videoplayer\Index;
 
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\Index\ExtractorInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class MetadataExtractor implements ExtractorInterface {
-
+class MetadataExtractor implements ExtractorInterface
+{
     /**
      * Returns an array of supported file types;
-     * An empty array indicates all filetypes
+     * An empty array indicates all filetypes.
      *
      * @return array
      */
-    public function getFileTypeRestrictions() {
+    public function getFileTypeRestrictions()
+    {
         return array();
     }
 
@@ -48,11 +50,12 @@ class MetadataExtractor implements ExtractorInterface {
      * are especially made for grabbing data from remote.
      * Returns array of string with driver names of Drivers which are supported,
      * If the driver did not register a name, it's the classname.
-     * empty array indicates no restrictions
+     * empty array indicates no restrictions.
      *
      * @return array
      */
-    public function getDriverRestrictions() {
+    public function getDriverRestrictions()
+    {
         return array();
     }
 
@@ -60,44 +63,49 @@ class MetadataExtractor implements ExtractorInterface {
      * Returns the data priority of the extraction Service.
      * Defines the precedence of Data if several extractors
      * extracted the same property.
-     * Should be between 1 and 100, 100 is more important than 1
+     * Should be between 1 and 100, 100 is more important than 1.
      *
-     * @return integer
+     * @return int
      */
-    public function getPriority() {
+    public function getPriority()
+    {
         return 100;
     }
 
     /**
      * Returns the execution priority of the extraction Service
-     * Should be between 1 and 100, 100 means runs as first service, 1 runs at last service
+     * Should be between 1 and 100, 100 means runs as first service, 1 runs at last service.
      *
-     * @return integer
+     * @return int
      */
-    public function getExecutionPriority() {
+    public function getExecutionPriority()
+    {
         return 1;
     }
 
     /**
-     * Checks if the given file can be processed by this Extractor
+     * Checks if the given file can be processed by this Extractor.
      *
      * @param File $file
-     * @return boolean
+     *
+     * @return bool
      */
-    public function canProcess(File $file) {
-        return TRUE;
+    public function canProcess(File $file)
+    {
+        return true;
     }
 
     /**
      * The actual processing TASK
-     * Should return an array with database properties for sys_file_metadata to write
+     * Should return an array with database properties for sys_file_metadata to write.
      *
-     * @param File $file
+     * @param File  $file
      * @param array $previousExtractedData optional, contains the array of already extracted data
+     *
      * @return array
      */
-    public function extractMetaData(File $file, array $previousExtractedData = array()) {
-
+    public function extractMetaData(File $file, array $previousExtractedData = array())
+    {
         $metaData = array();
 
         $getId3Engine = new \getID3();
@@ -114,9 +122,8 @@ class MetadataExtractor implements ExtractorInterface {
                 $metaData['height'] = (integer) $fileInfo['video']['resolution_y'];
             }
         }
-        \TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Metadata extracted for file ' . $file->getName(), 'ssch_html5videoplayer', 4, $metaData);
+        GeneralUtility::devLog('Metadata extracted for file '.$file->getName(), 'ssch_html5videoplayer', 4, $metaData);
 
         return $metaData;
     }
-
 }

@@ -26,72 +26,63 @@ namespace Ssch\SschHtml5videoplayer\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-/**
- * Video
- */
-class Audio extends AbstractVideoAudioEntity {
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 
+class Audio extends AbstractVideoAudioEntity
+{
     /**
-     *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $audioSource;
 
     /**
-     * image
+     * image.
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    protected $image = NULL;
-    
-    /**
-     * @return void
-     */
-    public function __construct() {
-        parent::__construct();
-    }
+    protected $image = null;
 
     /**
-     *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    public function getAudioSource() {
+    public function getAudioSource()
+    {
         return $this->audioSource;
     }
 
     /**
-     *
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $audioSource
      */
-    public function setAudioSource(\TYPO3\CMS\Extbase\Domain\Model\FileReference $audioSource) {
+    public function setAudioSource(FileReference $audioSource)
+    {
         $this->audioSource = $audioSource;
     }
 
     /**
-     * Returns the image
+     * Returns the image.
      *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
      */
-    public function getImage() {
+    public function getImage()
+    {
         return $this->image;
     }
 
     /**
-     * Sets the image
+     * Sets the image.
      *
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
-     * @return void
      */
-    public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image) {
+    public function setImage(FileReference $image)
+    {
         $this->image = $image;
     }
-    
+
     /**
-     * 
      * @return string
      */
-    public function getUrl() {
+    public function getUrl()
+    {
         return $this->audioSource->getOriginalResource()->getPublicUrl();
     }
-
 }

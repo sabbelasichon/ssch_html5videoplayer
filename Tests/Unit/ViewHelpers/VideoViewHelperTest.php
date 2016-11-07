@@ -26,10 +26,8 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\ViewHelpers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-/**
- * Video
- */
-class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHelperBaseTestcase {
+class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHelperBaseTestcase
+{
 
     /**
      *
@@ -40,9 +38,11 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
     /**
      * @return void
      */
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
-        $this->viewHelper = $this->getAccessibleMock('Ssch\\SschHtml5videoplayer\\ViewHelpers\\VideoViewHelper', array('renderChildren'));
+        $this->viewHelper = $this->getAccessibleMock('Ssch\\SschHtml5videoplayer\\ViewHelpers\\VideoViewHelper',
+            array('renderChildren'));
         $this->injectDependenciesIntoViewHelper($this->viewHelper);
         $this->viewHelper->initializeArguments();
     }
@@ -50,12 +50,14 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
     /**
      * @test
      */
-    public function renderProvidesVideoTagWithWithAndHeightFromSettings() {
-        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(TRUE);
+    public function renderProvidesVideoTagWithWithAndHeightFromSettings()
+    {
+        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(true);
         $this->tagBuilder->expects($this->once())->method('render');
         $this->tagBuilder->expects($this->once())->method('setContent');
         $this->tagBuilder->expects($this->exactly(3))->method('addAttribute')->withConsecutive(
-                array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(150)), array($this->equalTo('class'), $this->equalTo('mejs-skin'))
+            array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(150)),
+            array($this->equalTo('class'), $this->equalTo('mejs-skin'))
         );
 
 
@@ -74,12 +76,13 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
     /**
      * @test
      */
-    public function renderProvidesVideoTagWithWidthFromSettingsAndHeightFromVideo() {
-        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(TRUE);
+    public function renderProvidesVideoTagWithWidthFromSettingsAndHeightFromVideo()
+    {
+        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(true);
         $this->tagBuilder->expects($this->once())->method('render');
         $this->tagBuilder->expects($this->once())->method('setContent');
         $this->tagBuilder->expects($this->exactly(2))->method('addAttribute')->withConsecutive(
-                array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(300))
+            array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(300))
         );
 
 
@@ -96,12 +99,13 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
     /**
      * @test
      */
-    public function renderProvidesVideoTagWithHeightFromSettingsAndWidthFromVideo() {
-        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(TRUE);
+    public function renderProvidesVideoTagWithHeightFromSettingsAndWidthFromVideo()
+    {
+        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(true);
         $this->tagBuilder->expects($this->once())->method('render');
         $this->tagBuilder->expects($this->once())->method('setContent');
         $this->tagBuilder->expects($this->exactly(2))->method('addAttribute')->withConsecutive(
-                array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(300))
+            array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(300))
         );
 
 
@@ -118,12 +122,13 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
     /**
      * @test
      */
-    public function renderProvidesVideoTagWithWidthAndHeightFromVideo() {
-        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(TRUE);
+    public function renderProvidesVideoTagWithWidthAndHeightFromVideo()
+    {
+        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(true);
         $this->tagBuilder->expects($this->once())->method('render');
         $this->tagBuilder->expects($this->once())->method('setContent');
         $this->tagBuilder->expects($this->exactly(2))->method('addAttribute')->withConsecutive(
-                array($this->equalTo('width'), $this->equalTo(100)), array($this->equalTo('height'), $this->equalTo(100))
+            array($this->equalTo('width'), $this->equalTo(100)), array($this->equalTo('height'), $this->equalTo(100))
         );
 
 
@@ -135,16 +140,18 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
         $this->viewHelper->initialize();
         $this->viewHelper->render($settings, $video);
     }
-    
+
     /**
      * @test
      */
-    public function renderProvidesVideoTagWithWidthAndHeightFromDefaultSettings() {
-        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(TRUE);
+    public function renderProvidesVideoTagWithWidthAndHeightFromDefaultSettings()
+    {
+        $this->tagBuilder->expects($this->once())->method('forceClosingTag')->with(true);
         $this->tagBuilder->expects($this->once())->method('render');
         $this->tagBuilder->expects($this->once())->method('setContent');
         $this->tagBuilder->expects($this->exactly(3))->method('addAttribute')->withConsecutive(
-                array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(150)), array($this->equalTo('class'), $this->equalTo('mejs-skin'))
+            array($this->equalTo('width'), $this->equalTo(300)), array($this->equalTo('height'), $this->equalTo(150)),
+            array($this->equalTo('class'), $this->equalTo('mejs-skin'))
         );
 
 
@@ -163,7 +170,8 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
     /**
      * @test
      */
-    public function renderProvidesCorrectVideoTagOutput() {
+    public function renderProvidesCorrectVideoTagOutput()
+    {
 
         $this->tagBuilder->expects($this->once())->method('render')->will($this->returnValue('<video width="100" height="100">'));
 
@@ -174,10 +182,6 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
 
         $this->viewHelper->initialize();
         self::assertSame('<video width="100" height="100">', $this->viewHelper->render($settings, $video));
-    }
-
-    public function tearDown() {
-        parent::tearDown();
     }
 
 }

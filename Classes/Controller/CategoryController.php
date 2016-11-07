@@ -27,29 +27,28 @@ namespace Ssch\SschHtml5videoplayer\Controller;
  * ************************************************************* */
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Domain\Model\Category;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-class CategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
-
+class CategoryController extends ActionController
+{
     /**
-     *
      * @var \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
      * @inject
      */
     protected $categoryRepository;
 
     /**
-     *
      * @var \Ssch\SschHtml5videoplayer\Service\CategoryService
      * @inject
      */
     protected $categoryService;
 
     /**
-     * 
      * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
-     * @return void
      */
-    public function filterAction(\TYPO3\CMS\Extbase\Domain\Model\Category $category = NULL) {
+    public function filterAction(Category $category = null)
+    {
         $this->view->assign('categories', $this->getCategories());
         $this->view->assign('category', $category);
         $controller = 'Video';
@@ -57,18 +56,18 @@ class CategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     }
 
     /**
-     * 
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    protected function getCategories() {
+    protected function getCategories()
+    {
         $categories = $this->categoryService->getSubCategories($this->settings['categories']);
         $categories = GeneralUtility::removeArrayEntryByValue($categories, $this->settings['categories']);
         $query = $this->categoryRepository->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(FALSE);
+        $query->getQuerySettings()->setRespectStoragePage(false);
         $constraints = array();
         $constraints[] = $query->in('uid', $categories);
         $query->matching($query->logicalAnd($constraints));
+
         return $query->execute();
     }
-
 }

@@ -25,7 +25,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_subtitle'] = array(
                 'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => array(
                     array('LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1),
-                    array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0)
+                    array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0),
                 ),
             ),
         ),
@@ -53,7 +53,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_subtitle'] = array(
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
-            )
+            ),
         ),
         'hidden' => array(
             'exclude' => 1,
@@ -74,7 +74,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_subtitle'] = array(
                 'checkbox' => 0,
                 'default' => 0,
                 'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
+                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y')),
                 ),
             ),
         ),
@@ -90,7 +90,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_subtitle'] = array(
                 'checkbox' => 0,
                 'default' => 0,
                 'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
+                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y')),
                 ),
             ),
         ),
@@ -98,9 +98,9 @@ $TCA['tx_sschhtml5videoplayer_domain_model_subtitle'] = array(
             'exclude' => 1,
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_subtitle.track',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                    'track', array('maxitems' => 1), 'vtt, srt'
+                'track', array('maxitems' => 1), 'vtt, srt'
             ),
-        ),      
+        ),
         'static_lang_isocode' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_tca.php:sys_language.isocode',
@@ -115,7 +115,7 @@ $TCA['tx_sschhtml5videoplayer_domain_model_subtitle'] = array(
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
-            )
+            ),
         ),
         'selected' => array(
             'exclude' => 1,

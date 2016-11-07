@@ -26,12 +26,16 @@ namespace Ssch\SschHtml5videoplayer\ViewHelpers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-class VideoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
+use Ssch\SschHtml5videoplayer\Domain\Model\Video;
 
+class VideoViewHelper extends AbstractTagBasedViewHelper
+{
     /**
-     * name of the tag to be created by this view helper
+     * name of the tag to be created by this viewhelper.
      *
      * @var string
+     *
      * @api
      */
     protected $tagName = 'video';
@@ -39,28 +43,30 @@ class VideoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedV
     /**
      * Initialize the arguments.
      *
-     * @return void
      * @api
      */
-    public function initializeArguments() {
-        parent::initializeArguments();
-        $this->registerTagAttribute('preload', 'string', 'Preload video', FALSE);
-        $this->registerTagAttribute('controls', 'string', 'Controls of video', FALSE);
-        $this->registerTagAttribute('rel', 'string', 'Rel attribute for the nivo-slider', FALSE);
-        $this->registerTagAttribute('poster', 'string', 'The poster image of the video', FALSE);
+    public function initializeArguments()
+    {
+        $this->registerTagAttribute('preload', 'string', 'Preload video', false);
+        $this->registerTagAttribute('controls', 'string', 'Controls of video', false);
+        $this->registerTagAttribute('rel', 'string', 'Rel attribute for the nivo-slider', false);
+        $this->registerTagAttribute('poster', 'string', 'The poster image of the video', false);
         $this->registerUniversalTagAttributes();
     }
 
     /**
-     * Render content of video tag
+     * Render content of video tag.
+     *
      * @param array $settings The settings array
-     * @param \Ssch\SschHtml5videoplayer\Domain\Model\Video $video The video object
-     * @param boolean $responsive
+     * @param Video $video The video object
+     * @param bool $responsive
+     *
      * @return string
      */
-    public function render(array $settings, \Ssch\SschHtml5videoplayer\Domain\Model\Video $video, $responsive = FALSE) {
-        $this->tag->forceClosingTag(TRUE);
-        if (FALSE === $responsive) {
+    public function render(array $settings, Video $video, $responsive = false)
+    {
+        $this->tag->forceClosingTag(true);
+        if (false === $responsive) {
 
             // The width and height cascade: settings, video, default
             $settingsVideoWidth = $settings['videoWidth'] ? $settings['videoWidth'] : $settings['video']['defaultWidth'];
@@ -96,7 +102,7 @@ class VideoViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedV
         }
 
         $this->tag->setContent($this->renderChildren());
+
         return $this->tag->render();
     }
-
 }

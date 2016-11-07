@@ -28,43 +28,35 @@ namespace Ssch\SschHtml5videoplayer\Domain\Model;
 
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-abstract class AbstractVideoAudioEntity extends AbstractEntity {
-
+abstract class AbstractVideoAudioEntity extends AbstractEntity
+{
     /**
-     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
      * @lazy
      */
     protected $categories;
 
     /**
-     * @return void
+     * AbstractVideoAudioEntity constructor.
      */
-    public function __construct() {
-        $this->initStorageObjects();
-    }
-
-    /**
-     * @return void
-     */
-    protected function initStorageObjects() {
+    public function __construct()
+    {
         $this->categories = new ObjectStorage();
     }
 
     /**
-     * 
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
      */
-    public function getCategories() {
+    public function getCategories()
+    {
         return $this->categories;
     }
 
     /**
-     * 
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
      */
-    public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories) {
+    public function setCategories(ObjectStorage $categories)
+    {
         $this->categories = $categories;
     }
-
 }

@@ -26,29 +26,26 @@ namespace Ssch\SschHtml5videoplayer\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-/**
- * Controller for the Audio object
- */
-
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Ssch\SschHtml5videoplayer\Domain\Model\Audio;
 
-class AudioController extends AbstractController {
-
+class AudioController extends AbstractController
+{
     /**
-     *
      * @var \Ssch\SschHtml5videoplayer\Domain\Repository\AudioRepository
      * @inject
      */
-    protected $audioRepository = NULL;
+    protected $audioRepository = null;
 
     /**
-     * Displays a single Audio
+     * Displays a single Audio.
      *
      * @param \Ssch\SschHtml5videoplayer\Domain\Model\Audio $audio the audio to play
-     * @return string The rendered view
      */
-    public function showAction(\Ssch\SschHtml5videoplayer\Domain\Model\Audio $audio = NULL) {
-        if (NULL === $audio) {
+    public function showAction(Audio $audio = null)
+    {
+        if (null === $audio) {
             $audioUid = intval($this->settings['audioSelection']);
             $audio = $this->audioRepository->findByUid($audioUid);
         }
@@ -57,34 +54,33 @@ class AudioController extends AbstractController {
     }
 
     /**
-     * action list
-     *
-     * @return string The rendered list action
+     * Display a list of audio files.
      */
-    public function listAction() {
+    public function listAction()
+    {
         $this->audioRepository->setOrderings($this->settings['orderBy'], $this->settings['orderDirection']);
         if ($this->settings['audioSelection']) {
             $audios = $this->audioRepository->findByUids($this->settings['audioSelection']);
-            $audios = $this->sorterUtility->sortElementsAsDefinedInFlexForms($this->settings['audioSelection'], $audios);
+            $audios = $this->sorterUtility->sortElementsAsDefinedInFlexForms($this->settings['audioSelection'],
+                $audios);
         } else {
             $audios = $this->audioRepository->findAll();
         }
         $this->view->assign('data', $this->configurationManager->getContentObject()->data);
         $this->view->assign('audios', $audios);
     }
-    
+
     /**
-     * 
-     * @param \Ssch\SschHtml5videoplayer\Controller\ViewInterface $view
+     * @param ViewInterface $view
      */
-    protected function initializeView(ViewInterface $view) {
+    protected function initializeView(ViewInterface $view)
+    {
         // Set template
         if ($this->settings['templateFile']) {
-            $templateFile = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Audio/' . $this->settings['templateFile']);
-            if (TRUE === file_exists($templateFile)) {
+            $templateFile = GeneralUtility::getFileAbsFileName($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'].'Audio/'.$this->settings['templateFile']);
+            if (true === file_exists($templateFile)) {
                 $view->setTemplatePathAndFilename($templateFile);
             }
         }
     }
-
 }
