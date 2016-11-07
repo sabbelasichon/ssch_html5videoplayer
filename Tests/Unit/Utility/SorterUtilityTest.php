@@ -26,11 +26,8 @@ namespace Ssch\SschHtml5videoplayer\Tests\Utility;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-/**
- * Video
- */
-
-class SorterUtilityTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+class SorterUtilityTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+{
 
     /**
      *
@@ -38,14 +35,16 @@ class SorterUtilityTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
      */
     protected $subject;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->subject = new \Ssch\SschHtml5videoplayer\Utility\SorterUtility();
     }
 
     /**
      * @test
      */
-    public function sortElementsAsDefinedInFlexFormsWithObjectStorage() {
+    public function sortElementsAsDefinedInFlexFormsWithObjectStorage()
+    {
         $records = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $videoMock1 = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', array('getUid'));
         $videoMock1->expects($this->any())->method('getUid')->will($this->returnValue(1));
@@ -59,13 +58,15 @@ class SorterUtilityTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
         $records->attach($videoMock2);
         $records->attach($videoMock3);
         $records->attach($videoMock4);
-        self::assertSame(array($videoMock2, $videoMock3, $videoMock1, $videoMock4), $this->subject->sortElementsAsDefinedInFlexForms('3,4,1,5', $records));
+        self::assertSame(array($videoMock2, $videoMock3, $videoMock1, $videoMock4),
+            $this->subject->sortElementsAsDefinedInFlexForms('3,4,1,5', $records));
     }
 
     /**
      * @test
      */
-    public function sortElementsAsDefinedInFlexFormsWithArrayOfObjects() {
+    public function sortElementsAsDefinedInFlexFormsWithArrayOfObjects()
+    {
         $video1 = new \stdClass();
         $video1->uid = 1;
         $video2 = new \stdClass();
@@ -74,14 +75,17 @@ class SorterUtilityTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
         $video3->uid = 4;
         $video4 = new \stdClass();
         $video4->uid = 5;
-        self::assertSame(array($video2, $video3, $video1, $video4), $this->subject->sortElementsAsDefinedInFlexForms('3,4,1,5', array($video1, $video2, $video3, $video4)));
+        self::assertSame(array($video2, $video3, $video1, $video4),
+            $this->subject->sortElementsAsDefinedInFlexForms('3,4,1,5', array($video1, $video2, $video3, $video4)));
     }
 
     /**
      * @test
      */
-    public function sortElementsAsDefinedInFlexFormsWithQueryResult() {
-        $result = $this->getAccessibleMock('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\QueryResult', array(), array(), '', FALSE);
+    public function sortElementsAsDefinedInFlexFormsWithQueryResult()
+    {
+        $result = $this->getAccessibleMock('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\QueryResult', array(), array(),
+            '', false);
         $video1 = new \stdClass();
         $video1->uid = 1;
         $video2 = new \stdClass();
@@ -91,14 +95,16 @@ class SorterUtilityTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
         $video4 = new \stdClass();
         $video4->uid = 5;
         $result->_set('queryResult', array($video2, $video3, $video1, $video4));
-        self::assertSame(array($video2, $video3, $video1, $video4), $this->subject->sortElementsAsDefinedInFlexForms('3,4,1,5', array($video1, $video2, $video3, $video4)));
+        self::assertSame(array($video2, $video3, $video1, $video4),
+            $this->subject->sortElementsAsDefinedInFlexForms('3,4,1,5', array($video1, $video2, $video3, $video4)));
     }
 
     /**
      * @test
      */
-    public function sortElemensAsDefinedInFlexFormsWithWrongParameter() {
-        self::assertSame(NULL, $this->subject->sortElementsAsDefinedInFlexForms('3,5,4,1', '3,4,5,1'));
+    public function sortElemensAsDefinedInFlexFormsWithWrongParameter()
+    {
+        self::assertSame(null, $this->subject->sortElementsAsDefinedInFlexForms('3,5,4,1', '3,4,5,1'));
     }
 
 }

@@ -26,96 +26,94 @@ namespace Ssch\SschHtml5videoplayer\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-class Subtitle extends AbstractEntity {
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 
+class Subtitle extends AbstractEntity
+{
     /**
-     *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $track;
 
     /**
-     *
      * @var \SJBR\StaticInfoTables\Domain\Model\Language
      */
     protected $staticLangIsocode;
 
     /**
-     *
-     * @var boolean
+     * @var bool
      */
     protected $selected;
 
     /**
-     *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    public function getTrack() {
+    public function getTrack()
+    {
         return $this->track;
     }
 
     /**
-     *
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $track
      */
-    public function setTrack(\TYPO3\CMS\Extbase\Domain\Model\FileReference $track) {
+    public function setTrack(FileReference $track)
+    {
         $this->track = $track;
     }
 
     /**
-     *
      * @return \SJBR\StaticInfoTables\Domain\Model\Language
      */
-    public function getStaticLangIsocode() {
+    public function getStaticLangIsocode()
+    {
         return $this->staticLangIsocode;
     }
 
     /**
-     *
      * @param \SJBR\StaticInfoTables\Domain\Model\Language $staticLangIsocode
      */
-    public function setStaticLangIsocode($staticLangIsocode) {
+    public function setStaticLangIsocode($staticLangIsocode)
+    {
         $this->staticLangIsocode = $staticLangIsocode;
     }
 
     /**
-     *
-     * @return boolean
+     * @return bool
      */
-    public function getSelected() {
+    public function getSelected()
+    {
         return $this->selected;
     }
 
     /**
-     *
-     * @param boolean $selected
+     * @param bool $selected
      */
-    public function setSelected($selected) {
+    public function setSelected($selected)
+    {
         $this->selected = $selected;
     }
 
     /**
-     * 
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getTrack();
     }
 
     /**
-     * 
      * @return string
      */
-    public function getUrl() {
+    public function getUrl()
+    {
         return $this->getTrack()->getOriginalResource()->getPublicUrl();
     }
 
     /**
-     * 
      * @return string
      */
-    public function getExtension() {
+    public function getExtension()
+    {
         return $this->getTrack()->getOriginalResource()->getExtension();
     }
-
 }

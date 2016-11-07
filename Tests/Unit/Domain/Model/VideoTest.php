@@ -29,32 +29,36 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\Domain\Model;
 /**
  * Video
  */
-class VideoTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+class VideoTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+{
 
     /**
      *
      * @var \Ssch\SschHtml5videoplayer\Domain\Model\Video
      */
-    protected $subject = NULL;
+    protected $subject = null;
 
     /**
      * @return void
      */
-    public function setUp() {
+    public function setUp()
+    {
         $this->subject = new \Ssch\SschHtml5videoplayer\Domain\Model\Video();
     }
 
     /**
      * @test
      */
-    public function defaultExternalTypeIsYoutube() {
+    public function defaultExternalTypeIsYoutube()
+    {
         self::assertSame('video/youtube', $this->subject->getExternalType());
     }
 
     /**
      * @test
      */
-    public function setAndGetExternalType() {
+    public function setAndGetExternalType()
+    {
         $this->subject->setExternalType('anything');
         self::assertSame('anything', $this->subject->getExternalType());
     }
@@ -62,7 +66,8 @@ class VideoTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
     /**
      * @test
      */
-    public function setAndGetCopyrightFromParentVideo() {
+    public function setAndGetCopyrightFromParentVideo()
+    {
         $parentVideo = new \Ssch\SschHtml5videoplayer\Domain\Model\Video();
         $parentVideo->setCopyright('Copyright from parent video');
         $this->subject->setParentid($parentVideo);

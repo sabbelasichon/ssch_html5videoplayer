@@ -26,37 +26,46 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-/**
- * Video
- */
-class AudioControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+use TYPO3\CMS\Core\Tests\UnitTestCase;
+use Ssch\SschHtml5videoplayer\Controller\AudioController;
+use Ssch\SschHtml5videoplayer\Domain\Model\Audio;
+use Ssch\SschHtml5videoplayer\Domain\Repository\AudioRepository;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
+
+class AudioControllerTest extends UnitTestCase
+{
 
     /**
      *
-     * @var \Ssch\SschHtml5videoplayer\Controller\AudioController
+     * @var AudioController
      */
     protected $subject;
 
     /**
      * @return void
      */
-    public function setUp() {
-        $this->subject = $this->getAccessibleMock('Ssch\\SschHtml5videoplayer\\Controller\\AudioController', array('redirect', 'forward', 'addFlashMessage'), array(), '', FALSE);
+    public function setUp()
+    {
+        $this->subject = $this->getAccessibleMock(AudioController::class,
+            array('redirect', 'forward', 'addFlashMessage'), array(), '', false);
     }
 
     /**
      * @test
      */
-    public function showAction() {
+    public function showAction()
+    {
         $settings = array('settings');
         $data = array('data');
 
-        $audioMock = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Audio');
+        $audioMock = $this->getMock(Audio::class);
         $contentObject = new \stdClass();
         $contentObject->data = $data;
         $this->inject($this->subject, 'settings', $settings);
 
-        $audioRepositoryMock = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Repository\\AudioRepository', array('findByUid'), array(), '', FALSE);
+        $audioRepositoryMock = $this->getMock(AudioRepository::class, array('findByUid'), array(), '', false);
         $audioRepositoryMock->expects($this->once())->method('findByUid')->will($this->returnValue($audioMock));
         $this->inject($this->subject, 'audioRepository', $audioRepositoryMock);
 
@@ -65,7 +74,8 @@ class AudioControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
         $view->expects($this->at(1))->method('assign')->with('audio', $audioMock);
         $this->inject($this->subject, 'view', $view);
 
-        $configurationManagerMock = $this->getMock('TYPO3\CMS\\Extbase\\Configuration\\ConfigurationManager', array('getContentObject', 'getConfiguration'), array(), '', FALSE);
+        $configurationManagerMock = $this->getMock(ConfigurationManagerInterface::class,
+            array('getContentObject', 'getConfiguration'), array(), '', false);
         $configurationManagerMock->expects($this->once())->method('getContentObject')->will($this->returnValue($contentObject));
         $this->inject($this->subject, 'configurationManager', $configurationManagerMock);
 
@@ -75,9 +85,10 @@ class AudioControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
     /**
      * @test
      */
-    public function listAction() {
+    public function listAction()
+    {
 
-        $allAudios = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
+        $allAudios = $this->getMock(ObjectStorage::class, array(), array(), '', false);
 
         $settings = array('settings');
         $data = array('data');
@@ -86,15 +97,16 @@ class AudioControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
         $contentObject->data = $data;
         $this->inject($this->subject, 'settings', $settings);
 
-        $audioRepositoryMock = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Repository\\AudioRepository', array('findAll'), array(), '', FALSE);
+        $audioRepositoryMock = $this->getMock(AudioRepository::class, array('findAll'), array(), '', false);
         $audioRepositoryMock->expects($this->once())->method('findAll')->will($this->returnValue($allAudios));
         $this->inject($this->subject, 'audioRepository', $audioRepositoryMock);
 
-        $configurationManagerMock = $this->getMock('TYPO3\CMS\\Extbase\\Configuration\\ConfigurationManager', array('getContentObject', 'getConfiguration'), array(), '', FALSE);
+        $configurationManagerMock = $this->getMock(ConfigurationManagerInterface::class,
+            array('getContentObject', 'getConfiguration'), array(), '', false);
         $configurationManagerMock->expects($this->once())->method('getContentObject')->will($this->returnValue($contentObject));
         $this->inject($this->subject, 'configurationManager', $configurationManagerMock);
 
-        $view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
+        $view = $this->getMock(ViewInterface::class);
         $view->expects($this->at(0))->method('assign')->with('data', $data);
         $view->expects($this->at(1))->method('assign')->with('audios', $allAudios);
         $this->inject($this->subject, 'view', $view);

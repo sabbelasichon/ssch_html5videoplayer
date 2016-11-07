@@ -28,20 +28,21 @@ namespace Ssch\SschHtml5videoplayer\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
-abstract class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+abstract class AbstractRepository extends Repository
 {
-
     /**
-     *
      * @var \Ssch\SschHtml5videoplayer\Service\CategoryService
      * @inject
      */
     protected $categoryService;
 
     /**
-     * Finds all opjects
+     * Finds all opjects.
+     *
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     *
      * @internal param null $orderBy
      */
     public function findAll()
@@ -53,8 +54,10 @@ abstract class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Reposit
     }
 
     /**
-     * Get a list of addresses
+     * Get a list of addresses.
+     *
      * @param string $uids A comma separeted list of uids
+     *
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
     public function findByUids($uids)
@@ -67,8 +70,8 @@ abstract class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Reposit
     }
 
     /**
-     *
      * @param string $categoryUids Comma separeted list of categories
+     *
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
     public function findByCategories($categoryUids)
@@ -85,7 +88,7 @@ abstract class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Reposit
 
     /**
      * @param string $orderBy
-     * @param null $orderDirection
+     * @param null   $orderDirection
      */
     public function setOrderings($orderBy = null, $orderDirection = null)
     {
@@ -104,6 +107,4 @@ abstract class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Reposit
             }
         }
     }
-
-
 }

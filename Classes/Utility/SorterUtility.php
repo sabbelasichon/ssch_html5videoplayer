@@ -27,65 +27,84 @@ namespace Ssch\SschHtml5videoplayer\Utility;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-class SorterUtility {
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
+use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
+use UnexpectedValueException;
+use Traversable;
 
+class SorterUtility
+{
     /**
-     * Sort elements as defined in a CSV-List
+     * Sort elements as defined in a CSV-List.
+     *
      * @param string $definedInFlexFormsAsList
-     * @param mixed $records
+     * @param mixed  $records
      * @param string $key
+     *
      * @return array $sortedRecords
      */
-    public function sortElementsAsDefinedInFlexForms($definedInFlexFormsAsList, $records, $key = 'uid') {
+    public function sortElementsAsDefinedInFlexForms($definedInFlexFormsAsList, $records, $key = 'uid')
+    {
         if ($this->areElementsValid($records)) {
-            $arrayOfRecordsAsOrderedInFlexForms = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $definedInFlexFormsAsList);
+            $arrayOfRecordsAsOrderedInFlexForms = GeneralUtility::trimExplode(',', $definedInFlexFormsAsList);
             $sortedRecords = array();
             foreach ($arrayOfRecordsAsOrderedInFlexForms as $flexFormEntryKey => $flexFormEntryValue) {
                 $element = $this->sortArray($records, $flexFormEntryValue, $key);
-                if($element !== NULL) {
+                if ($element !== null) {
                     $sortedRecords[] = $element;
                 }
             }
+
             return $sortedRecords;
         }
-        return NULL;
+
+        return;
     }
 
     /**
-     * Sort the array
-     * @param mixed $records
-     * @param integer $num
+     * Sort the array.
+     *
+     * @param mixed  $records
+     * @param int    $num
      * @param string $key
+     *
      * @return array
      */
-    protected function sortArray($records, $num, $key = 'uid') {
+    protected function sortArray($records, $num, $key = 'uid')
+    {
         foreach ($records as $record) {
             if (is_array($record)) {
                 $recordUid = $record[$key];
-            } elseif ($record instanceof \TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject) {
-                $recordUid = \TYPO3\CMS\Extbase\Reflection\ObjectAccess::getProperty($record, $key);               
+            } elseif ($record instanceof AbstractDomainObject) {
+                $recordUid = ObjectAccess::getProperty($record, $key);
             } elseif (is_object($record)) {
                 $recordUid = $record->$key;
+            } else {
+                throw new UnexpectedValueException('It is not possible to get key of record');
             }
-           
+
             if ((string) $recordUid === (string) $num) {
                 return $record;
             }
         }
-        return NULL;
+
+        return;
     }
-    
+
     /**
-     * @elements array
+     * @param array|Traversable $elements
+     *
+     * @return bool
      */
-    protected function areElementsValid($elements) {
-        if ($elements instanceof \TYPO3\CMS\Extbase\Persistence\ObjectStorage) {
-            return TRUE;
-        } elseif ($elements instanceof \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult) {
-            return TRUE;
+    protected function areElementsValid($elements)
+    {
+        if ($elements instanceof Traversable) {
+            return true;
         } elseif (is_array($elements)) {
-            return TRUE;
+            return true;
         }
-        return FALSE;
+
+        return false;
     }
 }

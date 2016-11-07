@@ -30,52 +30,54 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Lang\LanguageService;
 
-class Wizicon {
-
+class Wizicon
+{
     /**
-     * Processing the wizard items array
+     * Processing the wizard items array.
      *
      * @param array $wizardItems: The wizard items
      *
      * @return array Modified array with wizard items
      */
-    function proc($wizardItems) {
+    public function proc($wizardItems)
+    {
         $LL = $this->includeLocalLang();
-
 
         $pluginsWithWizards = array('pi1', 'pi2', 'pi3', 'pi4', 'pi5');
 
         foreach ($pluginsWithWizards as $pluginWithWizard) {
-            $pluginWithWizardWithPrefix = 'sschhtml5videoplayer_' . $pluginWithWizard;
-            $wizardItems['plugins_tx_sschhtml5videoplayer_' . $pluginWithWizard] = array(
-                'icon' => ExtensionManagementUtility::extRelPath('ssch_html5videoplayer') . '/Resources/Public/Icons/Wizicon.gif',
-                'title' => $this->getLanguage()->getLLL('list_title_' . $pluginWithWizardWithPrefix, $LL),
-                'description' => $this->getLanguage()->getLLL('list_plus_wiz_description_' . $pluginWithWizardWithPrefix, $LL),
-                'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=' . $pluginWithWizardWithPrefix
+            $pluginWithWizardWithPrefix = 'sschhtml5videoplayer_'.$pluginWithWizard;
+            $wizardItems['plugins_tx_sschhtml5videoplayer_'.$pluginWithWizard] = array(
+                'icon' => ExtensionManagementUtility::extRelPath('ssch_html5videoplayer').'/Resources/Public/Icons/Wizicon.gif',
+                'title' => $this->getLanguage()->getLLL('list_title_'.$pluginWithWizardWithPrefix, $LL),
+                'description' => $this->getLanguage()->getLLL('list_plus_wiz_description_'.$pluginWithWizardWithPrefix, $LL),
+                'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]='.$pluginWithWizardWithPrefix,
             );
         }
+
         return $wizardItems;
     }
 
     /**
-     * Get language service
+     * Get language service.
      *
      * @return LanguageService
      */
-    protected function getLanguage() {
+    protected function getLanguage()
+    {
         return $GLOBALS['LANG'];
     }
 
     /**
      * Reads the [extDir]/locallang.xml and returns the $LOCAL_LANG array found in that file.
      *
-     * @return  array   The array with language labels
+     * @return array The array with language labels
      */
-    protected function includeLocalLang() {
-        $llFile = ExtensionManagementUtility::extPath('ssch_html5videoplayer') . 'Resources/Private/Language/locallang_db.xlf';
+    protected function includeLocalLang()
+    {
+        $llFile = ExtensionManagementUtility::extPath('ssch_html5videoplayer').'Resources/Private/Language/locallang_db.xlf';
         $parser = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Localization\\LocalizationFactory');
         /* @var $parser \TYPO3\CMS\Core\Localization\LocalizationFactory */
-        return $parser->getParsedData($llFile, $this->getLanguage()->lang, 'utf-8', 1);        
+        return $parser->getParsedData($llFile, $this->getLanguage()->lang, 'utf-8', 1);
     }
-
 }

@@ -31,8 +31,8 @@ use TYPO3\CMS\Lang\LanguageService;
 use TYPO3\CMS\Core\Database\DatabaseConnection;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class CmsLayout {
-
+class CmsLayout
+{
     /**
      * @var array
      */
@@ -43,68 +43,75 @@ class CmsLayout {
      *
      * @return string
      */
-    public function getExtensionSummary(array $params) {
-
+    public function getExtensionSummary(array $params)
+    {
         $LL = $this->includeLocalLang();
-        $result = '<strong><cite>&rarr; ' . $this->getLanguage()->getLLL('list_title_' . $params['row']['list_type'], $LL) . ' </cite></strong>';
+        $result = '<strong><cite>&rarr; '.$this->getLanguage()->getLLL('list_title_'.$params['row']['list_type'],
+                $LL).' </cite></strong>';
         $this->flexformData = GeneralUtility::xml2array($params['row']['pi_flexform']);
         if ($this->getFieldFromFlexform('settings.videoWidth')) {
-            $result .= '<br /><strong>Width:</strong>: ' . $this->getFieldFromFlexform('settings.videoWidth');
+            $result .= '<br /><strong>Width:</strong>: '.$this->getFieldFromFlexform('settings.videoWidth');
         }
         if ($this->getFieldFromFlexform('settings.videoHeight')) {
-            $result .= '<br /><strong>Height</strong>: ' . $this->getFieldFromFlexform('settings.videoHeight');
+            $result .= '<br /><strong>Height</strong>: '.$this->getFieldFromFlexform('settings.videoHeight');
         }
         if ($this->getFieldFromFlexform('settings.templateFile')) {
-            $result .= '<br /><strong>Template</strong>: ' . $this->getFieldFromFlexform('settings.templateFile');
+            $result .= '<br /><strong>Template</strong>: '.$this->getFieldFromFlexform('settings.templateFile');
         }
         if ($this->getFieldFromFlexform('settings.addMediaElementJsInitializationFile')) {
-            $result .= '<br /><strong>MediaelementInit</strong>: ' . basename($this->getFieldFromFlexform('settings.addMediaElementJsInitializationFile'));
+            $result .= '<br /><strong>MediaelementInit</strong>: '.basename($this->getFieldFromFlexform('settings.addMediaElementJsInitializationFile'));
         }
         if ($this->getFieldFromFlexform('settings.skin')) {
-            $result .= '<br /><strong>Skin</strong>: ' . $this->getFieldFromFlexform('settings.skin');
+            $result .= '<br /><strong>Skin</strong>: '.$this->getFieldFromFlexform('settings.skin');
         }
         if ($this->getFieldFromFlexform('settings.videoSelection')) {
-            $this->addItemsToResult($this->getItemsByTableAndUids($this->getFieldFromFlexform('settings.videoSelection')), $result);
+            $this->addItemsToResult($this->getItemsByTableAndUids($this->getFieldFromFlexform('settings.videoSelection')),
+                $result);
         }
         if ($this->getFieldFromFlexform('settings.audioSelection')) {
-            $this->addItemsToResult($this->getItemsByTableAndUids($this->getFieldFromFlexform('settings.audioSelection'), 'tx_sschhtml5videoplayer_domain_model_audio'), $result);
+            $this->addItemsToResult($this->getItemsByTableAndUids($this->getFieldFromFlexform('settings.audioSelection'),
+                'tx_sschhtml5videoplayer_domain_model_audio'), $result);
         }
 
         return $result;
     }
 
     /**
-     * 
-     * @param array $items
+     * @param array  $items
      * @param string $result
      */
-    protected function addItemsToResult($items, &$result) {
+    protected function addItemsToResult($items, &$result)
+    {
         $result .= '<br /><ul style="margin-bottom: 0;">';
         foreach ($items as $item) {
-            $result .= '<li>' . $item['title'] . '</li>';
+            $result .= '<li>'.$item['title'].'</li>';
         }
         $result .= '</ul>';
     }
 
     /**
-     * @param $uid
+     * @param string $uids
+     * @param string $table
      *
-     * @return array|NULL
+     * @return array|null
      */
-    protected function getItemsByTableAndUids($uids, $table = 'tx_sschhtml5videoplayer_domain_model_video') {
-        return $this->getDatabaseConnection()->exec_SELECTgetRows($table . '.*', $table, $table . '.uid IN( ' . $this->getDatabaseConnection()->cleanIntList($uids) . ')');
+    protected function getItemsByTableAndUids($uids, $table = 'tx_sschhtml5videoplayer_domain_model_video')
+    {
+        return $this->getDatabaseConnection()->exec_SELECTgetRows($table.'.*', $table,
+            $table.'.uid IN( '.$this->getDatabaseConnection()->cleanIntList($uids).')');
     }
 
     /**
      * Get field value from flexform configuration,
-     * including checks if flexform configuration is available
+     * including checks if flexform configuration is available.
      *
      * @param string $key   name of the key
      * @param string $sheet name of the sheet
      *
-     * @return string|NULL if nothing found, value if found
+     * @return string|null if nothing found, value if found
      */
-    protected function getFieldFromFlexform($key, $sheet = 'displayCode') {
+    protected function getFieldFromFlexform($key, $sheet = 'displayCode')
+    {
         $flexform = $this->flexformData;
         if (isset($flexform['data'])) {
             $flexform = $flexform['data'];
@@ -112,35 +119,39 @@ class CmsLayout {
                 return $flexform[$sheet]['lDEF'][$key]['vDEF'];
             }
         }
-        return NULL;
+
+        return;
     }
 
     /**
      * @return DatabaseConnection
      */
-    protected function getDatabaseConnection() {
+    protected function getDatabaseConnection()
+    {
         return $GLOBALS['TYPO3_DB'];
     }
 
     /**
-     * Get language service
+     * Get language service.
      *
      * @return LanguageService
      */
-    protected function getLanguage() {
+    protected function getLanguage()
+    {
         return $GLOBALS['LANG'];
     }
 
     /**
      * Reads the [extDir]/locallang.xml and returns the $LOCAL_LANG array found in that file.
      *
-     * @return  array   The array with language labels
+     * @return array The array with language labels
      */
-    protected function includeLocalLang() {
-        $llFile = ExtensionManagementUtility::extPath('ssch_html5videoplayer') . 'Resources/Private/Language/locallang_db.xlf';
+    protected function includeLocalLang()
+    {
+        $llFile = ExtensionManagementUtility::extPath('ssch_html5videoplayer').'Resources/Private/Language/locallang_db.xlf';
         $parser = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Localization\\LocalizationFactory');
-        /* @var $parser \TYPO3\CMS\Core\Localization\LocalizationFactory */
-        return $parser->getParsedData($llFile, $this->getLanguage()->lang, 'utf-8', 1);        
-    }
 
+        /* @var $parser \TYPO3\CMS\Core\Localization\LocalizationFactory */
+        return $parser->getParsedData($llFile, $this->getLanguage()->lang, 'utf-8', 1);
+    }
 }

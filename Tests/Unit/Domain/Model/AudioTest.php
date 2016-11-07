@@ -26,34 +26,36 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-/**
- * Video
- */
-class AudioTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+use Ssch\SschHtml5videoplayer\Domain\Model\Audio;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Core\Tests\UnitTestCase;
+
+class AudioTest extends UnitTestCase
+{
 
     /**
      *
-     * @var \Ssch\SschHtml5videoplayer\Domain\Model\Audio
+     * @var Audio
      */
-    protected $subject = NULL;
+    protected $subject = null;
 
     /**
      * @return void
      */
-    public function setUp() {
-        $this->subject = new \Ssch\SschHtml5videoplayer\Domain\Model\Audio();
+    public function setUp()
+    {
+        $this->subject = new Audio();
     }
-    
+
     /**
      * @test
      */
-    public function getAndSetImage() {
-        $image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        /* @var $image \TYPO3\CMS\Extbase\Domain\Model\FileReference */
+    public function getAndSetImage()
+    {
+        $image = $this->getMock(FileReference::class);
         $this->subject->setImage($image);
-        self::assertInstanceOf('\TYPO3\CMS\Extbase\Domain\Model\FileReference', $this->subject->getImage());
+        self::assertInstanceOf(FileReference::class, $this->subject->getImage());
     }
-    
-    
+
 
 }

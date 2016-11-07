@@ -1,28 +1,30 @@
 plugin.tx_sschhtml5videoplayer {
-	view {
-		templateRootPath = {$plugin.tx_sschhtml5videoplayer.view.templateRootPath}
-		partialRootPath = {$plugin.tx_sschhtml5videoplayer.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_sschhtml5videoplayer.view.layoutRootPath}
-                templateRootPathInitializationFiles = {$plugin.tx_sschhtml5videoplayer.view.templateRootPathInitializationFiles}
-	}
-	persistence {
-		storagePid = {$plugin.tx_sschhtml5videoplayer.persistence.storagePid}
-	}
-        settings {
-                addHeaderData = {$plugin.tx_sschhtml5videoplayer.settings.addHeaderData}
-                addJQueryLibrary = {$plugin.tx_sschhtml5videoplayer.settings.addJQueryLibrary}
-                addMediaElementJs = {$plugin.tx_sschhtml5videoplayer.settings.addMediaElementJs}
-                mediaelementjsFolder = {$plugin.tx_sschhtml5videoplayer.settings.mediaelementjsFolder}
-                addMediaElementJsInitialization = {$plugin.tx_sschhtml5videoplayer.settings.addMediaElementJsInitialization}
-                addMediaElementJsInitializationFile = {$plugin.tx_sschhtml5videoplayer.settings.addMediaElementJsInitializationFile}
-                
-                video {
-                    defaultWidth = {$plugin.tx_sschhtml5videoplayer.settings.video.defaultWidth}
-                    defaultHeight = {$plugin.tx_sschhtml5videoplayer.settings.video.defaultHeight}
-                }
+    view {
+        templateRootPath = {$plugin.tx_sschhtml5videoplayer.view.templateRootPath}
+        partialRootPath = {$plugin.tx_sschhtml5videoplayer.view.partialRootPath}
+        layoutRootPath = {$plugin.tx_sschhtml5videoplayer.view.layoutRootPath}
+        templateRootPathInitializationFiles = {$plugin.tx_sschhtml5videoplayer.view.templateRootPathInitializationFiles}
+    }
 
-                audio {
-                    
-                }
+    persistence {
+        storagePid = {$plugin.tx_sschhtml5videoplayer.persistence.storagePid}
+    }
+
+    settings {
+        addHeaderData = {$plugin.tx_sschhtml5videoplayer.settings.addHeaderData}
+        addJQueryLibrary = {$plugin.tx_sschhtml5videoplayer.settings.addJQueryLibrary}
+        addMediaElementJs = {$plugin.tx_sschhtml5videoplayer.settings.addMediaElementJs}
+        mediaelementjsFolder = {$plugin.tx_sschhtml5videoplayer.settings.mediaelementjsFolder}
+        addMediaElementJsInitialization = {$plugin.tx_sschhtml5videoplayer.settings.addMediaElementJsInitialization}
+        addMediaElementJsInitializationFile = {$plugin.tx_sschhtml5videoplayer.settings.addMediaElementJsInitializationFile}
+
+        video {
+            defaultWidth = {$plugin.tx_sschhtml5videoplayer.settings.video.defaultWidth}
+            defaultHeight = {$plugin.tx_sschhtml5videoplayer.settings.video.defaultHeight}
         }
+
+        audio {
+
+        }
+    }
 }

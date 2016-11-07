@@ -26,46 +26,57 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-/**
- * Video
- */
-class VideoControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+use TYPO3\CMS\Core\Tests\UnitTestCase;
+use Ssch\SschHtml5videoplayer\Controller\VideoController;
+use Ssch\SschHtml5videoplayer\Domain\Model\Video;
+use Ssch\SschHtml5videoplayer\Domain\Repository\VideoRepository;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
+class VideoControllerTest extends UnitTestCase
+{
 
     /**
      *
-     * @var \Ssch\SschHtml5videoplayer\Controller\VideoController
+     * @var VideoController
      */
     protected $subject;
 
     /**
      * @return void
      */
-    public function setUp() {
-        $this->subject = $this->getAccessibleMock('Ssch\\SschHtml5videoplayer\\Controller\\VideoController', array('redirect', 'forward', 'addFlashMessage'), array(), '', FALSE);
+    public function setUp()
+    {
+        $this->subject = $this->getAccessibleMock(VideoController::class,
+            array('redirect', 'forward', 'addFlashMessage'), array(), '', false);
     }
 
     /**
      * @test
      */
-    public function showAction() {
+    public function showAction()
+    {
         $settings = array('settings');
         $data = array('data');
 
-        $videoMock = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video');
+        $videoMock = $this->getMock(Video::class);
         $contentObject = new \stdClass();
         $contentObject->data = $data;
         $this->inject($this->subject, 'settings', $settings);
 
-        $videoRepositoryMock = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Repository\\VideoRepository', array('findByUid'), array(), '', FALSE);
+        $videoRepositoryMock = $this->getMock(VideoRepository::class,
+            array('findByUid'), array(), '', false);
         $videoRepositoryMock->expects($this->once())->method('findByUid')->will($this->returnValue($videoMock));
         $this->inject($this->subject, 'videoRepository', $videoRepositoryMock);
 
-        $view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
+        $view = $this->getMock(ViewInterface::class);
         $view->expects($this->at(0))->method('assign')->with('data', $data);
         $view->expects($this->at(1))->method('assign')->with('video', $videoMock);
         $this->inject($this->subject, 'view', $view);
 
-        $configurationManagerMock = $this->getMock('TYPO3\CMS\\Extbase\\Configuration\\ConfigurationManager', array('getContentObject', 'getConfiguration'), array(), '', FALSE);
+        $configurationManagerMock = $this->getMock(ConfigurationManagerInterface::class,
+            array('getContentObject', 'getConfiguration'), array(), '', false);
         $configurationManagerMock->expects($this->once())->method('getContentObject')->will($this->returnValue($contentObject));
         $this->inject($this->subject, 'configurationManager', $configurationManagerMock);
 
@@ -75,9 +86,10 @@ class VideoControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
     /**
      * @test
      */
-    public function listAction() {
+    public function listAction()
+    {
 
-        $allVideos = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
+        $allVideos = $this->getMock(ObjectStorage::class, array(), array(), '', false);
 
         $settings = array('settings');
         $data = array('data');
@@ -86,15 +98,17 @@ class VideoControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
         $contentObject->data = $data;
         $this->inject($this->subject, 'settings', $settings);
 
-        $videoRepositoryMock = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Repository\\VideoRepository', array('findAll'), array(), '', FALSE);
+        $videoRepositoryMock = $this->getMock(VideoRepository::class,
+            array('findAll'), array(), '', false);
         $videoRepositoryMock->expects($this->once())->method('findAll')->will($this->returnValue($allVideos));
         $this->inject($this->subject, 'videoRepository', $videoRepositoryMock);
 
-        $configurationManagerMock = $this->getMock('TYPO3\CMS\\Extbase\\Configuration\\ConfigurationManager', array('getContentObject', 'getConfiguration'), array(), '', FALSE);
+        $configurationManagerMock = $this->getMock(ConfigurationManagerInterface::class,
+            array('getContentObject', 'getConfiguration'), array(), '', false);
         $configurationManagerMock->expects($this->once())->method('getContentObject')->will($this->returnValue($contentObject));
         $this->inject($this->subject, 'configurationManager', $configurationManagerMock);
 
-        $view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
+        $view = $this->getMock(ViewInterface::class);
         $view->expects($this->at(0))->method('assign')->with('data', $data);
         $view->expects($this->at(1))->method('assign')->with('videos', $allVideos);
         $this->inject($this->subject, 'view', $view);

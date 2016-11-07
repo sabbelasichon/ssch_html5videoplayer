@@ -26,8 +26,6 @@ namespace Ssch\SschHtml5videoplayer\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-/**
- * Controller for the Video object
- */
-class VideoRepository extends AbstractRepository {   
+class VideoRepository extends AbstractRepository
+{
 }

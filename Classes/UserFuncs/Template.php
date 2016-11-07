@@ -28,12 +28,14 @@ namespace Ssch\SschHtml5videoplayer\UserFuncs;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class Template {
-
+class Template
+{
     /**
-     * Manipulating the input array, $params, adding new selectorbox items.
+     * @param array  $params
+     * @param object $pObj
      */
-    function main(&$params, &$pObj) {
+    public function main(&$params, &$pObj)
+    {
         global $BE_USER;
 
         $thePageId = $params['row']['pid'];
@@ -49,29 +51,25 @@ class Template {
         $template->runThroughTemplates($rootLine, 0);
         $template->generateConfig();
 
-        $fullPath = FALSE;
+        $fullPath = false;
         switch ($params['config']['path']) {
             case 'JavaScripts':
-                $fullPath = TRUE;
+                $fullPath = true;
                 $extFileList = 'html,htm,js';
                 $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPathInitializationFiles'];
                 break;
             case 'Audio':
                 $extFileList = 'html,htm';
-                $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Audio/';
+                $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'].'Audio/';
                 break;
             default:
                 $extFileList = 'html,htm';
-                $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Video/';
+                $pathToFiles = $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'].'Video/';
                 break;
         }
 
-
-
         // Finding value for the path containing the template files
         $readPath = GeneralUtility::getFileAbsFileName($pathToFiles);
-
-
 
         // If that direcotry is valid, is a directory then select files in it:
         if (is_dir($readPath)) {
@@ -86,7 +84,7 @@ class Template {
                 $selectorBoxItemIcon = '';
                 $content = GeneralUtility::getUrl($htmlFilePath);
                 $titles = $parseHTML->splitIntoBlock('titles', $content);
-                $language = $BE_USER->uc["lang"] == '' ? 'default' : $BE_USER->uc["lang"];
+                $language = $BE_USER->uc['lang'] == '' ? 'default' : $BE_USER->uc['lang'];
 
                 $titlesLang = $parseHTML->splitIntoBlock($language, $titles[1]);
                 if (count($titlesLang) < 2) {
@@ -95,22 +93,21 @@ class Template {
                 $titleTagContent = $parseHTML->removeFirstAndLastTag($titlesLang[1]);
 
                 if ($titleTagContent) {
-                    $selectorBoxItemTitle = trim($titleTagContent . ' (' . basename($htmlFilePath) . ')');
+                    $selectorBoxItemTitle = trim($titleTagContent.' ('.basename($htmlFilePath).')');
                     $fI = GeneralUtility::split_fileref($htmlFilePath);
-                    $testImageFilename = $readPath . 'Icons/' . $fI['filebody'] . '.gif';
+                    $testImageFilename = $readPath.'Icons/'.$fI['filebody'].'.gif';
                     if (is_file($testImageFilename)) {
-                        $selectorBoxItemIcon = '../' . substr($testImageFilename, strlen(PATH_site));
+                        $selectorBoxItemIcon = '../'.substr($testImageFilename, strlen(PATH_site));
                     }
 
-                    if (TRUE === $fullPath) {
+                    if (true === $fullPath) {
                         $pathToFile = $htmlFilePath;
                     } else {
                         $pathToFile = basename($htmlFilePath);
                     }
-                    $params["items"][] = array($selectorBoxItemTitle, $pathToFile, $selectorBoxItemIcon);
+                    $params['items'][] = array($selectorBoxItemTitle, $pathToFile, $selectorBoxItemIcon);
                 }
             }
         }
     }
-
 }

@@ -26,37 +26,42 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-/**
- * Video
- */
-class SubtitleTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+use TYPO3\CMS\Core\Tests\UnitTestCase;
+use Ssch\SschHtml5videoplayer\Domain\Model\Subtitle;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+
+class SubtitleTest extends UnitTestCase
+{
 
     /**
      *
-     * @var \Ssch\SschHtml5videoplayer\Domain\Model\Subtitle
+     * @var Subtitle
      */
-    protected $subject = NULL;
+    protected $subject = null;
 
     /**
      * @return void
      */
-    public function setUp() {
-        $this->subject = new \Ssch\SschHtml5videoplayer\Domain\Model\Subtitle();
+    public function setUp()
+    {
+        $this->subject = new Subtitle();
     }
 
     /**
      * @test
      */
-    public function getAndSetSelected() {
-        $this->subject->setSelected(TRUE);
+    public function getAndSetSelected()
+    {
+        $this->subject->setSelected(true);
         self::assertTrue($this->subject->getSelected());
     }
 
     /**
      * @test
      */
-    public function getAndSetTrack() {
-        $trackMock = $this->getMock('\TYPO3\CMS\Extbase\Domain\Model\FileReference');
+    public function getAndSetTrack()
+    {
+        $trackMock = $this->getMock(FileReference::class);
         $this->subject->setTrack($trackMock);
         self::assertSame($trackMock, $this->subject->getTrack());
     }
@@ -64,7 +69,8 @@ class SubtitleTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
     /**
      * @test
      */
-    public function getAndSetLanguageIsoCode() {
+    public function getAndSetLanguageIsoCode()
+    {
         $staticLangIsocode = $this->getMockBuilder('SJBR\StaticInfoTables\Domain\Model\Language')->getMock();
         $this->subject->setStaticLangIsocode($staticLangIsocode);
         self::assertInstanceOf('SJBR\StaticInfoTables\Domain\Model\Language', $this->subject->getStaticLangIsocode());

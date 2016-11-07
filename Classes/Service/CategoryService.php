@@ -30,14 +30,15 @@ namespace Ssch\SschHtml5videoplayer\Service;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class CategoryService implements \TYPO3\CMS\Core\SingletonInterface {
-
+class CategoryService implements \TYPO3\CMS\Core\SingletonInterface
+{
     /**
-     * 
      * @param string $categoryUids
+     *
      * @return array
      */
-    public function getSubCategories($categoryUids) {
+    public function getSubCategories($categoryUids)
+    {
         $categories = GeneralUtility::trimExplode(',', $categoryUids);
         foreach ($categories as $category) {
             $subCategoriesList = $this->getTreeListOfAnyTable($category);
@@ -45,21 +46,23 @@ class CategoryService implements \TYPO3\CMS\Core\SingletonInterface {
                 $categories = array_merge($categories, GeneralUtility::trimExplode(',', $subCategoriesList));
             }
         }
+
         return array_unique($categories);
     }
 
     /**
-     *
-     * @param integer $id
-     * @param integer $depth
-     * @param integer $begin
-     * @param string $perms_clause
+     * @param int    $id
+     * @param int    $depth
+     * @param int    $begin
+     * @param int    $perms_clause
      * @param string $table
      * @param string $field
      * @param string $fields
+     *
      * @return string Comma seperated list of uids
      */
-    public function getTreeListOfAnyTable($id, $depth = 99, $begin = 0, $perms_clause = 1, $table = 'sys_category', $field = 'parent', $fields = 'uid') {
+    public function getTreeListOfAnyTable($id, $depth = 99, $begin = 0, $perms_clause = 1, $table = 'sys_category', $field = 'parent', $fields = 'uid')
+    {
         $depth = intval($depth);
         $begin = intval($begin);
         $id = intval($id);
@@ -70,26 +73,26 @@ class CategoryService implements \TYPO3\CMS\Core\SingletonInterface {
         }
         if ($id && $depth > 0) {
             $res = $this->getDatabaseConnection()->exec_SELECTquery(
-                    $fields, $table, $field . '=' . $id . ' ' . BackendUtility::deleteClause($table) . ' AND ' . $perms_clause
+                    $fields, $table, $field.'='.$id.' '.BackendUtility::deleteClause($table).' AND '.$perms_clause
             );
             while ($row = $this->getDatabaseConnection()->sql_fetch_assoc($res)) {
                 if ($begin <= 0) {
-                    $theList .= ',' . $row['uid'];
+                    $theList .= ','.$row['uid'];
                 }
                 if ($depth > 1) {
                     $theList .= $this->getTreeListOfAnyTable($row['uid'], $depth - 1, $begin - 1, $perms_clause, $table, $field, $fields);
                 }
             }
         }
+
         return $theList;
     }
 
     /**
-     * 
      * @return \TYPO3\CMS\Core\Database\DatabaseConnection
      */
-    protected function getDatabaseConnection() {
+    protected function getDatabaseConnection()
+    {
         return $GLOBALS['TYPO3_DB'];
     }
-
 }

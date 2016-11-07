@@ -1,4 +1,6 @@
-<?php namespace Ssch\SschHtml5videoplayer\Controller;
+<?php
+
+namespace Ssch\SschHtml5videoplayer\Controller;
 
 /* * *************************************************************
  *  Copyright notice
@@ -23,21 +25,20 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
+
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use SJBR\StaticInfoTables\Utility\LocalizationUtility;
 
 abstract class AbstractController extends ActionController
 {
-
     /**
-     *
      * @var \Ssch\SschHtml5videoplayer\Utility\SorterUtility
      * @inject
      */
     protected $sorterUtility;
 
     /**
-     * @return void
      */
     public function initializeAction()
     {
@@ -46,31 +47,33 @@ abstract class AbstractController extends ActionController
         $this->settings['mediaelementjsFolderRelative'] = $mediaElementJsFolder;
         if ($this->settings['addHeaderData']) {
             if ($this->settings['addJQueryLibrary']) {
-                $jQueryLibrary = $mediaElementJsFolder . 'build/jquery.js';
+                $jQueryLibrary = $mediaElementJsFolder.'build/jquery.js';
                 $this->addHeaderData($jQueryLibrary, 'js');
             }
             if ($this->settings['addMediaElementJs']) {
-                $locale = strtolower(\SJBR\StaticInfoTables\Utility\LocalizationUtility::getCurrentLanguage());
+                $locale = strtolower(LocalizationUtility::getCurrentLanguage());
                 if ($locale) {
-                    $localeFile = $mediaElementJsFolder . sprintf('src/js/me-i18n-locale-%s.js', $locale);
+                    $localeFile = $mediaElementJsFolder.sprintf('src/js/me-i18n-locale-%s.js', $locale);
                     if (file_exists($localeFile)) {
-                        $this->addHeaderData('var mejs = mejs || {}; (function () { mejs.i18n = { locale: { language: "' . $locale . '", strings: { } } }; })();', 'script');
+                        $this->addHeaderData('var mejs = mejs || {}; (function () { mejs.i18n = { locale: { language: "'.$locale.'", strings: { } } }; })();',
+                            'script');
                         $this->addHeaderData($localeFile, 'js');
                     }
                 }
-                $mediaElementJsJavascript = $mediaElementJsFolder . 'build/mediaelement-and-player.min.js';
+                $mediaElementJsJavascript = $mediaElementJsFolder.'build/mediaelement-and-player.min.js';
                 $this->addHeaderData($mediaElementJsJavascript, 'js');
 
-                $mediaElementJsCss = $mediaElementJsFolder . 'build/mediaelementplayer.min.css';
+                $mediaElementJsCss = $mediaElementJsFolder.'build/mediaelementplayer.min.css';
                 $this->addHeaderData($mediaElementJsCss);
 
                 if ($this->settings['skin']) {
-                    $mediaElementSkinCss = $mediaElementJsFolder . 'build/mejs-skins.css';
+                    $mediaElementSkinCss = $mediaElementJsFolder.'build/mejs-skins.css';
                     $this->addHeaderData($mediaElementSkinCss);
                 }
             }
             if ($this->settings['addMediaElementJsInitialization'] && !$this->settings['addMediaElementJsInitializationFile']) {
-                $this->addHeaderData('(function($) { $(document).ready(function() { $(\'video,audio\').mediaelementplayer(); });})(jQuery);', 'script');
+                $this->addHeaderData('(function($) { $(document).ready(function() { $(\'video,audio\').mediaelementplayer(); });})(jQuery);',
+                    'script');
             } elseif ($this->settings['addMediaElementJsInitializationFile']) {
                 $initializationFile = $this->getFileAbsFileName($this->settings['addMediaElementJsInitializationFile']);
                 $fluidView = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
@@ -84,35 +87,28 @@ abstract class AbstractController extends ActionController
     }
 
     /**
-     * 
      * @param string $data The file
      * @param string $type Css, Js, script
-     * @return void
      */
     protected function addHeaderData($data, $type = 'css')
     {
         switch ($type) {
             case 'css':
-                $data = '<link rel="stylesheet" type="text/css" media="all" href="' . $data . '" />';
+                $data = '<link rel="stylesheet" type="text/css" media="all" href="'.$data.'" />';
                 break;
             case 'js':
-                $data = '<script type="text/javascript" src="' . $data . '"></script>';
+                $data = '<script type="text/javascript" src="'.$data.'"></script>';
                 break;
             case 'script':
-                $data = '<script>' . $data . '</script>';
+                $data = '<script>'.$data.'</script>';
                 break;
         }
-        $key = $this->extensionName . md5($data);
+        $key = $this->extensionName.md5($data);
         if (!isset($GLOBALS['TSFE']->register[$key])) {
             $GLOBALS['TSFE']->register[$key] = $data;
             $this->response->addAdditionalHeaderData($data);
         }
     }
-    /*     * ***********************
-     *
-     * TYPO3 SPECIFIC FUNCTIONS
-     *
-     * *********************** */
 
     /**
      * Returns the absolute filename of a relative reference, resolves the "EXT:" prefix
@@ -120,14 +116,16 @@ abstract class AbstractController extends ActionController
      * the PATH_site of the TYPO3 installation and implies a check with
      * \TYPO3\CMS\Core\Utility\GeneralUtility::validPathStr().
      *
-     * @param string $filename The input filename/filepath to evaluate
-     * @param boolean $onlyRelative If $onlyRelative is set (which it is by default), then only return values relative to the current PATH_site is accepted.
-     * @param boolean $relToTYPO3_mainDir If $relToTYPO3_mainDir is set, then relative paths are relative to PATH_typo3 constant - otherwise (default) they are relative to PATH_site
+     * @param string $filename           The input filename/filepath to evaluate
+     * @param bool   $onlyRelative       If $onlyRelative is set (which it is by default), then only return values relative to the current PATH_site is accepted.
+     * @param bool   $relToTYPO3_mainDir If $relToTYPO3_mainDir is set, then relative paths are relative to PATH_typo3 constant - otherwise (default) they are relative to PATH_site
+     *
      * @return string Returns the absolute filename of $filename if valid, otherwise blank string.
      */
-    public function getFileAbsFileName($filename, $onlyRelative = TRUE, $relToTYPO3_mainDir = FALSE)
+    public function getFileAbsFileName($filename, $onlyRelative = true, $relToTYPO3_mainDir = false)
     {
         $absFilename = GeneralUtility::getFileAbsFileName($filename, $onlyRelative, $relToTYPO3_mainDir);
+
         return str_replace(PATH_site, '', $absFilename);
     }
 }

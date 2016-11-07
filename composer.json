@@ -2,7 +2,7 @@
   "name": "ssch/ssch-html5videoplayer",
   "type": "typo3-cms-extension",
   "description": "HTML5 audio and video player extension, based on extbase & fluid for TYPO3 CMS",
-  "version": "1.3.1",
+  "version": "2.0.0",
   "license": "GPL-2.0+",
   "homepage": "http://www.schreibersebastian.de",
   "authors": [
