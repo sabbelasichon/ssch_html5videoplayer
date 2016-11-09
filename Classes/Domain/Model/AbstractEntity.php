@@ -26,7 +26,9 @@ namespace Ssch\SschHtml5videoplayer\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity as CoreAbstractEntity;
+
+abstract class AbstractEntity extends CoreAbstractEntity
 {
     /**
      * Title.
