@@ -39,7 +39,7 @@ class SorterUtility
      * Sort elements as defined in a CSV-List.
      *
      * @param string $definedInFlexFormsAsList
-     * @param mixed  $records
+     * @param mixed $records
      * @param string $key
      *
      * @return array $sortedRecords
@@ -59,17 +59,17 @@ class SorterUtility
             return $sortedRecords;
         }
 
-        return;
+        return $records;
     }
 
     /**
      * Sort the array.
      *
-     * @param mixed  $records
-     * @param int    $num
+     * @param mixed $records
+     * @param int $num
      * @param string $key
      *
-     * @return array
+     * @return mixed
      */
     protected function sortArray($records, $num, $key = 'uid')
     {
@@ -84,12 +84,12 @@ class SorterUtility
                 throw new UnexpectedValueException('It is not possible to get key of record');
             }
 
-            if ((string) $recordUid === (string) $num) {
+            if ((string)$recordUid === (string)$num) {
                 return $record;
             }
         }
 
-        return;
+        return null;
     }
 
     /**

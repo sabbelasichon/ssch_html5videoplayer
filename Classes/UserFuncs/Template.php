@@ -80,7 +80,6 @@ class Template
             $parseHTML = GeneralUtility::makeInstance('\TYPO3\CMS\Core\Html\HtmlParser');
             /* @var $parserHTML \TYPO3\CMS\Core\Html\HtmlParser */
             foreach ($templateFiles as $htmlFilePath) {
-                $selectorBoxItemTitle = '';
                 $selectorBoxItemIcon = '';
                 $content = GeneralUtility::getUrl($htmlFilePath);
                 $titles = $parseHTML->splitIntoBlock('titles', $content);

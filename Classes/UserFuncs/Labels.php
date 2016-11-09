@@ -55,10 +55,8 @@ class Labels
                 }
                 $params['title'] = implode(' ', $parts);
                 break;
-            default:
-                return true;
-                break;
         }
+        return true;
     }
 
     /**

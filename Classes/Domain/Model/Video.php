@@ -227,7 +227,7 @@ class Video extends AbstractVideoAudioEntity
     /**
      * Returns the posterImage.
      *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference|null
      */
     public function getPosterImage()
     {
@@ -237,7 +237,7 @@ class Video extends AbstractVideoAudioEntity
             return $this->parentid->getPosterImage();
         }
 
-        return;
+        return null;
     }
 
     /**
@@ -459,8 +459,7 @@ class Video extends AbstractVideoAudioEntity
                 return array_merge(array($this), $this->versions->toArray());
             }
         }
-
-        return;
+        return null;
     }
 
     /**
