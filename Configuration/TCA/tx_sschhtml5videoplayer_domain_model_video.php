@@ -3,311 +3,334 @@
 if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
-$imagesTca = array(
+$imagesTca = [
     'exclude' => 1,
     'label' => 'Bilder',
     'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('images',
-        array('maxitems' => 1), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+        ['maxitems' => 1], $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
     ),
-);
-$downloadsTca = array(
+];
+$downloadsTca = [
     'exclude' => 1,
     'label' => 'Downloads',
     'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('downloads',
-        array('maxitems' => 10)
+        ['maxitems' => 10]
     ),
-);
+];
 
-$TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
-    'ctrl' => $TCA['tx_sschhtml5videoplayer_domain_model_video']['ctrl'],
-    'interface' => array(
+return [
+    'ctrl' => [
+        'title' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video',
+        'label' => 'title',
+        'label_userFunc' => 'EXT:ssch_html5videoplayer/Classes/UserFuncs/Labels.php:\Ssch\SschHtml5videoplayer\UserFuncs\Labels->getLabel',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'cruser_id' => 'cruser_id',
+        'dividers2tabs' => true,
+        'versioningWS' => 2,
+        'versioning_followPages' => true,
+        'origUid' => 't3_origuid',
+        'languageField' => 'sys_language_uid',
+        'sortby' => 'sorting',
+        'transOrigPointerField' => 'l10n_parent',
+        'transOrigDiffSourceField' => 'l10n_diffsource',
+        'delete' => 'deleted',
+        'enablecolumns' => [
+            'disabled' => 'hidden',
+            'starttime' => 'starttime',
+            'endtime' => 'endtime',
+        ],
+        'iconfile' => TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ssch_html5videoplayer') . 'Resources/Public/Icons/tx_sschhtml5videoplayer_domain_model_video.gif',
+        'searchFields' => 'title,short_title,caption,alt,longdesc',
+    ],
+    'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, single_pid, caption, duration, poster_image, videos, external_source, external_type, copyright, height, width, subtitles, downloads, images, static_lang_isocode',
-    ),
-    'types' => array(
-        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, static_lang_isocode, title, short_title, caption, copyright, duration, single_pid, description;;;richtext[paste|bold|italic|underline|formatblock|class|left|center|right|orderedlist|unorderedlist|outdent|indent|link|image]:rte_transform[mode=ts], poster_image, videos, external_source, width, height, downloads, images, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.subtitles,subtitles, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.versions,versions, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.related,related, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio.categories, categories,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
-    ),
-    'palettes' => array(
-        '1' => array('showitem' => ''),
-    ),
-    'columns' => array(
-        'sys_language_uid' => array(
+    ],
+    'types' => [
+        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, static_lang_isocode, title, short_title, caption, copyright, duration, single_pid, description;;;richtext[paste|bold|italic|underline|formatblock|class|left|center|right|orderedlist|unorderedlist|outdent|indent|link|image]:rte_transform[mode=ts], poster_image, videos, external_source, width, height, downloads, images, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.subtitles,subtitles, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.versions,versions, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.related,related, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio.categories, categories,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'],
+    ],
+    'palettes' => [
+        '1' => ['showitem' => ''],
+    ],
+    'columns' => [
+        'sys_language_uid' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
                 'foreign_table' => 'sys_language',
                 'foreign_table_where' => 'ORDER BY sys_language.title',
-                'items' => array(
-                    array('LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1),
-                    array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0),
-                ),
-            ),
-        ),
-        'l10n_parent' => array(
+                'items' => [
+                    ['LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1],
+                    ['LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0],
+                ],
+            ],
+        ],
+        'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
-                'items' => array(
-                    array('', 0),
-                ),
+                'items' => [
+                    ['', 0],
+                ],
                 'foreign_table' => 'tx_sschhtml5videoplayer_domain_model_video',
                 'foreign_table_where' => 'AND tx_sschhtml5videoplayer_domain_model_video.pid=###CURRENT_PID### AND tx_sschhtml5videoplayer_domain_model_video.sys_language_uid IN (-1,0)',
-            ),
-        ),
-        'l10n_diffsource' => array(
-            'config' => array(
+            ],
+        ],
+        'l10n_diffsource' => [
+            'config' => [
                 'type' => 'passthrough',
-            ),
-        ),
-        't3ver_label' => array(
+            ],
+        ],
+        't3ver_label' => [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.versionLabel',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
-            ),
-        ),
-        'hidden' => array(
+            ],
+        ],
+        'hidden' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
-            'config' => array(
+            'config' => [
                 'type' => 'check',
-            ),
-        ),
-        'starttime' => array(
+            ],
+        ],
+        'starttime' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 13,
                 'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,
-                'range' => array(
+                'range' => [
                     'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y')),
-                ),
-            ),
-        ),
-        'endtime' => array(
+                ],
+            ],
+        ],
+        'endtime' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 13,
                 'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,
-                'range' => array(
+                'range' => [
                     'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y')),
-                ),
-            ),
-        ),
-        'title' => array(
+                ],
+            ],
+        ],
+        'title' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.title',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim,required',
-            ),
-        ),
-        'short_title' => array(
+            ],
+        ],
+        'short_title' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.short_title',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim',
-            ),
-        ),
-        'copyright' => array(
+            ],
+        ],
+        'copyright' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.copyright',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim',
-            ),
-        ),
-        'static_lang_isocode' => array(
+            ],
+        ],
+        'static_lang_isocode' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_tca.php:sys_language.isocode',
             'displayCond' => 'EXT:static_info_tables:LOADED:true',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
-                'items' => array(
-                    array('', 0),
-                ),
+                'items' => [
+                    ['', 0],
+                ],
                 'foreign_table' => 'static_languages',
                 'foreign_table_where' => 'AND static_languages.pid=0 ORDER BY static_languages.lg_name_en',
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
-            ),
-        ),
-        'caption' => array(
+            ],
+        ],
+        'caption' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.caption',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim',
-            ),
-        ),
-        'duration' => array(
+            ],
+        ],
+        'duration' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.duration',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim',
-            ),
-        ),
-        'description' => array(
+            ],
+        ],
+        'description' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.description',
-            'config' => array(
+            'config' => [
                 'type' => 'text',
                 'cols' => 40,
                 'rows' => 15,
-                'wizards' => array(
+                'wizards' => [
                     '_PADDING' => 2,
-                    'RTE' => array(
+                    'RTE' => [
                         'notNewRecords' => 1,
                         'RTEonly' => 1,
                         'type' => 'script',
                         'title' => 'Full screen Rich Text Editing|Formatteret redigering i hele vinduet',
                         'icon' => 'wizard_rte2.gif',
                         'script' => 'wizard_rte.php',
-                    ),
-                ),
-            ),
-        ),
-        'alt' => array(
+                    ],
+                ],
+            ],
+        ],
+        'alt' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.alt',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 255,
                 'eval' => 'trim,required',
-            ),
-        ),
-        'longdesc' => array(
+            ],
+        ],
+        'longdesc' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.longdesc',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => '15',
                 'max' => '255',
                 'checkbox' => '',
                 'eval' => 'trim',
-                'wizards' => array(
+                'wizards' => [
                     '_PADDING' => 2,
-                    'link' => array(
+                    'link' => [
                         'type' => 'popup',
                         'title' => 'Link',
                         'icon' => 'link_popup.gif',
                         'script' => 'browse_links.php?mode=wizard',
                         'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
-                    ),
-                ),
-            ),
-        ),
-        'poster_image' => array(
+                    ],
+                ],
+            ],
+        ],
+        'poster_image' => [
             'exclude' => 0,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.poster_image',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'poster_image', array('maxitems' => 1), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+                'poster_image', ['maxitems' => 1], $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
-        ),
-        'videos' => array(
+        ],
+        'videos' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.videos',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'videos', array('maxitems' => 45), 'mp4,ogg,ogv,webm'
+                'videos', ['maxitems' => 45], 'mp4,ogg,ogv,webm'
             ),
-        ),
-        'external_type' => array(
+        ],
+        'external_type' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.external_type',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
-                'items' => array(
-                    array('', ''),
-                    array(
+                'items' => [
+                    ['', ''],
+                    [
                         'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.external_type.I',
                         'video/youtube',
-                    ),
-                    array(
+                    ],
+                    [
                         'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.external_type.II',
                         'video/vimeo',
-                    ),
-                ),
+                    ],
+                ],
                 'size' => 1,
                 'maxitems' => 1,
                 'eval' => '',
-            ),
-        ),
-        'external_source' => array(
+            ],
+        ],
+        'external_source' => [
             'exclude' => 0,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.external_source',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 255,
                 'eval' => 'trim',
-                'wizards' => array(
+                'wizards' => [
                     '_PADDING' => 2,
-                    'link' => array(
+                    'link' => [
                         'type' => 'popup',
                         'title' => 'Link',
                         'icon' => 'link_popup.gif',
                         'script' => 'browse_links.php?mode=wizard',
                         'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
-                    ),
-                ),
-            ),
-        ),
-        'height' => array(
+                    ],
+                ],
+            ],
+        ],
+        'height' => [
             'exclude' => 0,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.height',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 4,
                 'eval' => 'int',
-            ),
-        ),
-        'width' => array(
+            ],
+        ],
+        'width' => [
             'exclude' => 0,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.width',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 4,
                 'eval' => 'int',
-            ),
-        ),
-        'subtitles' => array(
+            ],
+        ],
+        'subtitles' => [
             'exclude' => 0,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.subtitles',
-            'config' => Array(
+            'config' => [
                 'type' => 'inline',
                 'languageMode' => 'inherit',
                 'foreign_table' => 'tx_sschhtml5videoplayer_domain_model_subtitle',
@@ -315,22 +338,22 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'foreign_sortby' => 'sorting',
                 'foreign_table_field' => 'parenttable',
                 'maxitems' => 100,
-                "behaviour" => Array(
-                    "localizationMode" => "select",
-                    "localizeChildrenAtParentLocalization" => 1,
-                ),
-                "appearance" => array(
-                    "showPossibleLocalizationRecords" => 1,
-                    "showAllLocalizationLink" => 1,
-                    "showSynchronizationLink" => 1,
-                ),
-            ),
-        ),
-        'versions' => array(
+                'behaviour' => [
+                    'localizationMode' => 'select',
+                    'localizeChildrenAtParentLocalization' => 1,
+                ],
+                'appearance' => [
+                    'showPossibleLocalizationRecords' => 1,
+                    'showAllLocalizationLink' => 1,
+                    'showSynchronizationLink' => 1,
+                ],
+            ],
+        ],
+        'versions' => [
             'exclude' => 0,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.versions',
-            'config' => Array(
+            'config' => [
                 'type' => 'inline',
                 'languageMode' => 'inherit',
                 'foreign_table' => 'tx_sschhtml5videoplayer_domain_model_video',
@@ -338,32 +361,32 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'foreign_sortby' => 'sorting',
                 'foreign_table_field' => 'parenttable',
                 'maxitems' => 100,
-                "behaviour" => Array(
-                    "localizationMode" => "select",
-                    "localizeChildrenAtParentLocalization" => 1,
-                ),
-                "appearance" => array(
-                    "showPossibleLocalizationRecords" => 1,
-                    "showAllLocalizationLink" => 1,
-                    "showSynchronizationLink" => 1,
-                ),
-            ),
-        ),
-        'parentid' => Array(
-            'config' => Array(
+                'behaviour' => [
+                    'localizationMode' => 'select',
+                    'localizeChildrenAtParentLocalization' => 1,
+                ],
+                'appearance' => [
+                    'showPossibleLocalizationRecords' => 1,
+                    'showAllLocalizationLink' => 1,
+                    'showSynchronizationLink' => 1,
+                ],
+            ],
+        ],
+        'parentid' => [
+            'config' => [
                 'type' => 'passthrough',
-            ),
-        ),
-        'parenttable' => Array(
-            'config' => Array(
+            ],
+        ],
+        'parenttable' => [
+            'config' => [
                 'type' => 'passthrough',
-            ),
-        ),
-        'related' => array(
+            ],
+        ],
+        'related' => [
             'exclude' => 0,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.related',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
                 'foreign_table' => 'tx_sschhtml5videoplayer_domain_model_video',
                 'foreign_table_where' => ' ORDER BY tx_sschhtml5videoplayer_domain_model_video.title ASC',
@@ -372,13 +395,13 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'minitems' => 0,
                 'maxitems' => 50,
                 'MM' => 'tx_sschhtml5videoplayer_video_video_mm',
-            ),
-        ),
-        'single_pid' => array(
+            ],
+        ],
+        'single_pid' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.single_pid',
-            'config' => array(
+            'config' => [
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'pages',
@@ -386,34 +409,34 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'maxitems' => '1',
                 'minitems' => '0',
                 'show_thumbs' => '1',
-                'wizards' => array(
-                    'suggest' => array(
+                'wizards' => [
+                    'suggest' => [
                         'type' => 'suggest',
-                    ),
-                ),
-            ),
-        ),
-        'categories' => array(
+                    ],
+                ],
+            ],
+        ],
+        'categories' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio.categories',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
                 'renderMode' => 'tree',
-                'treeConfig' => array(
+                'treeConfig' => [
                     'parentField' => 'parent',
-                    'appearance' => array(
+                    'appearance' => [
                         'showHeader' => true,
                         'allowRecursiveMode' => true,
                         'expandAll' => true,
                         'maxLevels' => 99,
-                    ),
-                ),
+                    ],
+                ],
                 'MM' => 'sys_category_record_mm',
-                'MM_match_fields' => array(
+                'MM_match_fields' => [
                     'fieldname' => 'categories',
                     'tablenames' => 'tx_sschhtml5videoplayer_domain_model_video',
-                ),
+                ],
                 'MM_opposite_field' => 'items',
                 'foreign_table' => 'sys_category',
                 'foreign_table_where' => ' AND (sys_category.sys_language_uid = 0 OR sys_category.l10n_parent = 0) ORDER BY sys_category.sorting',
@@ -421,9 +444,9 @@ $TCA['tx_sschhtml5videoplayer_domain_model_video'] = array(
                 'autoSizeMax' => 20,
                 'minitems' => 0,
                 'maxitems' => 20,
-            ),
-        ),
+            ],
+        ],
         'downloads' => $downloadsTca,
         'images' => $imagesTca,
-    ),
-);
+    ],
+];

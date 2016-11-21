@@ -2,33 +2,22 @@
 
 namespace Ssch\SschHtml5videoplayer\Controller;
 
-/* * *************************************************************
- *  Copyright notice
+/**
+ * This file is part of the TYPO3 CMS project.
  *
- *  (c) 2011 Sebastian Schreiber <me@schreibersebastian.de>, Sebastian Schreiber
- *  
- *  All rights reserved
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- * ************************************************************* */
-
+ * The TYPO3 project - inspiring people to share!
+ */
+use SJBR\StaticInfoTables\Utility\LocalizationUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use SJBR\StaticInfoTables\Utility\LocalizationUtility;
+use TYPO3\CMS\Fluid\View\StandaloneView;
 
 abstract class AbstractController extends ActionController
 {
@@ -39,6 +28,7 @@ abstract class AbstractController extends ActionController
     protected $sorterUtility;
 
     /**
+     * Initialize action. Called before every action method
      */
     public function initializeAction()
     {
@@ -47,27 +37,27 @@ abstract class AbstractController extends ActionController
         $this->settings['mediaelementjsFolderRelative'] = $mediaElementJsFolder;
         if ($this->settings['addHeaderData']) {
             if ($this->settings['addJQueryLibrary']) {
-                $jQueryLibrary = $mediaElementJsFolder.'build/jquery.js';
+                $jQueryLibrary = $mediaElementJsFolder . 'build/jquery.js';
                 $this->addHeaderData($jQueryLibrary, 'js');
             }
             if ($this->settings['addMediaElementJs']) {
                 $locale = strtolower(LocalizationUtility::getCurrentLanguage());
                 if ($locale) {
-                    $localeFile = $mediaElementJsFolder.sprintf('src/js/me-i18n-locale-%s.js', $locale);
+                    $localeFile = $mediaElementJsFolder . sprintf('src/js/me-i18n-locale-%s.js', $locale);
                     if (file_exists($localeFile)) {
-                        $this->addHeaderData('var mejs = mejs || {}; (function () { mejs.i18n = { locale: { language: "'.$locale.'", strings: { } } }; })();',
+                        $this->addHeaderData('var mejs = mejs || {}; (function () { mejs.i18n = { locale: { language: "' . $locale . '", strings: { } } }; })();',
                             'script');
                         $this->addHeaderData($localeFile, 'js');
                     }
                 }
-                $mediaElementJsJavascript = $mediaElementJsFolder.'build/mediaelement-and-player.min.js';
+                $mediaElementJsJavascript = $mediaElementJsFolder . 'build/mediaelement-and-player.min.js';
                 $this->addHeaderData($mediaElementJsJavascript, 'js');
 
-                $mediaElementJsCss = $mediaElementJsFolder.'build/mediaelementplayer.min.css';
+                $mediaElementJsCss = $mediaElementJsFolder . 'build/mediaelementplayer.min.css';
                 $this->addHeaderData($mediaElementJsCss);
 
                 if ($this->settings['skin']) {
-                    $mediaElementSkinCss = $mediaElementJsFolder.'build/mejs-skins.css';
+                    $mediaElementSkinCss = $mediaElementJsFolder . 'build/mejs-skins.css';
                     $this->addHeaderData($mediaElementSkinCss);
                 }
             }
@@ -76,7 +66,7 @@ abstract class AbstractController extends ActionController
                     'script');
             } elseif ($this->settings['addMediaElementJsInitializationFile']) {
                 $initializationFile = $this->getFileAbsFileName($this->settings['addMediaElementJsInitializationFile']);
-                $fluidView = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
+                $fluidView = $this->objectManager->get(StandaloneView::class);
                 /* @var $fluidView \TYPO3\CMS\Fluid\View\StandaloneView */
                 $fluidView->assign('settings', $this->settings);
                 $fluidView->setTemplatePathAndFilename($initializationFile);
@@ -94,16 +84,16 @@ abstract class AbstractController extends ActionController
     {
         switch ($type) {
             case 'css':
-                $data = '<link rel="stylesheet" type="text/css" media="all" href="'.$data.'" />';
+                $data = '<link rel="stylesheet" type="text/css" media="all" href="' . $data . '" />';
                 break;
             case 'js':
-                $data = '<script type="text/javascript" src="'.$data.'"></script>';
+                $data = '<script type="text/javascript" src="' . $data . '"></script>';
                 break;
             case 'script':
-                $data = '<script>'.$data.'</script>';
+                $data = '<script>' . $data . '</script>';
                 break;
         }
-        $key = $this->extensionName.md5($data);
+        $key = $this->extensionName . md5($data);
         if (!isset($GLOBALS['TSFE']->register[$key])) {
             $GLOBALS['TSFE']->register[$key] = $data;
             $this->response->addAdditionalHeaderData($data);

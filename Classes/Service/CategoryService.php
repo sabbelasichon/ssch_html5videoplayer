@@ -2,31 +2,18 @@
 
 namespace Ssch\SschHtml5videoplayer\Service;
 
-/* * *************************************************************
+/**
+ * This file is part of the TYPO3 CMS project.
  *
- *  Copyright notice
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  (c) 2014 Sebastian Schreiber <ssch@hauptweg-nebenwege.de>, HauptwegNebenwege GmbH
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- * ************************************************************* */
-
+ * The TYPO3 project - inspiring people to share!
+ */
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -73,11 +60,11 @@ class CategoryService implements \TYPO3\CMS\Core\SingletonInterface
         }
         if ($id && $depth > 0) {
             $res = $this->getDatabaseConnection()->exec_SELECTquery(
-                    $fields, $table, $field.'='.$id.' '.BackendUtility::deleteClause($table).' AND '.$perms_clause
+                    $fields, $table, $field . '=' . $id . ' ' . BackendUtility::deleteClause($table) . ' AND ' . $perms_clause
             );
             while ($row = $this->getDatabaseConnection()->sql_fetch_assoc($res)) {
                 if ($begin <= 0) {
-                    $theList .= ','.$row['uid'];
+                    $theList .= ',' . $row['uid'];
                 }
                 if ($depth > 1) {
                     $theList .= $this->getTreeListOfAnyTable($row['uid'], $depth - 1, $begin - 1, $perms_clause, $table, $field, $fields);

@@ -5,6 +5,7 @@
   "version": "2.0.0",
   "license": "GPL-2.0+",
   "homepage": "http://www.schreibersebastian.de",
+  "keywords": ["videoplayer", "mediaelementjs"],
   "authors": [
     {
       "name": "Sebastian Schreiber",
@@ -13,12 +14,27 @@
       "homepage": "http://www.schreibersebastian.de"
     }
   ],
+  "require": {
+    "typo3/cms-core": ">=6.2.10,<7.0",
+    "php": ">=5.5.9"
+  },
   "replace": {
+    "ssch_html5videoplayer": "self.version",
     "ssch/ssch-html5videoplayer": "self.version"
   },
   "autoload": {
     "psr-4": {
-      "Ssch\\SschHtml5videoplayer\\": "Classes/"
+      "Ssch\\SschHtml5videoplayer\\": "Classes"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Ssch\\SschHtml5videoplayer\\Tests": "Tests"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.0.x-dev"
     }
   }
 }

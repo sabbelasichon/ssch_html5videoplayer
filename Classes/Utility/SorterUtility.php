@@ -2,36 +2,23 @@
 
 namespace Ssch\SschHtml5videoplayer\Utility;
 
-/* * *************************************************************
+/**
+ * This file is part of the TYPO3 CMS project.
  *
- *  Copyright notice
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  (c) 2014 Sebastian Schreiber <ssch@hauptweg-nebenwege.de>, HauptwegNebenwege GmbH
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- * ************************************************************* */
-
+ * The TYPO3 project - inspiring people to share!
+ */
+use Traversable;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 use UnexpectedValueException;
-use Traversable;
 
 class SorterUtility
 {
@@ -39,7 +26,7 @@ class SorterUtility
      * Sort elements as defined in a CSV-List.
      *
      * @param string $definedInFlexFormsAsList
-     * @param mixed $records
+     * @param mixed  $records
      * @param string $key
      *
      * @return array $sortedRecords
@@ -48,30 +35,28 @@ class SorterUtility
     {
         if ($this->areElementsValid($records)) {
             $arrayOfRecordsAsOrderedInFlexForms = GeneralUtility::trimExplode(',', $definedInFlexFormsAsList);
-            $sortedRecords = array();
+            $sortedRecords = [];
             foreach ($arrayOfRecordsAsOrderedInFlexForms as $flexFormEntryKey => $flexFormEntryValue) {
                 $element = $this->sortArray($records, $flexFormEntryValue, $key);
-                if ($element !== null) {
+                if (null !== $element) {
                     $sortedRecords[] = $element;
                 }
             }
 
             return $sortedRecords;
         }
-
-        return $records;
     }
 
     /**
      * Sort the array.
      *
-     * @param mixed $records
-     * @param int $num
+     * @param mixed  $records
+     * @param int    $num
      * @param string $key
      *
      * @return mixed
      */
-    protected function sortArray($records, $num, $key = 'uid')
+    private function sortArray($records, $num, $key = 'uid')
     {
         foreach ($records as $record) {
             if (is_array($record)) {
@@ -84,12 +69,10 @@ class SorterUtility
                 throw new UnexpectedValueException('It is not possible to get key of record');
             }
 
-            if ((string)$recordUid === (string)$num) {
+            if ((string) $recordUid === (string) $num) {
                 return $record;
             }
         }
-
-        return null;
     }
 
     /**
@@ -97,7 +80,7 @@ class SorterUtility
      *
      * @return bool
      */
-    protected function areElementsValid($elements)
+    private function areElementsValid($elements)
     {
         if ($elements instanceof Traversable) {
             return true;

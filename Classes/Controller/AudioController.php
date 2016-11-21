@@ -2,33 +2,21 @@
 
 namespace Ssch\SschHtml5videoplayer\Controller;
 
-/* * *************************************************************
- *  Copyright notice
+/**
+ * This file is part of the TYPO3 CMS project.
  *
- *  (c) 2011 Sebastian Schreiber <me@schreibersebastian.de>, Sebastian Schreiber
- *  
- *  All rights reserved
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- * ************************************************************* */
-
-use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+ * The TYPO3 project - inspiring people to share!
+ */
 use Ssch\SschHtml5videoplayer\Domain\Model\Audio;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 class AudioController extends AbstractController
 {
@@ -77,8 +65,8 @@ class AudioController extends AbstractController
     {
         // Set template
         if ($this->settings['templateFile']) {
-            $templateFile = GeneralUtility::getFileAbsFileName($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'].'Audio/'.$this->settings['templateFile']);
-            if (true === file_exists($templateFile)) {
+            $templateFile = GeneralUtility::getFileAbsFileName($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Audio/' . $this->settings['templateFile']);
+            if (file_exists($templateFile)) {
                 $view->setTemplatePathAndFilename($templateFile);
             }
         }

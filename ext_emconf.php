@@ -1,6 +1,6 @@
 <?php
 
-$EM_CONF[$_EXTKEY] = array(
+$EM_CONF[$_EXTKEY] = [
     'title' => 'HTML5 audio- and videoplayer based on mediaelement.js',
     'description' => 'Creates an HTML5 audio- and videoplayer based on mediaelement.js with Flash-Fallback on older browsers.',
     'category' => 'plugin',
@@ -9,13 +9,13 @@ $EM_CONF[$_EXTKEY] = array(
     'author_company' => 'Sebastian Schreiber',
     'state' => 'stable',
     'version' => '1.2.9',
-    'constraints' => array(
-        'depends' => array(
+    'constraints' => [
+        'depends' => [
             'typo3' => '6.2.0-6.2.99',
             'static_info_tables' => '6.2'
-        ),
-        'suggests' => array(
+        ],
+        'suggests' => [
             'filemetadata' => '',
-        ),
-    ),
-);
+        ],
+    ],
+];

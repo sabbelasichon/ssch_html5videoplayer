@@ -2,34 +2,23 @@
 
 namespace Ssch\SschHtml5videoplayer\Hooks;
 
-/* * *************************************************************
- *  Copyright notice
+/**
+ * This file is part of the TYPO3 CMS project.
  *
- *  (c) 2011 Sebastian Schreiber <me@schreibersebastian.de>, Sebastian Schreiber
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  All rights reserved
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- * ************************************************************* */
-
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Lang\LanguageService;
+ * The TYPO3 project - inspiring people to share!
+ */
 use TYPO3\CMS\Core\Database\DatabaseConnection;
+use TYPO3\CMS\Core\Localization\LocalizationFactory;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Lang\LanguageService;
 
 class CmsLayout
 {
@@ -46,23 +35,23 @@ class CmsLayout
     public function getExtensionSummary(array $params)
     {
         $LL = $this->includeLocalLang();
-        $result = '<strong><cite>&rarr; '.$this->getLanguage()->getLLL('list_title_'.$params['row']['list_type'],
-                $LL).' </cite></strong>';
+        $result = '<strong><cite>&rarr; ' . $this->getLanguage()->getLLL('list_title_' . $params['row']['list_type'],
+                $LL) . ' </cite></strong>';
         $this->flexformData = GeneralUtility::xml2array($params['row']['pi_flexform']);
         if ($this->getFieldFromFlexform('settings.videoWidth')) {
-            $result .= '<br /><strong>Width:</strong>: '.$this->getFieldFromFlexform('settings.videoWidth');
+            $result .= '<br /><strong>Width:</strong>: ' . $this->getFieldFromFlexform('settings.videoWidth');
         }
         if ($this->getFieldFromFlexform('settings.videoHeight')) {
-            $result .= '<br /><strong>Height</strong>: '.$this->getFieldFromFlexform('settings.videoHeight');
+            $result .= '<br /><strong>Height</strong>: ' . $this->getFieldFromFlexform('settings.videoHeight');
         }
         if ($this->getFieldFromFlexform('settings.templateFile')) {
-            $result .= '<br /><strong>Template</strong>: '.$this->getFieldFromFlexform('settings.templateFile');
+            $result .= '<br /><strong>Template</strong>: ' . $this->getFieldFromFlexform('settings.templateFile');
         }
         if ($this->getFieldFromFlexform('settings.addMediaElementJsInitializationFile')) {
-            $result .= '<br /><strong>MediaelementInit</strong>: '.basename($this->getFieldFromFlexform('settings.addMediaElementJsInitializationFile'));
+            $result .= '<br /><strong>MediaelementInit</strong>: ' . basename($this->getFieldFromFlexform('settings.addMediaElementJsInitializationFile'));
         }
         if ($this->getFieldFromFlexform('settings.skin')) {
-            $result .= '<br /><strong>Skin</strong>: '.$this->getFieldFromFlexform('settings.skin');
+            $result .= '<br /><strong>Skin</strong>: ' . $this->getFieldFromFlexform('settings.skin');
         }
         if ($this->getFieldFromFlexform('settings.videoSelection')) {
             $this->addItemsToResult($this->getItemsByTableAndUids($this->getFieldFromFlexform('settings.videoSelection')),
@@ -84,7 +73,7 @@ class CmsLayout
     {
         $result .= '<br /><ul style="margin-bottom: 0;">';
         foreach ($items as $item) {
-            $result .= '<li>'.$item['title'].'</li>';
+            $result .= '<li>' . $item['title'] . '</li>';
         }
         $result .= '</ul>';
     }
@@ -97,8 +86,8 @@ class CmsLayout
      */
     protected function getItemsByTableAndUids($uids, $table = 'tx_sschhtml5videoplayer_domain_model_video')
     {
-        return $this->getDatabaseConnection()->exec_SELECTgetRows($table.'.*', $table,
-            $table.'.uid IN( '.$this->getDatabaseConnection()->cleanIntList($uids).')');
+        return $this->getDatabaseConnection()->exec_SELECTgetRows($table . '.*', $table,
+            $table . '.uid IN( ' . $this->getDatabaseConnection()->cleanIntList($uids) . ')');
     }
 
     /**
@@ -148,10 +137,10 @@ class CmsLayout
      */
     protected function includeLocalLang()
     {
-        $llFile = ExtensionManagementUtility::extPath('ssch_html5videoplayer').'Resources/Private/Language/locallang_db.xlf';
-        $parser = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Localization\\LocalizationFactory');
+        $llFile = ExtensionManagementUtility::extPath('ssch_html5videoplayer') . 'Resources/Private/Language/locallang_db.xlf';
+        $parser = GeneralUtility::makeInstance(LocalizationFactory::class);
 
-        /* @var $parser \TYPO3\CMS\Core\Localization\LocalizationFactory */
+        /* @var $parser LocalizationFactory */
         return $parser->getParsedData($llFile, $this->getLanguage()->lang, 'utf-8', 1);
     }
 }
