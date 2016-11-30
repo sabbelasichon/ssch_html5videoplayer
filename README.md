@@ -1,6 +1,8 @@
 TYPO3 HTML5 Video- and Audioplayer based on mediaelementjs.com
 =================================
 
+[![Build Status](https://travis-ci.org/sabbelasichon/ssch_html5videoplayer.png?branch=master)](https://travis-ci.org/sabbelasichon/ssch_html5videoplayer)
+
 ## What is it?
 
 HTML5 Video- and Audioplayer based on mediaelementjs.com is an extension for TYPO3 CMS to manage HTML5 video and audio.
