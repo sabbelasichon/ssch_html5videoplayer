@@ -49,5 +49,5 @@ script:
     if [[ "$COVERAGE" == "1" ]]; then
       echo;
       echo "Running unit tests";
-      ./bin/phpunit --coverage-clover=unittest-coverage.clover --colors -c typo3conf/ext/ssch_html5videoplayer/Tests/Build/phpunit.xml
+      ./bin/phpunit --coverage-clover=unittest-coverage.clover --colors -c typo3conf/ext/ssch_html5videoplayer/Tests/Build/UnitTests.xml
     fi  
