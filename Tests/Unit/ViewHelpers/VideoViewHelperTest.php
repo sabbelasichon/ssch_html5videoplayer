@@ -14,10 +14,20 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\ViewHelpers;
  *
  * The TYPO3 project - inspiring people to share!
  */
-class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHelperBaseTestcase
+use Ssch\SschHtml5videoplayer\Domain\Model\Video;
+use Ssch\SschHtml5videoplayer\ViewHelpers\VideoViewHelper;
+use TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHelperBaseTestcase;
+
+class VideoViewHelperTest extends ViewHelperBaseTestcase
 {
+
     /**
-     * @var \Ssch\SschHtml5videoplayer\ViewHelpers\VideoViewHelper
+     * @var \TYPO3\CMS\Fluid\Core\ViewHelper\TagBuilder|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $tagBuilder;
+
+    /**
+     * @var VideoViewHelper
      */
     protected $viewHelper;
 
@@ -26,8 +36,7 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
     public function setUp()
     {
         parent::setUp();
-        $this->viewHelper = $this->getAccessibleMock('Ssch\\SschHtml5videoplayer\\ViewHelpers\\VideoViewHelper',
-            ['renderChildren']);
+        $this->viewHelper = $this->getAccessibleMock(VideoViewHelper::class, ['renderChildren']);
         $this->injectDependenciesIntoViewHelper($this->viewHelper);
         $this->viewHelper->initializeArguments();
     }
@@ -45,11 +54,11 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
             [$this->equalTo('class'), $this->equalTo('mejs-skin')]
         );
 
-        $settings = [];
-        $settings['videoWidth'] = 300;
+        $settings                = [];
+        $settings['videoWidth']  = 300;
         $settings['videoHeight'] = 150;
-        $settings['skin'] = 'mejs-skin';
-        $video = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', ['getHeight', 'getWidth']);
+        $settings['skin']        = 'mejs-skin';
+        $video                   = $this->getMock(Video::class, ['getHeight', 'getWidth']);
         $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
         $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));
 
@@ -69,9 +78,9 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
             [$this->equalTo('width'), $this->equalTo(300)], [$this->equalTo('height'), $this->equalTo(300)]
         );
 
-        $settings = [];
+        $settings               = [];
         $settings['videoWidth'] = 300;
-        $video = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', ['getHeight', 'getWidth']);
+        $video                  = $this->getMock(Video::class, ['getHeight', 'getWidth']);
         $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
         $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));
 
@@ -91,9 +100,9 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
             [$this->equalTo('width'), $this->equalTo(300)], [$this->equalTo('height'), $this->equalTo(300)]
         );
 
-        $settings = [];
+        $settings                = [];
         $settings['videoHeight'] = 300;
-        $video = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', ['getHeight', 'getWidth']);
+        $video                   = $this->getMock(Video::class, ['getHeight', 'getWidth']);
         $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
         $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));
 
@@ -114,7 +123,7 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
         );
 
         $settings = [];
-        $video = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', ['getHeight', 'getWidth']);
+        $video    = $this->getMock(Video::class, ['getHeight', 'getWidth']);
         $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
         $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));
 
@@ -135,11 +144,11 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
             [$this->equalTo('class'), $this->equalTo('mejs-skin')]
         );
 
-        $settings = [];
-        $settings['video']['defaultWidth'] = 300;
+        $settings                           = [];
+        $settings['video']['defaultWidth']  = 300;
         $settings['video']['defaultHeight'] = 150;
-        $settings['skin'] = 'mejs-skin';
-        $video = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', ['getHeight', 'getWidth']);
+        $settings['skin']                   = 'mejs-skin';
+        $video                              = $this->getMock(Video::class, ['getHeight', 'getWidth']);
         $video->expects($this->any())->method('getHeight')->will($this->returnValue(0));
         $video->expects($this->any())->method('getWidth')->will($this->returnValue(0));
 
@@ -155,7 +164,7 @@ class VideoViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHe
         $this->tagBuilder->expects($this->once())->method('render')->will($this->returnValue('<video width="100" height="100">'));
 
         $settings = [];
-        $video = $this->getMock('Ssch\\SschHtml5videoplayer\\Domain\\Model\\Video', ['getHeight', 'getWidth']);
+        $video    = $this->getMock(Video::class, ['getHeight', 'getWidth']);
         $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
         $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));
 

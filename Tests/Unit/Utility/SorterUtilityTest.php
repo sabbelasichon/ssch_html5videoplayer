@@ -92,6 +92,7 @@ class SorterUtilityTest extends UnitTestCase
 
     /**
      * @test
+     * @expectedException \Ssch\SschHtml5videoplayer\Utility\SorterException
      */
     public function sortElementsAsDefinedInFlexFormsWithWrongParameter()
     {
