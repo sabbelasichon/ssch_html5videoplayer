@@ -4,6 +4,8 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sschhtml5videoplayer_domain_model_audio');
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio',

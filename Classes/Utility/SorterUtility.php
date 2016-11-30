@@ -26,35 +26,37 @@ class SorterUtility
      * Sort elements as defined in a CSV-List.
      *
      * @param string $definedInFlexFormsAsList
-     * @param mixed  $records
+     * @param mixed $records
      * @param string $key
+     * @throws SorterException
      *
      * @return array $sortedRecords
      */
     public function sortElementsAsDefinedInFlexForms($definedInFlexFormsAsList, $records, $key = 'uid')
     {
-        if ($this->areElementsValid($records)) {
-            $arrayOfRecordsAsOrderedInFlexForms = GeneralUtility::trimExplode(',', $definedInFlexFormsAsList);
-            $sortedRecords = [];
-            foreach ($arrayOfRecordsAsOrderedInFlexForms as $flexFormEntryKey => $flexFormEntryValue) {
-                $element = $this->sortArray($records, $flexFormEntryValue, $key);
-                if (null !== $element) {
-                    $sortedRecords[] = $element;
-                }
-            }
-
-            return $sortedRecords;
+        if (! $this->areElementsValid($records)) {
+            throw SorterException::createInvalidElementsException($records);
         }
+        $arrayOfRecordsAsOrderedInFlexForms = GeneralUtility::trimExplode(',', $definedInFlexFormsAsList);
+        $sortedRecords                      = [];
+        foreach ($arrayOfRecordsAsOrderedInFlexForms as $flexFormEntryKey => $flexFormEntryValue) {
+            $element = $this->sortArray($records, $flexFormEntryValue, $key);
+            if (null !== $element) {
+                $sortedRecords[] = $element;
+            }
+        }
+
+        return $sortedRecords;
     }
 
     /**
      * Sort the array.
      *
-     * @param mixed  $records
-     * @param int    $num
+     * @param mixed $records
+     * @param int $num
      * @param string $key
      *
-     * @return mixed
+     * @return mixed|null
      */
     private function sortArray($records, $num, $key = 'uid')
     {
@@ -69,10 +71,11 @@ class SorterUtility
                 throw new UnexpectedValueException('It is not possible to get key of record');
             }
 
-            if ((string) $recordUid === (string) $num) {
+            if ((string)$recordUid === (string)$num) {
                 return $record;
             }
         }
+        return null;
     }
 
     /**

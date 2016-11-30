@@ -225,7 +225,7 @@ class Video extends AbstractVideoAudioEntity
             return $this->parentid->getPosterImage();
         }
 
-        return;
+        return null;
     }
 
     /**
@@ -448,7 +448,7 @@ class Video extends AbstractVideoAudioEntity
             }
         }
 
-        return;
+        return null;
     }
 
     /**

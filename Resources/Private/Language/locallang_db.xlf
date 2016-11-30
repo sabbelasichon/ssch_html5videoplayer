@@ -8,22 +8,22 @@
                 <source>Video</source>
             </trans-unit>
             <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.title">
-                <source>Titel</source>
+                <source>Title</source>
             </trans-unit>
             <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.caption">
-                <source>Bildunterschrift</source>
+                <source>Caption</source>
             </trans-unit>
             <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.poster_image">
-                <source>Startbild</source>
+                <source>Poster</source>
             </trans-unit>
             <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.flash_source">
                 <source>Flash Source</source>
             </trans-unit>
             <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.height">
-                <source>Höhe</source>
+                <source>Height</source>
             </trans-unit>
             <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.width">
-                <source>Breite</source>
+                <source>Width</source>
             </trans-unit>
             <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.alt">
                 <source>Kurze Beschreibung (Alt-Attribut)</source>
@@ -68,10 +68,10 @@
                 <source>Höhe des Videos</source>
             </trans-unit>
             <trans-unit id="tx_sschhtml5videoplayer_domain_model_subtitle">
-                <source>Untertitel</source>
+                <source>Subtitle</source>
             </trans-unit>
             <trans-unit id="tx_sschhtml5videoplayer_domain_model_video.subtitles">
-                <source>Untertitel</source>
+                <source>Subtitle</source>
             </trans-unit>
             <trans-unit id="tx_sschhtml5videoplayer_domain_model_subtitle.track">
                 <source>Track</source>

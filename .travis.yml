@@ -43,7 +43,7 @@ script:
     if [[ "$COVERAGE" == "0" ]]; then
       echo;
       echo "Running unit tests";
-      ./bin/phpunit --colors -c typo3conf/ext/ssch_html5videoplayer/Tests/Build/phpunit.xml
+      ./bin/phpunit --colors -c typo3conf/ext/ssch_html5videoplayer/Tests/Build/UnitTests.xml
     fi
   - >
     if [[ "$COVERAGE" == "1" ]]; then

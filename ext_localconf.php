@@ -10,7 +10,7 @@ if (file_exists($composerAutoloadFile)) {
 }
 
 // Register basic metadata extractor. Will feed the file with a "title" when indexing, e.g. upload, through scheduler
-\TYPO3\CMS\Core\Resource\Index\ExtractorRegistry::getInstance()->registerExtractionService('Ssch\SschHtml5videoplayer\Index\MetadataExtractor');
+\TYPO3\CMS\Core\Resource\Index\ExtractorRegistry::getInstance()->registerExtractionService(\Ssch\SschHtml5videoplayer\Index\MetadataExtractor::class);
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'Ssch.' . $_EXTKEY, 'Pi1', [

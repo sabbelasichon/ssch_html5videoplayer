@@ -15,9 +15,10 @@ namespace Ssch\SschHtml5videoplayer\Service;
  * The TYPO3 project - inspiring people to share!
  */
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class CategoryService implements \TYPO3\CMS\Core\SingletonInterface
+class CategoryService implements SingletonInterface
 {
     /**
      * @param string $categoryUids

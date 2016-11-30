@@ -5,15 +5,15 @@
 		<body>
 			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video" approved="yes">
 				<source>Video</source>
-				<target>Video\ndfdf</target>
+				<target>Video</target>
 			</trans-unit>
 			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.title" approved="yes">
 				<source>Title</source>
-				<target>Title</target>
+				<target>Titel</target>
 			</trans-unit>
 			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.poster_image" approved="yes">
 				<source>PosterImage</source>
-				<target>PosterImage</target>
+				<target>Poster-Bild</target>
 			</trans-unit>
 			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.mp4_source" approved="yes">
 				<source>Mp4Source</source>
@@ -33,11 +33,11 @@
 			</trans-unit>
 			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.height" approved="yes">
 				<source>height</source>
-				<target>height</target>
+				<target>Höhe</target>
 			</trans-unit>
 			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.width" approved="yes">
 				<source>width</source>
-				<target>width</target>
+				<target>Breite</target>
 			</trans-unit>
 			<trans-unit id="tx_sschhtml5videoplayer_domain_model_video.no_playback_capabilities" approved="yes">
 				<source>No video playback capabilities</source>
@@ -45,7 +45,7 @@
 			</trans-unit>
 			<trans-unit id="tx_sschhtml5videoplayer_domain_model_audio.no_playback_capabilities" approved="yes">
 				<source>No audio playback capabilities</source>
-				<target></target>
+				<target>Keine Fähigkeiten die Audio-Datei abzuspielen.</target>
 			</trans-unit>
 			<trans-unit id="list_title" approved="yes">
 				<source>HTML5 Audio/Video Player</source>

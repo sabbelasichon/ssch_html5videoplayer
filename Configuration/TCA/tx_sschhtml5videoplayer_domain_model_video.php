@@ -3,6 +3,9 @@
 if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sschhtml5videoplayer_domain_model_video');
+
 $imagesTca = [
     'exclude' => 1,
     'label' => 'Bilder',

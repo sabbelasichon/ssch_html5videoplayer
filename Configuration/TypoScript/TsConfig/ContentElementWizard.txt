@@ -1,13 +1,13 @@
 mod.wizards.newContentElement.wizardItems.plugins {
-	elements {
-		ssch_html5videoplayer {
-			icon = ../typo3conf/ext/ssch_html5videoplayer/Resources/Public/Icons/ce_wiz.gif
-			title = LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_be.xlf:pi1_title
-			description = LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_be.xlf:pi1_plus_wiz_description
-			tt_content_defValues {
-				CType = list
-				list_type = sschhtml5videoplayer_pi1
-			}
-		}
-	}
+    elements {
+        ssch_html5videoplayer {
+            icon = ../typo3conf/ext/ssch_html5videoplayer/Resources/Public/Icons/ce_wiz.gif
+            title = LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_be.xlf:pi1_title
+            description = LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_be.xlf:pi1_plus_wiz_description
+            tt_content_defValues {
+                CType = list
+                list_type = sschhtml5videoplayer_pi1
+            }
+        }
+    }
 }
