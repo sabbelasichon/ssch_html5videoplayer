@@ -1,17 +1,12 @@
 language: php
-php:
-  - '5.6'
-  - '7.0'
-
-env:
-  matrix:
-    - DB=mysql TYPO3_BRANCH=TYPO3_6-2 COVERAGE=0
 
 matrix:
   fast_finish: true
   include:
     - php: 5.6
-      env: DB=mysql TYPO3_BRANCH=TYPO3_6-2 COVERAGE=1
+      env: TYPO3_VERSION=^6.2
+    - php:
+      env: TYPO3_VERSION=^7.6
 
 sudo: false
 
@@ -28,27 +23,16 @@ notifications:
   email:
     - breakpoint@schreibersebastian.de
 
-before_script:
-  - cd ..
-  - git clone --single-branch --branch $TYPO3_BRANCH --depth 1 https://github.com/TYPO3/TYPO3.CMS.git typo3_core
-  - mv typo3_core/* .
-  - if [ "$GITHUB_COMPOSER_AUTH" ]; then composer config -g github-oauth.github.com $GITHUB_COMPOSER_AUTH; fi
+before_install:
   - composer self-update
-  - composer install
-  - mkdir -p uploads typo3temp typo3conf/ext
-  - mv ssch_html5videoplayer typo3conf/ext/
-  - composer install
+  - composer --version
+
+before_script:
+  - composer require typo3/cms=$TYPO3_VERSION
+  - git checkout composer.json
 
 script:
   - >
-    if [[ "$COVERAGE" == "0" ]]; then
-      echo;
-      echo "Running unit tests";
-      ./bin/phpunit --colors -c typo3conf/ext/ssch_html5videoplayer/Tests/Build/UnitTests.xml
-    fi
-  - >
-    if [[ "$COVERAGE" == "1" ]]; then
-      echo;
-      echo "Running unit tests";
-      ./bin/phpunit --coverage-clover=unittest-coverage.clover --colors -c typo3conf/ext/ssch_html5videoplayer/Tests/Build/UnitTests.xml
-    fi  
+    echo;
+    echo "Running unit tests";
+    .Build/bin/phpunit --colors  -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/UnitTests.xml Tests/Unit/
