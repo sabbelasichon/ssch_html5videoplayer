@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
 // Hook configuration
-$project = 'bzga_books';
+$project = 'ssch_html5videoplayer';
 
 // Tell the commiter what the hook is doing
 echo PHP_EOL;

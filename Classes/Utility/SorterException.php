@@ -27,7 +27,7 @@ class SorterException extends RuntimeException
      */
     public static function createInvalidElementsException($elements)
     {
-        $message = sprintf('The given elements are of type %s. This is not allowed to be sorted', gettype($elements));
+        $message = sprintf('The given elements are of type %s. This is not allowed to be sorted.', gettype($elements));
 
         return new static($message);
     }
