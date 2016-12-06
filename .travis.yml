@@ -5,7 +5,11 @@ matrix:
   include:
     - php: 5.6
       env: TYPO3_VERSION=^6.2
-    - php:
+    - php: 5.6
+      env: TYPO3_VERSION=^7.6
+    - php: 7.0
+      env: TYPO3_VERSION=^7.6
+    - php: 7.1
       env: TYPO3_VERSION=^7.6
 
 sudo: false
@@ -28,8 +32,8 @@ before_install:
   - composer --version
 
 before_script:
+  - phpenv config-rm xdebug.ini
   - composer require typo3/cms=$TYPO3_VERSION
-  - git checkout composer.json
 
 script:
   - >
