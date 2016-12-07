@@ -4,14 +4,6 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-$composerAutoloadFile = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Libraries' . DIRECTORY_SEPARATOR . 'autoload.php';
-if (file_exists($composerAutoloadFile)) {
-    require_once $composerAutoloadFile;
-}
-
-// Register basic metadata extractor. Will feed the file with a "title" when indexing, e.g. upload, through scheduler
-\TYPO3\CMS\Core\Resource\Index\ExtractorRegistry::getInstance()->registerExtractionService(\Ssch\SschHtml5videoplayer\Index\MetadataExtractor::class);
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'Ssch.' . $_EXTKEY, 'Pi1', [
     'Video' => 'list, show',

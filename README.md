@@ -5,7 +5,7 @@ TYPO3 HTML5 Video- and Audioplayer based on mediaelementjs.com
 
 ## What is it?
 
-HTML5 Video- and Audioplayer based on mediaelementjs.com is an extension for TYPO3 CMS to manage HTML5 video and audio.
+HTML5 Video- and Audioplayer based on MediaElement.js (http://mediaelementjs.com/) is an extension for TYPO3 CMS to manage HTML5 video and audio.
 
 **Summary of features**
 * Easy usage for editors
