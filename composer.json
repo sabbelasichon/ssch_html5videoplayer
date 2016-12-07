@@ -29,7 +29,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Ssch\\SschHtml5videoplayer\\Tests": "Tests"
+      "Ssch\\SschHtml5videoplayer\\Tests\\": "Tests"
     }
   },
   "extra": {
