@@ -85,7 +85,7 @@
                                         <numIndex index="2"></numIndex>
                                     </numIndex>
                                 </items>
-                                <itemsProcFunc>\Ssch\SschHtml5videoplayer\UserFuncs\Template->main</itemsProcFunc>
+                                <itemsProcFunc>Ssch\SschHtml5videoplayer\UserFuncs\Template->main</itemsProcFunc>
                                 <maxitems>1</maxitems>
                                 <size>1</size>
                                 <multiple>0</multiple>
