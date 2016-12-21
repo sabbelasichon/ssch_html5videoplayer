@@ -1,8 +1,17 @@
 plugin.tx_sschhtml5videoplayer {
     view {
-        templateRootPath = {$plugin.tx_sschhtml5videoplayer.view.templateRootPath}
-        partialRootPath = {$plugin.tx_sschhtml5videoplayer.view.partialRootPath}
-        layoutRootPath = {$plugin.tx_sschhtml5videoplayer.view.layoutRootPath}
+        templateRootPaths {
+            0 = EXT:ssch_html5videoplayer/Resources/Private/Templates/
+            10 = {$plugin.tx_sschhtml5videoplayer.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:ssch_html5videoplayer/Resources/Private/Partials/
+            10 = $plugin.tx_sschhtml5videoplayer.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:ssch_html5videoplayer/Resources/Private/Layouts/
+            10 = {$plugin.tx_sschhtml5videoplayer.view.layoutRootPath}
+        }
         templateRootPathInitializationFiles = {$plugin.tx_sschhtml5videoplayer.view.templateRootPathInitializationFiles}
     }
 
