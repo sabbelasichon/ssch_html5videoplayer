@@ -47,4 +47,4 @@ foreach ($pluginsWithExtensionSummary as $pluginWithExtensionSummary) {
 }
 
 # Wizard configuration
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ssch_html5videoplayer/Configuration/TSconfig/ContentElementWizard.txt">');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ssch_html5videoplayer/Configuration/TypoScript/TSconfig/ContentElementWizard.ts">');

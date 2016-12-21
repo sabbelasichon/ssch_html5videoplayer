@@ -25,7 +25,7 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video',
         'label' => 'title',
-        'label_userFunc' => 'EXT:ssch_html5videoplayer/Classes/UserFuncs/Labels.php:\Ssch\SschHtml5videoplayer\UserFuncs\Labels->getLabel',
+        'label_userFunc' => 'EXT:ssch_html5videoplayer/Classes/UserFuncs/Labels.php:Ssch\\SschHtml5videoplayer\\UserFuncs\\Labels->getLabel',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
