@@ -13,7 +13,6 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'dividers2tabs' => true,
         'versioningWS' => 2,
         'versioning_followPages' => true,
         'origUid' => 't3_origuid',
@@ -26,7 +25,7 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'iconfile' => TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ssch_html5videoplayer') . 'Resources/Public/Icons/tx_sschhtml5videoplayer_domain_model_audio.gif',
+        'iconfile' => 'EXT:ssch_html5videoplayer/Resources/Public/Icons/tx_sschhtml5videoplayer_domain_model_audio.gif',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, audio_source, image',
@@ -43,6 +42,7 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'sys_language',
                 'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => [
@@ -57,6 +57,7 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'items' => [
                     ['', 0],
                 ],
@@ -138,9 +139,11 @@ return [
                         'notNewRecords' => 1,
                         'RTEonly' => 1,
                         'type' => 'script',
-                        'title' => 'Full screen Rich Text Editing|Formatteret redigering i hele vinduet',
-                        'icon' => 'wizard_rte2.gif',
-                        'script' => 'wizard_rte.php',
+                        'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:bodytext.W.RTE',
+                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_rte.gif',
+                        'module' => [
+                            'name' => 'wizard_rte'
+                        ],
                     ],
                 ],
             ],
@@ -165,6 +168,7 @@ return [
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio.categories',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectTree',
                 'renderMode' => 'tree',
                 'treeConfig' => [
                     'parentField' => 'parent',

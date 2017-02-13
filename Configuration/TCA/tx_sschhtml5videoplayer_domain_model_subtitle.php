@@ -13,7 +13,6 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'dividers2tabs' => true,
         'versioningWS' => 2,
         'versioning_followPages' => true,
         'origUid' => 't3_origuid',
@@ -27,7 +26,7 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'iconfile' => TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ssch_html5videoplayer') . 'Resources/Public/Icons/tx_sschhtml5videoplayer_domain_model_subtitle.gif',
+        'iconfile' => 'EXT:ssch_html5videoplayer/Resources/Public/Icons/tx_sschhtml5videoplayer_domain_model_subtitle.gif',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, track, static_lang_isocode, selected',
@@ -44,6 +43,7 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'sys_language',
                 'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => [
@@ -58,6 +58,7 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'items' => [
                     ['', 0],
                 ],
@@ -130,6 +131,7 @@ return [
             'displayCond' => 'EXT:static_info_tables:LOADED:true',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'items' => [
                     ['', 0],
                 ],

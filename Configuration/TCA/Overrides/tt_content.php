@@ -37,5 +37,4 @@ foreach ($pluginsWithFlexForms as $pluginWithFlexForm) {
         'FILE:EXT:ssch_html5videoplayer/Configuration/FlexForms/' . $pluginWithFlexForm . '.xml');
 }
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('ssch_html5videoplayer', 'Configuration/TypoScript',
-    'HTML5Videoplayer');
+
