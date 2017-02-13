@@ -54,11 +54,12 @@ class VideoViewHelperTest extends ViewHelperBaseTestcase
             [$this->equalTo('class'), $this->equalTo('mejs-skin')]
         );
 
-        $settings                = [];
-        $settings['videoWidth']  = 300;
-        $settings['videoHeight'] = 150;
-        $settings['skin']        = 'mejs-skin';
-        $video                   = $this->getMock(Video::class, ['getHeight', 'getWidth']);
+        $settings = [
+            'videoWidth' => 300,
+            'videoHeight' => 150,
+            'skin' => 'mejs-skin'
+        ];
+        $video = $this->getMock(Video::class, ['getHeight', 'getWidth']);
         $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
         $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));
 
@@ -78,9 +79,10 @@ class VideoViewHelperTest extends ViewHelperBaseTestcase
             [$this->equalTo('width'), $this->equalTo(300)], [$this->equalTo('height'), $this->equalTo(300)]
         );
 
-        $settings               = [];
-        $settings['videoWidth'] = 300;
-        $video                  = $this->getMock(Video::class, ['getHeight', 'getWidth']);
+        $settings = [
+            'videoWidth' => 300,
+        ];
+        $video = $this->getMock(Video::class, ['getHeight', 'getWidth']);
         $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
         $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));
 
@@ -100,9 +102,10 @@ class VideoViewHelperTest extends ViewHelperBaseTestcase
             [$this->equalTo('width'), $this->equalTo(300)], [$this->equalTo('height'), $this->equalTo(300)]
         );
 
-        $settings                = [];
-        $settings['videoHeight'] = 300;
-        $video                   = $this->getMock(Video::class, ['getHeight', 'getWidth']);
+        $settings = [
+            'videoWidth' => 300,
+        ];
+        $video = $this->getMock(Video::class, ['getHeight', 'getWidth']);
         $video->expects($this->any())->method('getHeight')->will($this->returnValue(100));
         $video->expects($this->any())->method('getWidth')->will($this->returnValue(100));
 
@@ -144,11 +147,15 @@ class VideoViewHelperTest extends ViewHelperBaseTestcase
             [$this->equalTo('class'), $this->equalTo('mejs-skin')]
         );
 
-        $settings                           = [];
-        $settings['video']['defaultWidth']  = 300;
-        $settings['video']['defaultHeight'] = 150;
-        $settings['skin']                   = 'mejs-skin';
-        $video                              = $this->getMock(Video::class, ['getHeight', 'getWidth']);
+        $settings = [
+            'video' => [
+                'defaultWidth' => 300,
+                'defaultHeight' => 150,
+            ],
+            'skin' => 'mejs-skin'
+        ];
+
+        $video = $this->getMock(Video::class, ['getHeight', 'getWidth']);
         $video->expects($this->any())->method('getHeight')->will($this->returnValue(0));
         $video->expects($this->any())->method('getWidth')->will($this->returnValue(0));
 
