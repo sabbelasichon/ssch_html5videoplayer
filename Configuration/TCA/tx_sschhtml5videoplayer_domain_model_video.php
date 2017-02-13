@@ -49,7 +49,7 @@ return [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, single_pid, caption, duration, poster_image, videos, external_source, external_type, copyright, height, width, subtitles, downloads, images, static_lang_isocode',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, static_lang_isocode, title, short_title, caption, copyright, duration, single_pid, description;;;richtext[paste|bold|italic|underline|formatblock|class|left|center|right|orderedlist|unorderedlist|outdent|indent|link|image]:rte_transform[mode=ts], poster_image, videos, external_source, width, height, downloads, images, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.subtitles,subtitles, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.versions,versions, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.related,related, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio.categories, categories,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, static_lang_isocode, title, short_title, caption, copyright, duration, single_pid, description;;;richtext:rte_transform[mode=ts_css], poster_image, videos, external_source, width, height, downloads, images, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.subtitles,subtitles, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.versions,versions, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.related,related, --div--;LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio.categories, categories,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'],
     ],
     'palettes' => [
         '1' => ['showitem' => ''],
@@ -209,6 +209,7 @@ return [
                 'type' => 'text',
                 'cols' => 40,
                 'rows' => 15,
+                'softref' => 'rtehtmlarea_images,typolink_tag,images,email[subst],url',
                 'wizards' => [
                     '_PADDING' => 2,
                     'RTE' => [
@@ -216,7 +217,7 @@ return [
                         'RTEonly' => 1,
                         'type' => 'script',
                         'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:bodytext.W.RTE',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_rte.gif',
+                        'icon' => 'actions-wizard-rte',
                         'module' => [
                             'name' => 'wizard_rte'
                         ],
@@ -248,12 +249,15 @@ return [
                     '_PADDING' => 2,
                     'link' => [
                         'type' => 'popup',
-                        'title' => 'Link',
-                        'icon' => 'link_popup.gif',
-                        'script' => 'browse_links.php?mode=wizard',
-                        'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
+                        'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link_formlabel',
+                        'icon' => 'actions-wizard-link',
+                        'module' => [
+                            'name' => 'wizard_link',
+                        ],
+                        'JSopenParams' => 'height=600,width=800,status=0,menubar=0,scrollbars=1'
                     ],
                 ],
+                'softref' => 'typolink'
             ],
         ],
         'poster_image' => [
@@ -305,12 +309,15 @@ return [
                     '_PADDING' => 2,
                     'link' => [
                         'type' => 'popup',
-                        'title' => 'Link',
-                        'icon' => 'link_popup.gif',
-                        'script' => 'browse_links.php?mode=wizard',
-                        'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
+                        'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link_formlabel',
+                        'icon' => 'actions-wizard-link',
+                        'module' => [
+                            'name' => 'wizard_link',
+                        ],
+                        'JSopenParams' => 'height=600,width=800,status=0,menubar=0,scrollbars=1'
                     ],
                 ],
+                'softref' => 'typolink'
             ],
         ],
         'height' => [
