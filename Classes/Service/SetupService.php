@@ -15,7 +15,6 @@ namespace Ssch\SschHtml5videoplayer\Service;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use TYPO3\CMS\Core\SingletonInterface;
 
 class SetupService implements SingletonInterface
@@ -25,11 +24,10 @@ class SetupService implements SingletonInterface
      */
     private $settings;
 
-
     /**
      * @param array $settings
      */
-    public function injectSettings(array $settings = array())
+    public function injectSettings(array $settings = [])
     {
         $this->settings = $settings;
     }
@@ -39,7 +37,7 @@ class SetupService implements SingletonInterface
      */
     public function getAudioTemplateFolder()
     {
-        return $this->settings['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'].'Audio/';
+        return $this->settings['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Audio/';
     }
 
     /**
@@ -47,7 +45,7 @@ class SetupService implements SingletonInterface
      */
     public function getVideoTemplateFolder()
     {
-        return $this->settings['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'].'Video/';
+        return $this->settings['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'] . 'Video/';
     }
 
     /**
@@ -57,5 +55,4 @@ class SetupService implements SingletonInterface
     {
         return $this->settings['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPath'];
     }
-
 }

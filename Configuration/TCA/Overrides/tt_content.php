@@ -36,5 +36,3 @@ foreach ($pluginsWithFlexForms as $pluginWithFlexForm) {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature,
         'FILE:EXT:ssch_html5videoplayer/Configuration/FlexForms/' . $pluginWithFlexForm . '.xml');
 }
-
-
