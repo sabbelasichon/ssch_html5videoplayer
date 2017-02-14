@@ -48,3 +48,6 @@ foreach ($pluginsWithExtensionSummary as $pluginWithExtensionSummary) {
 
 # Wizard configuration
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ssch_html5videoplayer/Configuration/TypoScript/TSconfig/ContentElementWizard.ts">');
+
+// Update scripts
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['ssch_html5videoplayer'] = \Ssch\SschHtml5videoplayer\Updates\VideoLinksToFileReferences::class;

@@ -270,6 +270,7 @@ return [
         ],
         'videos' => [
             'exclude' => 1,
+            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.videos',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'videos', ['maxitems' => 45], 'mp4,ogg,ogv,webm'
@@ -277,6 +278,7 @@ return [
         ],
         'external_type' => [
             'exclude' => 0,
+            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.external_type',
             'config' => [
                 'type' => 'select',

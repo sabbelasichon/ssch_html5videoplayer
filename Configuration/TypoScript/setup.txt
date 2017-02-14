@@ -6,7 +6,7 @@ plugin.tx_sschhtml5videoplayer {
         }
         partialRootPaths {
             0 = EXT:ssch_html5videoplayer/Resources/Private/Partials/
-            10 = $plugin.tx_sschhtml5videoplayer.view.partialRootPath}
+            10 = {$plugin.tx_sschhtml5videoplayer.view.partialRootPath}
         }
         layoutRootPaths {
             0 = EXT:ssch_html5videoplayer/Resources/Private/Layouts/
