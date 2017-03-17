@@ -3,7 +3,7 @@
   "description": "HTML5 Audio- and Videoplayer",
   "author": "Sebastian Schreiber <me@schreibersebastian.de>",
   "dependencies": {
-    "mediaelement": "^2.23"
+    "mediaelement": "^3.0"
   },
   "version": "0.0.1",
   "directory": "Resources/Public/Vendors"

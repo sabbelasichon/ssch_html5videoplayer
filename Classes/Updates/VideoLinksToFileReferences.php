@@ -190,8 +190,7 @@ class VideoLinksToFileReferences extends AbstractUpdate
     private function findFieldsToUpdate()
     {
         $videoTableFields = $this->getDatabaseConnection()->admin_get_fields(self::VIDEO_TABLE);
-        $fieldsToUpdate   = ['poster_image'];
-//        $fieldsToUpdate   = ['mp4_source', 'poster_image', 'web_m_source', 'ogg_source', 'flash_source'];
+        $fieldsToUpdate   = ['mp4_source', 'poster_image', 'web_m_source', 'ogg_source', 'flash_source'];
 
         return array_intersect($fieldsToUpdate, array_keys($videoTableFields));
     }
