@@ -153,7 +153,7 @@ return [
             'exclude' => 1,
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_audio.audio_source',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                '$(field_name)', ['maxitems' => 1], 'mp3'
+                'audio_source', ['maxitems' => 1], 'mp3'
             ),
         ],
         'image' => [
