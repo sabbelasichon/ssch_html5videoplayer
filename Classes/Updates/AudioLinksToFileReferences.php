@@ -15,15 +15,15 @@ namespace Ssch\SschHtml5videoplayer\Updates;
  * The TYPO3 project - inspiring people to share!
  */
 
-class VideoLinksToFileReferences extends AbstractLinksToFileReferences
+class AudioLinksToFileReferences extends AbstractLinksToFileReferences
 {
 
-    const TABLE = 'tx_sschhtml5videoplayer_domain_model_video';
+    const TABLE = 'tx_sschhtml5videoplayer_domain_model_audio';
 
     /**
      * @var string
      */
-    protected $title = 'Migrate video relations of EXT:ssch_html5videoplayer';
+    protected $title = 'Migrate audio relations of EXT:ssch_html5videoplayer';
 
     /**
      * @return string
@@ -41,10 +41,7 @@ class VideoLinksToFileReferences extends AbstractLinksToFileReferences
      */
     protected function findFieldnameForFileReferenceRelation($oldFieldname)
     {
-        if (false !== array_search($oldFieldname, ['mp4_source', 'web_m_source', 'ogg_source', 'flash_source'])) {
-            return 'videos';
-        }
-        return $oldFieldname;
+        return 'audio_source';
     }
 
     /**
@@ -52,9 +49,7 @@ class VideoLinksToFileReferences extends AbstractLinksToFileReferences
      */
     protected function findFieldsToUpdate()
     {
-        $videoTableFields = $this->getDatabaseConnection()->admin_get_fields($this->getTable());
-        $fieldsToUpdate   = ['mp4_source', 'poster_image', 'web_m_source', 'ogg_source', 'flash_source'];
-
-        return array_intersect($fieldsToUpdate, array_keys($videoTableFields));
+        return array_intersect(['audio_source'],
+            array_keys($this->getDatabaseConnection()->admin_get_fields($this->getTable())));
     }
 }
