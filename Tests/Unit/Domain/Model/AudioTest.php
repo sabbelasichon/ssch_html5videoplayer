@@ -14,8 +14,8 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 use Ssch\SschHtml5videoplayer\Domain\Model\Audio;
-use TYPO3\CMS\Core\Tests\UnitTestCase;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 
 class AudioTest extends UnitTestCase

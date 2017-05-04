@@ -14,8 +14,8 @@ namespace Ssch\SschHtml5videoplayer\Tests\Service;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 use Ssch\SschHtml5videoplayer\Service\CategoryService;
-use TYPO3\CMS\Core\Tests\UnitTestCase;
 
 class CategoryServiceTest extends UnitTestCase
 {

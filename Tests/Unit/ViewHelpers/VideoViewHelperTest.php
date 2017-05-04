@@ -14,9 +14,9 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\ViewHelpers;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\ViewHelperBaseTestcase;
 use Ssch\SschHtml5videoplayer\Domain\Model\Video;
 use Ssch\SschHtml5videoplayer\ViewHelpers\VideoViewHelper;
-use TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\ViewHelperBaseTestcase;
 
 class VideoViewHelperTest extends ViewHelperBaseTestcase
 {

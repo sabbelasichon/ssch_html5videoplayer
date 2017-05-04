@@ -14,10 +14,10 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 use Ssch\SschHtml5videoplayer\Controller\VideoController;
 use Ssch\SschHtml5videoplayer\Domain\Model\Video;
 use Ssch\SschHtml5videoplayer\Domain\Repository\VideoRepository;
-use TYPO3\CMS\Core\Tests\UnitTestCase;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;

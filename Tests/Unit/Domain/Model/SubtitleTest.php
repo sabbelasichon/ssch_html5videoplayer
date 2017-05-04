@@ -14,9 +14,9 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 use SJBR\StaticInfoTables\Domain\Model\Language;
 use Ssch\SschHtml5videoplayer\Domain\Model\Subtitle;
-use TYPO3\CMS\Core\Tests\UnitTestCase;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 
 class SubtitleTest extends UnitTestCase

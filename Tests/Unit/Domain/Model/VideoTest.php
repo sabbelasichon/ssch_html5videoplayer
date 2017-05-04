@@ -14,8 +14,8 @@ namespace Ssch\SschHtml5videoplayer\Tests\Unit\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 use Ssch\SschHtml5videoplayer\Domain\Model\Video;
-use TYPO3\CMS\Core\Tests\UnitTestCase;
 
 class VideoTest extends UnitTestCase
 {

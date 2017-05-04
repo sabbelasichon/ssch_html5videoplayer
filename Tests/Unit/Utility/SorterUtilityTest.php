@@ -14,9 +14,9 @@ namespace Ssch\SschHtml5videoplayer\Tests\Utility;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 use Ssch\SschHtml5videoplayer\Domain\Model\Video;
 use Ssch\SschHtml5videoplayer\Utility\SorterUtility;
-use TYPO3\CMS\Core\Tests\UnitTestCase;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
