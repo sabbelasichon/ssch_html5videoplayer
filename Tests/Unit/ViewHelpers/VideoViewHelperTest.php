@@ -36,6 +36,7 @@ class VideoViewHelperTest extends ViewHelperBaseTestcase
     public function setUp()
     {
         parent::setUp();
+        $this->tagBuilder = $this->getMock('TYPO3\\CMS\\Fluid\\Core\\ViewHelper\\TagBuilder');
         $this->viewHelper = $this->getAccessibleMock(VideoViewHelper::class, ['renderChildren']);
         $this->injectDependenciesIntoViewHelper($this->viewHelper);
         $this->viewHelper->initializeArguments();
