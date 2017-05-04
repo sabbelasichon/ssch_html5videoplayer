@@ -15,14 +15,14 @@
     }
   ],
   "require": {
-    "typo3/cms-core": "^6.2 || ^7.6"
+    "typo3/cms-core": "^6.2 || ^7.6 || ^8.7"
   },
   "require-dev": {
     "phpunit/phpunit": "^4.7 || ^5.0"
   },
   "replace": {
     "ssch_html5videoplayer": "self.version",
-    "ssch/ssch-html5videoplayer": "self.version"
+    "typo3-ter/ssch-html5videoplayer": "self.version"
   },
   "autoload": {
     "psr-4": {

@@ -14,7 +14,6 @@ namespace Ssch\SschHtml5videoplayer\Updates;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 class VideoLinksToFileReferences extends AbstractLinksToFileReferences
 {
 
@@ -32,7 +31,6 @@ class VideoLinksToFileReferences extends AbstractLinksToFileReferences
     {
         return self::TABLE;
     }
-
 
     /**
      * @param $oldFieldname
