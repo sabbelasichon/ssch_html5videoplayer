@@ -58,7 +58,9 @@ abstract class AbstractController extends ActionController
 
                 if ($this->settings['skin']) {
                     $mediaElementSkinCss = $mediaElementJsFolder . 'build/mejs-skins.css';
-                    $this->addHeaderData($mediaElementSkinCss);
+                    if (file_exists($mediaElementSkinCss)) {
+                        $this->addHeaderData($mediaElementSkinCss);
+                    }
                 }
             }
             if ($this->settings['addMediaElementJsInitialization'] && !$this->settings['addMediaElementJsInitializationFile']) {
