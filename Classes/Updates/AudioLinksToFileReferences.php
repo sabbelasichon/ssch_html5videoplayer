@@ -25,6 +25,24 @@ class AudioLinksToFileReferences extends AbstractLinksToFileReferences
     protected $title = 'Migrate audio relations of EXT:ssch_html5videoplayer';
 
     /**
+     * @param array $dbQueries
+     * @param mixed $customMessages
+     *
+     * @return bool
+     */
+    public function performUpdate(array &$dbQueries, &$customMessages)
+    {
+        $success = parent::performUpdate($dbQueries, $customMessages);
+        if ($success) {
+            $this->getDatabaseConnection()->exec_UPDATEquery('sys_file_reference',
+                'tablenames = "tx_sschhtml5videoplayer_domain_model_audio" AND fieldname = "$(field_name)"',
+                ['fieldname' => 'audio_source']);
+        }
+
+        return $success;
+    }
+
+    /**
      * @return string
      */
     protected function getTable()
