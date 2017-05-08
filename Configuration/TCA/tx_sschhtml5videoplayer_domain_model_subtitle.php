@@ -27,6 +27,7 @@ return [
             'endtime' => 'endtime',
         ],
         'iconfile' => 'EXT:ssch_html5videoplayer/Resources/Public/Icons/tx_sschhtml5videoplayer_domain_model_subtitle.gif',
+        'searchFields' => 'track',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, track, static_lang_isocode, selected',

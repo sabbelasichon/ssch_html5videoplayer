@@ -25,6 +25,7 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
+        'searchFields' => 'title',
         'iconfile' => 'EXT:ssch_html5videoplayer/Resources/Public/Icons/tx_sschhtml5videoplayer_domain_model_audio.gif',
     ],
     'interface' => [
