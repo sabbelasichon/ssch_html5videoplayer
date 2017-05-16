@@ -110,6 +110,7 @@ CREATE TABLE tx_sschhtml5videoplayer_domain_model_audio (
   uid int(11) NOT NULL auto_increment,
   pid int(11) DEFAULT '0' NOT NULL,
 
+  sorting int(11) DEFAULT '0' NOT NULL,
   title varchar(255) DEFAULT '' NOT NULL,
   audio_source int(11) unsigned DEFAULT '0' NOT NULL,
   description text NOT NULL,
