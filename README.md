@@ -21,3 +21,10 @@ HTML5 Video- and Audioplayer based on MediaElement.js (http://mediaelementjs.com
 
 This extension is hosted on GitHub. Please report feedback, bugs and change requests directly at 
 https://github.com/sabbelasichon/ssch_html5videoplayer
+
+
+## Installation
+
+Currently the only way to install the extension is via composer.
+
+    composer require ssch/ssch-html5videoplayer
