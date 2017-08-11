@@ -72,7 +72,7 @@ abstract class AbstractController extends ActionController
                 /* @var $fluidView \TYPO3\CMS\Fluid\View\StandaloneView */
                 $fluidView->assign('settings', $this->settings);
                 $fluidView->setTemplatePathAndFilename($initializationFile);
-                $fluidView->setPartialRootPath(dirname($initializationFile));
+                $fluidView->setPartialRootPaths([dirname($initializationFile)]);
                 $this->addHeaderData($fluidView->render(), 'none');
             }
         }
