@@ -146,7 +146,7 @@ abstract class AbstractLinksToFileReferences extends AbstractUpdate
         if (!MathUtility::canBeInterpretedAsInteger($counter)) {
             $counter = 0;
         }
-        $counter =  + 1;
+        ++$counter;
         $this->getDatabaseConnection()->exec_UPDATEquery($this->getTable(), 'uid = ' . (int)$row['uid'], [$this->findFieldnameForFileReferenceRelation($fieldToUpdate) => $counter]);
     }
 
@@ -179,5 +179,13 @@ abstract class AbstractLinksToFileReferences extends AbstractUpdate
 
             $this->getDatabaseConnection()->exec_INSERTquery('sys_file_reference', $dataArray);
         }
+    }
+
+    /**
+     * @return \TYPO3\CMS\Core\Database\DatabaseConnection
+     */
+    protected function getDatabaseConnection()
+    {
+        return $GLOBALS['TYPO3_DB'];
     }
 }
