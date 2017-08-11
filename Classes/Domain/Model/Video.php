@@ -41,28 +41,28 @@ class Video extends AbstractVideoAudioEntity
      *
      * @var string
      */
-    protected $mp4Source = null;
+    protected $mp4Source;
 
     /**
      * WebMSource.
      *
      * @var string
      */
-    protected $webMSource = null;
+    protected $webMSource;
 
     /**
      * OggSource.
      *
      * @var string
      */
-    protected $oggSource = null;
+    protected $oggSource;
 
     /**
      * FlashSource.
      *
      * @var string
      */
-    protected $flashSource = null;
+    protected $flashSource;
 
     /**
      * height.

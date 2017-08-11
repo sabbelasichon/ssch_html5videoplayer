@@ -28,7 +28,7 @@ class Audio extends AbstractVideoAudioEntity
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    protected $image = null;
+    protected $image;
 
     /**
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
