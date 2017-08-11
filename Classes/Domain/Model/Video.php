@@ -37,30 +37,9 @@ class Video extends AbstractVideoAudioEntity
     protected $posterImage;
 
     /**
-     * Mp4Source.
-     *
-     * @var string
-     */
-    protected $mp4Source;
-
-    /**
-     * WebMSource.
-     *
-     * @var string
-     */
-    protected $webMSource;
-
-    /**
-     * OggSource.
-     *
-     * @var string
-     */
-    protected $oggSource;
-
-    /**
      * FlashSource.
      *
-     * @var string
+     * @var FileReference
      */
     protected $flashSource;
 
@@ -309,14 +288,6 @@ class Video extends AbstractVideoAudioEntity
     }
 
     /**
-     * @return bool
-     */
-    public function getHasHTML5Video()
-    {
-        return !empty($this->mp4Source) || !empty($this->oggSource) || !empty($this->webMSource) ? true : false;
-    }
-
-    /**
      * @return string
      */
     public function getAlt()
@@ -527,5 +498,18 @@ class Video extends AbstractVideoAudioEntity
     public function setVideos($videos)
     {
         $this->videos = $videos;
+    }
+
+    /**
+     * @return FileReference
+     */
+    public function getFlashSource()
+    {
+        if (null === $this->flashSource) {
+            $videos = clone $this->videos;
+            $videos->rewind();
+            $this->flashSource = $videos->current();
+        }
+        return $this->flashSource;
     }
 }
