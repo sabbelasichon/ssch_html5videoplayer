@@ -167,7 +167,7 @@ return [
         'static_lang_isocode' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_tca.php:sys_language.isocode',
-            'displayCond' => 'EXT:static_info_tables:LOADED:true',
+            'displayCond' => 'USER:Ssch\\SschHtml5videoplayer\\UserFuncs\\ExtensionLoadedConditionMatcher->isExtensionLoaded:static_info_tables',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
