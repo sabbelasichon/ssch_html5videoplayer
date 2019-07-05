@@ -130,7 +130,7 @@ return [
         ],
         'static_lang_isocode' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_tca.php:sys_language.isocode',
+            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_language.isocode',
             'displayCond' => 'EXT:static_info_tables:LOADED:true',
             'config' => [
                 'type' => 'select',
