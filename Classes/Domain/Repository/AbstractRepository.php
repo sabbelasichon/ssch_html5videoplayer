@@ -14,7 +14,6 @@ namespace Ssch\SschHtml5videoplayer\Domain\Repository;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use Ssch\SschHtml5videoplayer\Service\CategoryService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
@@ -26,14 +25,13 @@ abstract class AbstractRepository extends Repository
 {
     /**
      * @var CategoryService
-     *
      */
     protected $categoryService;
 
     /**
      * Finds all opjects.
      *
-     * @return QueryResultInterface|array
+     * @return array|QueryResultInterface
      */
     public function findAll()
     {
@@ -48,7 +46,7 @@ abstract class AbstractRepository extends Repository
      *
      * @param string $uids A comma separeted list of uids
      *
-     * @return QueryResultInterface|array
+     * @return array|QueryResultInterface
      * @throws InvalidQueryException
      */
     public function findByUids($uids)
@@ -68,7 +66,7 @@ abstract class AbstractRepository extends Repository
     /**
      * @param string $categoryUids Comma separeted list of categories
      *
-     * @return QueryResultInterface|array
+     * @return array|QueryResultInterface
      * @throws InvalidQueryException
      */
     public function findByCategories($categoryUids)

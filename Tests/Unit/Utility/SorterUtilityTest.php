@@ -50,8 +50,10 @@ class SorterUtilityTest extends UnitTestCase
         $records->attach($videoMock2);
         $records->attach($videoMock3);
         $records->attach($videoMock4);
-        self::assertSame([$videoMock2, $videoMock3, $videoMock1, $videoMock4],
-            $this->subject->sortElementsAsDefinedInFlexForms('3,4,1,5', $records));
+        self::assertSame(
+            [$videoMock2, $videoMock3, $videoMock1, $videoMock4],
+            $this->subject->sortElementsAsDefinedInFlexForms('3,4,1,5', $records)
+        );
     }
 
     /**
@@ -67,8 +69,10 @@ class SorterUtilityTest extends UnitTestCase
         $video3->uid = 4;
         $video4 = new \stdClass();
         $video4->uid = 5;
-        self::assertSame([$video2, $video3, $video1, $video4],
-            $this->subject->sortElementsAsDefinedInFlexForms('3,4,1,5', [$video1, $video2, $video3, $video4]));
+        self::assertSame(
+            [$video2, $video3, $video1, $video4],
+            $this->subject->sortElementsAsDefinedInFlexForms('3,4,1,5', [$video1, $video2, $video3, $video4])
+        );
     }
 
     /**
@@ -86,8 +90,10 @@ class SorterUtilityTest extends UnitTestCase
         $video4 = new \stdClass();
         $video4->uid = 5;
         $result->_set('queryResult', [$video2, $video3, $video1, $video4]);
-        self::assertSame([$video2, $video3, $video1, $video4],
-            $this->subject->sortElementsAsDefinedInFlexForms('3,4,1,5', [$video1, $video2, $video3, $video4]));
+        self::assertSame(
+            [$video2, $video3, $video1, $video4],
+            $this->subject->sortElementsAsDefinedInFlexForms('3,4,1,5', [$video1, $video2, $video3, $video4])
+        );
     }
 
     /**

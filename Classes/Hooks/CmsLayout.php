@@ -35,8 +35,10 @@ class CmsLayout
     public function getExtensionSummary(array $params)
     {
         $LL = $this->includeLocalLang();
-        $result = '<strong><cite>&rarr; ' . $this->getLanguage()->getLLL('list_title_' . $params['row']['list_type'],
-                $LL) . ' </cite></strong>';
+        $result = '<strong><cite>&rarr; ' . $this->getLanguage()->getLLL(
+            'list_title_' . $params['row']['list_type'],
+                $LL
+        ) . ' </cite></strong>';
         $this->flexformData = GeneralUtility::xml2array($params['row']['pi_flexform']);
         if ($this->getFieldFromFlexform('settings.videoWidth')) {
             $result .= '<br /><strong>Width:</strong>: ' . $this->getFieldFromFlexform('settings.videoWidth');
@@ -54,12 +56,16 @@ class CmsLayout
             $result .= '<br /><strong>Skin</strong>: ' . $this->getFieldFromFlexform('settings.skin');
         }
         if ($this->getFieldFromFlexform('settings.videoSelection')) {
-            $this->addItemsToResult($this->getItemsByTableAndUids($this->getFieldFromFlexform('settings.videoSelection')),
-                $result);
+            $this->addItemsToResult(
+                $this->getItemsByTableAndUids($this->getFieldFromFlexform('settings.videoSelection')),
+                $result
+            );
         }
         if ($this->getFieldFromFlexform('settings.audioSelection')) {
-            $this->addItemsToResult($this->getItemsByTableAndUids($this->getFieldFromFlexform('settings.audioSelection'),
-                'tx_sschhtml5videoplayer_domain_model_audio'), $result);
+            $this->addItemsToResult($this->getItemsByTableAndUids(
+                $this->getFieldFromFlexform('settings.audioSelection'),
+                'tx_sschhtml5videoplayer_domain_model_audio'
+            ), $result);
         }
 
         return $result;
@@ -86,8 +92,11 @@ class CmsLayout
      */
     protected function getItemsByTableAndUids($uids, $table = 'tx_sschhtml5videoplayer_domain_model_video')
     {
-        return $this->getDatabaseConnection()->exec_SELECTgetRows($table . '.*', $table,
-            $table . '.uid IN( ' . $this->getDatabaseConnection()->cleanIntList($uids) . ')');
+        return $this->getDatabaseConnection()->exec_SELECTgetRows(
+            $table . '.*',
+            $table,
+            $table . '.uid IN( ' . $this->getDatabaseConnection()->cleanIntList($uids) . ')'
+        );
     }
 
     /**

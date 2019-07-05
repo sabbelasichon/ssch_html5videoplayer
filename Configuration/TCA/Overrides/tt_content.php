@@ -5,23 +5,33 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'ssch_html5videoplayer', 'Pi1', 'Video - Liste'
+    'ssch_html5videoplayer',
+    'Pi1',
+    'Video - Liste'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'ssch_html5videoplayer', 'Pi2', 'Video - Details'
+    'ssch_html5videoplayer',
+    'Pi2',
+    'Video - Details'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'ssch_html5videoplayer', 'Pi3', 'Audio - Liste'
+    'ssch_html5videoplayer',
+    'Pi3',
+    'Audio - Liste'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'ssch_html5videoplayer', 'Pi4', 'Audio - Details'
+    'ssch_html5videoplayer',
+    'Pi4',
+    'Audio - Details'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'ssch_html5videoplayer', 'Pi5', 'Category - Filter'
+    'ssch_html5videoplayer',
+    'Pi5',
+    'Category - Filter'
 );
 
 // Flexforms
@@ -33,6 +43,8 @@ foreach ($pluginsWithFlexForms as $pluginWithFlexForm) {
     $pluginSignature = strtolower($extensionName) . $pluginSuffix;
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = 'layout,select_key,recursive';
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature,
-        'FILE:EXT:ssch_html5videoplayer/Configuration/FlexForms/' . $pluginWithFlexForm . '.xml');
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+        $pluginSignature,
+        'FILE:EXT:ssch_html5videoplayer/Configuration/FlexForms/' . $pluginWithFlexForm . '.xml'
+    );
 }

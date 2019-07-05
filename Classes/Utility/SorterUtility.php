@@ -87,7 +87,8 @@ class SorterUtility
     {
         if ($elements instanceof Traversable) {
             return true;
-        } elseif (is_array($elements)) {
+        }
+        if (is_array($elements)) {
             return true;
         }
 

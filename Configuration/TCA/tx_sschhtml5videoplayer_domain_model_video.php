@@ -9,14 +9,17 @@ if (!defined('TYPO3_MODE')) {
 $imagesTca = [
     'exclude' => 1,
     'label' => 'Bilder',
-    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('images',
-        ['maxitems' => 1], $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+        'images',
+        ['maxitems' => 1],
+        $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
     ),
 ];
 $downloadsTca = [
     'exclude' => 1,
     'label' => 'Downloads',
-    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('downloads',
+    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+        'downloads',
         ['maxitems' => 10]
     ),
 ];
@@ -265,7 +268,9 @@ return [
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.poster_image',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'poster_image', ['maxitems' => 1], $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+                'poster_image',
+                ['maxitems' => 1],
+                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
         ],
         'videos' => [
@@ -273,7 +278,9 @@ return [
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_video.videos',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'videos', ['maxitems' => 45], 'mp4,ogg,ogv,webm'
+                'videos',
+                ['maxitems' => 45],
+                'mp4,ogg,ogv,webm'
             ),
         ],
         'external_type' => [

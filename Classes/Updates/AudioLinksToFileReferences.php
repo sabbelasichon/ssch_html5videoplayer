@@ -16,7 +16,6 @@ namespace Ssch\SschHtml5videoplayer\Updates;
  */
 class AudioLinksToFileReferences extends AbstractLinksToFileReferences
 {
-
     const TABLE = 'tx_sschhtml5videoplayer_domain_model_audio';
 
     /**
@@ -34,9 +33,11 @@ class AudioLinksToFileReferences extends AbstractLinksToFileReferences
     {
         $success = parent::performUpdate($dbQueries, $customMessages);
         if ($success) {
-            $this->getDatabaseConnection()->exec_UPDATEquery('sys_file_reference',
+            $this->getDatabaseConnection()->exec_UPDATEquery(
+                'sys_file_reference',
                 'tablenames = "tx_sschhtml5videoplayer_domain_model_audio" AND fieldname = "$(field_name)"',
-                ['fieldname' => 'audio_source']);
+                ['fieldname' => 'audio_source']
+            );
         }
 
         return $success;
@@ -65,7 +66,9 @@ class AudioLinksToFileReferences extends AbstractLinksToFileReferences
      */
     protected function findFieldsToUpdate()
     {
-        return array_intersect(['audio_source'],
-            array_keys($this->getDatabaseConnection()->admin_get_fields($this->getTable())));
+        return array_intersect(
+            ['audio_source'],
+            array_keys($this->getDatabaseConnection()->admin_get_fields($this->getTable()))
+        );
     }
 }

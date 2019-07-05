@@ -45,8 +45,10 @@ abstract class AbstractController extends ActionController
                 if ($locale) {
                     $localeFile = $mediaElementJsFolder . sprintf('src/js/me-i18n-locale-%s.js', $locale);
                     if (file_exists($localeFile)) {
-                        $this->addHeaderData('var mejs = mejs || {}; (function () { mejs.i18n = { locale: { language: "' . $locale . '", strings: { } } }; })();',
-                            'script');
+                        $this->addHeaderData(
+                            'var mejs = mejs || {}; (function () { mejs.i18n = { locale: { language: "' . $locale . '", strings: { } } }; })();',
+                            'script'
+                        );
                         $this->addHeaderData($localeFile, 'js');
                     }
                 }
@@ -64,8 +66,10 @@ abstract class AbstractController extends ActionController
                 }
             }
             if ($this->settings['addMediaElementJsInitialization'] && !$this->settings['addMediaElementJsInitializationFile']) {
-                $this->addHeaderData('(function($) { $(document).ready(function() { $(\'video,audio\').mediaelementplayer(); });})(jQuery);',
-                    'script');
+                $this->addHeaderData(
+                    '(function($) { $(document).ready(function() { $(\'video,audio\').mediaelementplayer(); });})(jQuery);',
+                    'script'
+                );
             } elseif ($this->settings['addMediaElementJsInitializationFile']) {
                 $initializationFile = $this->getFileAbsFileName($this->settings['addMediaElementJsInitializationFile']);
                 $fluidView = $this->objectManager->get(StandaloneView::class);

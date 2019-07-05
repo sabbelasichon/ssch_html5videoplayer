@@ -123,7 +123,9 @@ return [
             'exclude' => 1,
             'label' => 'LLL:EXT:ssch_html5videoplayer/Resources/Private/Language/locallang_db.xlf:tx_sschhtml5videoplayer_domain_model_subtitle.track',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'track', ['maxitems' => 1], 'vtt, srt'
+                'track',
+                ['maxitems' => 1],
+                'vtt, srt'
             ),
         ],
         'static_lang_isocode' => [

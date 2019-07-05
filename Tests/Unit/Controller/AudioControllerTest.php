@@ -33,8 +33,13 @@ class AudioControllerTest extends UnitTestCase
      */
     public function setUp()
     {
-        $this->subject = $this->getAccessibleMock(AudioController::class,
-            ['redirect', 'forward', 'addFlashMessage'], [], '', false);
+        $this->subject = $this->getAccessibleMock(
+            AudioController::class,
+            ['redirect', 'forward', 'addFlashMessage'],
+            [],
+            '',
+            false
+        );
     }
 
     /**

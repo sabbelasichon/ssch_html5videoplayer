@@ -16,7 +16,6 @@ namespace Ssch\SschHtml5videoplayer\Updates;
  */
 class VideoLinksToFileReferences extends AbstractLinksToFileReferences
 {
-
     const TABLE = 'tx_sschhtml5videoplayer_domain_model_video';
 
     /**

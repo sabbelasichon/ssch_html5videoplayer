@@ -28,9 +28,11 @@ class Labels
         }
         switch ($params['table']) {
             case 'tx_sschhtml5videoplayer_domain_model_video':
-                $row = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows('video1.title AS title, video2.title AS title2, sl.lg_name_en AS language',
+                $row = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+                    'video1.title AS title, video2.title AS title2, sl.lg_name_en AS language',
                     $params['table'] . ' AS video1 LEFT JOIN tx_sschhtml5videoplayer_domain_model_video AS video2 ON video2.uid = video1.parentid LEFT JOIN static_languages AS sl ON sl.uid = video1.static_lang_isocode',
-                    'video1.uid = ' . intval($params['row']['uid']));
+                    'video1.uid = ' . intval($params['row']['uid'])
+                );
                 $parts = [];
                 if ($row[0]['title']) {
                     $parts[] = $row[0]['title'];

@@ -23,7 +23,6 @@ class AudioController extends AbstractController
 {
     /**
      * @var AudioRepository
-     *
      */
     protected $audioRepository = null;
 
@@ -50,8 +49,10 @@ class AudioController extends AbstractController
         $this->audioRepository->setOrderings($this->settings['orderBy'], $this->settings['orderDirection']);
         if ($this->settings['audioSelection']) {
             $audios = $this->audioRepository->findByUids($this->settings['audioSelection']);
-            $audios = $this->sorterUtility->sortElementsAsDefinedInFlexForms($this->settings['audioSelection'],
-                $audios);
+            $audios = $this->sorterUtility->sortElementsAsDefinedInFlexForms(
+                $this->settings['audioSelection'],
+                $audios
+            );
         } else {
             $audios = $this->audioRepository->findAll();
         }

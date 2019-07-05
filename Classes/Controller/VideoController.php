@@ -24,13 +24,11 @@ class VideoController extends AbstractController
 {
     /**
      * @var VideoRepository
-     *
      */
     protected $videoRepository;
 
     /**
      * @var CategoryRepository
-     *
      */
     protected $categoryRepository;
 

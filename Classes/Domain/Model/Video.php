@@ -166,7 +166,8 @@ class Video extends AbstractVideoAudioEntity
     {
         if ($this->copyright) {
             return $this->copyright;
-        } elseif ($this->parentid instanceof self) {
+        }
+        if ($this->parentid instanceof self) {
             return $this->parentid->getCopyright();
         }
 
@@ -200,7 +201,8 @@ class Video extends AbstractVideoAudioEntity
     {
         if ($this->posterImage) {
             return $this->posterImage;
-        } elseif ($this->parentid instanceof self) {
+        }
+        if ($this->parentid instanceof self) {
             return $this->parentid->getPosterImage();
         }
 
@@ -244,7 +246,8 @@ class Video extends AbstractVideoAudioEntity
     {
         if ($this->height) {
             return $this->height;
-        } elseif ($this->parentid instanceof self) {
+        }
+        if ($this->parentid instanceof self) {
             return $this->parentid->getHeight();
         }
 
@@ -270,7 +273,8 @@ class Video extends AbstractVideoAudioEntity
     {
         if ($this->width) {
             return $this->width;
-        } elseif ($this->parentid instanceof self) {
+        }
+        if ($this->parentid instanceof self) {
             return $this->parentid->getWidth();
         }
 
@@ -374,7 +378,8 @@ class Video extends AbstractVideoAudioEntity
     {
         if ($this->duration) {
             return $this->duration;
-        } elseif ($this->parentid instanceof self) {
+        }
+        if ($this->parentid instanceof self) {
             return $this->parentid->getDuration();
         }
 

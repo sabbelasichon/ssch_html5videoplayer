@@ -57,8 +57,10 @@ abstract class AbstractLinksToFileReferences extends AbstractUpdate
             $storageRecord = $storage->getStorageRecord();
             $configuration = $storage->getConfiguration();
             $isLocalDriver = $storageRecord['driver'] === 'Local';
-            $isOnFileadmin = ! empty($configuration['basePath']) && GeneralUtility::isFirstPartOfStr($configuration['basePath'],
-                    $fileadminDirectory);
+            $isOnFileadmin = ! empty($configuration['basePath']) && GeneralUtility::isFirstPartOfStr(
+                $configuration['basePath'],
+                    $fileadminDirectory
+            );
             if ($isLocalDriver && $isOnFileadmin) {
                 $this->storage = $storage;
                 break;
@@ -81,8 +83,11 @@ abstract class AbstractLinksToFileReferences extends AbstractUpdate
         $fieldsToUpdate = $this->findFieldsToUpdate();
         if (! empty($fieldsToUpdate)) {
             foreach ($fieldsToUpdate as $fieldToUpdate) {
-                $count = $this->getDatabaseConnection()->exec_SELECTcountRows('uid', $this->getTable(),
-                    $this->getDatabaseConnection()->quoteStr($fieldToUpdate, $this->getTable()) . ' != ""');
+                $count = $this->getDatabaseConnection()->exec_SELECTcountRows(
+                    'uid',
+                    $this->getTable(),
+                    $this->getDatabaseConnection()->quoteStr($fieldToUpdate, $this->getTable()) . ' != ""'
+                );
                 if ($count) {
                     return true;
                 }
@@ -122,8 +127,11 @@ abstract class AbstractLinksToFileReferences extends AbstractUpdate
 
         $sorting = 1;
         foreach ($fieldsToUpdate as $fieldToUpdate) {
-            $rows = $this->getDatabaseConnection()->exec_SELECTgetRows('*', $this->getTable(),
-                $this->getDatabaseConnection()->quoteStr($fieldToUpdate, $this->getTable()) . ' != ""');
+            $rows = $this->getDatabaseConnection()->exec_SELECTgetRows(
+                '*',
+                $this->getTable(),
+                $this->getDatabaseConnection()->quoteStr($fieldToUpdate, $this->getTable()) . ' != ""'
+            );
             if (! empty($rows)) {
                 foreach ($rows as $row) {
                     $this->migrateField($row, $fieldToUpdate, $sorting);

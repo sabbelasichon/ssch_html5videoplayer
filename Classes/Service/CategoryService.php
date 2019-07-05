@@ -62,7 +62,9 @@ class CategoryService implements SingletonInterface
         }
         if ($id && $depth > 0) {
             $res = $this->getDatabaseConnection()->exec_SELECTquery(
-                    $fields, $table, $field . '=' . $id . ' ' . BackendUtility::deleteClause($table) . ' AND ' . $perms_clause
+                    $fields,
+                $table,
+                $field . '=' . $id . ' ' . BackendUtility::deleteClause($table) . ' AND ' . $perms_clause
             );
             while ($row = $this->getDatabaseConnection()->sql_fetch_assoc($res)) {
                 if ($begin <= 0) {

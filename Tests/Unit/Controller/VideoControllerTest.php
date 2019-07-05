@@ -33,8 +33,13 @@ class VideoControllerTest extends UnitTestCase
      */
     public function setUp()
     {
-        $this->subject = $this->getAccessibleMock(VideoController::class,
-            ['redirect', 'forward', 'addFlashMessage'], [], '', false);
+        $this->subject = $this->getAccessibleMock(
+            VideoController::class,
+            ['redirect', 'forward', 'addFlashMessage'],
+            [],
+            '',
+            false
+        );
     }
 
     /**
@@ -50,8 +55,13 @@ class VideoControllerTest extends UnitTestCase
         $contentObject->data = $data;
         $this->inject($this->subject, 'settings', $settings);
 
-        $videoRepositoryMock = $this->getMock(VideoRepository::class,
-            ['findByUid'], [], '', false);
+        $videoRepositoryMock = $this->getMock(
+            VideoRepository::class,
+            ['findByUid'],
+            [],
+            '',
+            false
+        );
         $videoRepositoryMock->expects($this->once())->method('findByUid')->will($this->returnValue($videoMock));
         $this->inject($this->subject, 'videoRepository', $videoRepositoryMock);
 
@@ -81,8 +91,13 @@ class VideoControllerTest extends UnitTestCase
         $contentObject->data = $data;
         $this->inject($this->subject, 'settings', $settings);
 
-        $videoRepositoryMock = $this->getMock(VideoRepository::class,
-            ['findAll'], [], '', false);
+        $videoRepositoryMock = $this->getMock(
+            VideoRepository::class,
+            ['findAll'],
+            [],
+            '',
+            false
+        );
         $videoRepositoryMock->expects($this->once())->method('findAll')->will($this->returnValue($allVideos));
         $this->inject($this->subject, 'videoRepository', $videoRepositoryMock);
 

@@ -22,7 +22,7 @@ class VideoViewHelperTest extends ViewHelperBaseTestcase
 {
 
     /**
-     * @var \TYPO3\CMS\Fluid\Core\ViewHelper\TagBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit_Framework_MockObject_MockObject|\TYPO3\CMS\Fluid\Core\ViewHelper\TagBuilder
      */
     protected $tagBuilder;
 
@@ -51,7 +51,8 @@ class VideoViewHelperTest extends ViewHelperBaseTestcase
         $this->tagBuilder->expects($this->once())->method('render');
         $this->tagBuilder->expects($this->once())->method('setContent');
         $this->tagBuilder->expects($this->exactly(3))->method('addAttribute')->withConsecutive(
-            [$this->equalTo('width'), $this->equalTo(300)], [$this->equalTo('height'), $this->equalTo(150)],
+            [$this->equalTo('width'), $this->equalTo(300)],
+            [$this->equalTo('height'), $this->equalTo(150)],
             [$this->equalTo('class'), $this->equalTo('mejs-skin')]
         );
 
@@ -77,7 +78,8 @@ class VideoViewHelperTest extends ViewHelperBaseTestcase
         $this->tagBuilder->expects($this->once())->method('render');
         $this->tagBuilder->expects($this->once())->method('setContent');
         $this->tagBuilder->expects($this->exactly(2))->method('addAttribute')->withConsecutive(
-            [$this->equalTo('width'), $this->equalTo(300)], [$this->equalTo('height'), $this->equalTo(300)]
+            [$this->equalTo('width'), $this->equalTo(300)],
+            [$this->equalTo('height'), $this->equalTo(300)]
         );
 
         $settings = [
@@ -100,7 +102,8 @@ class VideoViewHelperTest extends ViewHelperBaseTestcase
         $this->tagBuilder->expects($this->once())->method('render');
         $this->tagBuilder->expects($this->once())->method('setContent');
         $this->tagBuilder->expects($this->exactly(2))->method('addAttribute')->withConsecutive(
-            [$this->equalTo('width'), $this->equalTo(300)], [$this->equalTo('height'), $this->equalTo(300)]
+            [$this->equalTo('width'), $this->equalTo(300)],
+            [$this->equalTo('height'), $this->equalTo(300)]
         );
 
         $settings = [
@@ -123,7 +126,8 @@ class VideoViewHelperTest extends ViewHelperBaseTestcase
         $this->tagBuilder->expects($this->once())->method('render');
         $this->tagBuilder->expects($this->once())->method('setContent');
         $this->tagBuilder->expects($this->exactly(2))->method('addAttribute')->withConsecutive(
-            [$this->equalTo('width'), $this->equalTo(100)], [$this->equalTo('height'), $this->equalTo(100)]
+            [$this->equalTo('width'), $this->equalTo(100)],
+            [$this->equalTo('height'), $this->equalTo(100)]
         );
 
         $settings = [];
@@ -144,7 +148,8 @@ class VideoViewHelperTest extends ViewHelperBaseTestcase
         $this->tagBuilder->expects($this->once())->method('render');
         $this->tagBuilder->expects($this->once())->method('setContent');
         $this->tagBuilder->expects($this->exactly(3))->method('addAttribute')->withConsecutive(
-            [$this->equalTo('width'), $this->equalTo(300)], [$this->equalTo('height'), $this->equalTo(150)],
+            [$this->equalTo('width'), $this->equalTo(300)],
+            [$this->equalTo('height'), $this->equalTo(150)],
             [$this->equalTo('class'), $this->equalTo('mejs-skin')]
         );
 

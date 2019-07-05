@@ -14,7 +14,6 @@ namespace Ssch\SschHtml5videoplayer\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use Ssch\SschHtml5videoplayer\Service\CategoryService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
@@ -26,13 +25,11 @@ class CategoryController extends ActionController
 {
     /**
      * @var CategoryRepository
-     *
      */
     protected $categoryRepository;
 
     /**
      * @var CategoryService
-     *
      */
     protected $categoryService;
 
