@@ -35,6 +35,7 @@ class VideoViewHelper extends AbstractTagBasedViewHelper
      */
     public function initializeArguments()
     {
+        parent::initializeArguments();
         $this->registerTagAttribute('preload', 'string', 'Preload video', false);
         $this->registerTagAttribute('controls', 'string', 'Controls of video', false);
         $this->registerTagAttribute('rel', 'string', 'Rel attribute for the nivo-slider', false);
