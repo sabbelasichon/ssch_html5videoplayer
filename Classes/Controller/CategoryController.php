@@ -14,26 +14,30 @@ namespace Ssch\SschHtml5videoplayer\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use Ssch\SschHtml5videoplayer\Service\CategoryService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
+use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 class CategoryController extends ActionController
 {
     /**
-     * @var \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
-     * @inject
+     * @var CategoryRepository
+     *
      */
     protected $categoryRepository;
 
     /**
-     * @var \Ssch\SschHtml5videoplayer\Service\CategoryService
-     * @inject
+     * @var CategoryService
+     *
      */
     protected $categoryService;
 
     /**
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+     * @param Category $category
      */
     public function filterAction(Category $category = null)
     {
@@ -44,7 +48,7 @@ class CategoryController extends ActionController
     }
 
     /**
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return array|QueryResultInterface
      */
     protected function getCategories()
     {
@@ -57,5 +61,21 @@ class CategoryController extends ActionController
         $query->matching($query->logicalAnd($constraints));
 
         return $query->execute();
+    }
+
+    /**
+     * @param CategoryRepository $categoryRepository
+     */
+    public function injectCategoryRepository(CategoryRepository $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
+    /**
+     * @param CategoryService $categoryService
+     */
+    public function injectCategoryService(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
     }
 }

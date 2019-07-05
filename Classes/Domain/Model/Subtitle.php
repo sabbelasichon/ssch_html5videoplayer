@@ -96,12 +96,4 @@ class Subtitle extends AbstractEntity
     {
         return $this->getTrack()->getOriginalResource()->getExtension();
     }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getTrack();
-    }
 }

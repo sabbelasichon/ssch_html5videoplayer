@@ -15,27 +15,29 @@ namespace Ssch\SschHtml5videoplayer\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 use Ssch\SschHtml5videoplayer\Domain\Model\Video;
+use Ssch\SschHtml5videoplayer\Domain\Repository\VideoRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 class VideoController extends AbstractController
 {
     /**
-     * @var \Ssch\SschHtml5videoplayer\Domain\Repository\VideoRepository
-     * @inject
+     * @var VideoRepository
+     *
      */
     protected $videoRepository;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
-     * @inject
+     * @var CategoryRepository
+     *
      */
     protected $categoryRepository;
 
     /**
      * Displays a single Video.
      *
-     * @param \Ssch\SschHtml5videoplayer\Domain\Model\Video $video the Video to display
+     * @param Video $video the Video to display
      */
     public function showAction(Video $video = null)
     {
@@ -83,5 +85,21 @@ class VideoController extends AbstractController
                 $view->setTemplatePathAndFilename($templateFile);
             }
         }
+    }
+
+    /**
+     * @param CategoryRepository $categoryRepository
+     */
+    public function injectCategoryRepository(CategoryRepository $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
+    /**
+     * @param VideoRepository $videoRepository
+     */
+    public function injectVideoRepository(VideoRepository $videoRepository)
+    {
+        $this->videoRepository = $videoRepository;
     }
 }

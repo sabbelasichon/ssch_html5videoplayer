@@ -1,2 +1,4 @@
 # Git ignore file
 !/Resources/Public/Vendors/mediaelement/build/
+.Build
+composer.lock

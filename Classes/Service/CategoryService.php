@@ -15,6 +15,7 @@ namespace Ssch\SschHtml5videoplayer\Service;
  * The TYPO3 project - inspiring people to share!
  */
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Database\DatabaseConnection;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -51,10 +52,10 @@ class CategoryService implements SingletonInterface
      */
     public function getTreeListOfAnyTable($id, $depth = 99, $begin = 0, $perms_clause = 1, $table = 'sys_category', $field = 'parent', $fields = 'uid')
     {
-        $depth = intval($depth);
-        $begin = intval($begin);
-        $id = intval($id);
-        if ($begin == 0) {
+        $depth = (int)$depth;
+        $begin = (int)$begin;
+        $id = (int)$id;
+        if ($begin === 0) {
             $theList = $id;
         } else {
             $theList = '';
@@ -77,7 +78,7 @@ class CategoryService implements SingletonInterface
     }
 
     /**
-     * @return \TYPO3\CMS\Core\Database\DatabaseConnection
+     * @return DatabaseConnection
      */
     protected function getDatabaseConnection()
     {

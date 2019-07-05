@@ -15,6 +15,7 @@ namespace Ssch\SschHtml5videoplayer\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 use SJBR\StaticInfoTables\Utility\LocalizationUtility;
+use Ssch\SschHtml5videoplayer\Utility\SorterUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Fluid\View\StandaloneView;
@@ -22,8 +23,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 abstract class AbstractController extends ActionController
 {
     /**
-     * @var \Ssch\SschHtml5videoplayer\Utility\SorterUtility
-     * @inject
+     * @var SorterUtility
      */
     protected $sorterUtility;
 
@@ -69,13 +69,21 @@ abstract class AbstractController extends ActionController
             } elseif ($this->settings['addMediaElementJsInitializationFile']) {
                 $initializationFile = $this->getFileAbsFileName($this->settings['addMediaElementJsInitializationFile']);
                 $fluidView = $this->objectManager->get(StandaloneView::class);
-                /* @var $fluidView \TYPO3\CMS\Fluid\View\StandaloneView */
+                /* @var $fluidView StandaloneView */
                 $fluidView->assign('settings', $this->settings);
                 $fluidView->setTemplatePathAndFilename($initializationFile);
                 $fluidView->setPartialRootPaths([dirname($initializationFile)]);
                 $this->addHeaderData($fluidView->render(), 'none');
             }
         }
+    }
+
+    /**
+     * @param SorterUtility $sorterUtility
+     */
+    public function injectSorterUtility(SorterUtility $sorterUtility)
+    {
+        $this->sorterUtility = $sorterUtility;
     }
 
     /**

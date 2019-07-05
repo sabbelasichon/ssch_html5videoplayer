@@ -15,14 +15,15 @@ namespace Ssch\SschHtml5videoplayer\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 use Ssch\SschHtml5videoplayer\Domain\Model\Audio;
+use Ssch\SschHtml5videoplayer\Domain\Repository\AudioRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 class AudioController extends AbstractController
 {
     /**
-     * @var \Ssch\SschHtml5videoplayer\Domain\Repository\AudioRepository
-     * @inject
+     * @var AudioRepository
+     *
      */
     protected $audioRepository = null;
 
@@ -70,5 +71,13 @@ class AudioController extends AbstractController
                 $view->setTemplatePathAndFilename($templateFile);
             }
         }
+    }
+
+    /**
+     * @param AudioRepository $audioRepository
+     */
+    public function injectAudioRepository(AudioRepository $audioRepository)
+    {
+        $this->audioRepository = $audioRepository;
     }
 }
