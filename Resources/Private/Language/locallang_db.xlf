@@ -4,6 +4,9 @@
           product-name="ssch_html5videoplayer">
         <header/>
         <body>
+            <trans-unit id="tx_sschhtml5videoplayer.pi_flexform.template">
+                <source>Template-Auswahl</source>
+            </trans-unit>
             <trans-unit id="tx_sschhtml5videoplayer_domain_model_video">
                 <source>Video</source>
             </trans-unit>
