@@ -22,12 +22,12 @@ class ExtensionLoadedConditionMatcher
 {
 
     /**
-     * @param string $extensionKey
+     * @param array $params
      *
      * @return bool
      */
-    public function isExtensionLoaded($extensionKey)
+    public function isExtensionLoaded(array $params)
     {
-        return ExtensionManagementUtility::isLoaded($extensionKey);
+        return ExtensionManagementUtility::isLoaded($params['conditionParameters'][0]);
     }
 }
