@@ -68,7 +68,7 @@ CREATE TABLE tx_sschhtml5videoplayer_domain_model_subtitle (
   pid int(11) DEFAULT '0' NOT NULL,
 
   sorting int(11) DEFAULT '0' NOT NULL,
-  track int(11) unsigned DEFAULT '0' NOT NULL,
+  track varchar(255) DEFAULT '' NOT NULL,
   static_lang_isocode int(11) DEFAULT '0' NOT NULL,
   selected tinyint(4) unsigned DEFAULT '0' NOT NULL,
   tstamp int(11) unsigned DEFAULT '0' NOT NULL,
