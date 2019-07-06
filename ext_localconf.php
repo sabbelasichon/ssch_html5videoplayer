@@ -62,3 +62,4 @@ foreach ($pluginsWithExtensionSummary as $pluginWithExtensionSummary) {
 // Update scripts
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['ssch_html5videoplayer_videos'] = \Ssch\SschHtml5videoplayer\Updates\VideoLinksToFileReferences::class;
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['ssch_html5videoplayer_audios'] = \Ssch\SschHtml5videoplayer\Updates\AudioLinksToFileReferences::class;
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['ssch_html5videoplayer_tracks'] = \Ssch\SschHtml5videoplayer\Updates\TracksToFileReferences::class;
