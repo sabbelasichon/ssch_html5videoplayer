@@ -12,7 +12,7 @@ $EM_CONF[$_EXTKEY] = [
     'constraints' => [
         'depends' => [
             'typo3' => '6.2.0-8.7.99',
-            'static_info_tables' => '6.2'
+            'static_info_tables' => '6.2.0-6.9.99'
         ],
         'suggests' => [
             'filemetadata' => '',
