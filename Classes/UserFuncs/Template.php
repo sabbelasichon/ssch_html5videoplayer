@@ -57,9 +57,7 @@ class Template
             $extFileList = 'html,htm,js';
             $templateRootPaths = (array)$template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPathInitializationFiles'];
         } else {
-            $templateRootPaths = array_map(static function ($templateRootPath) use ($type) {
-                return $templateRootPath.$type;
-            }, $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPaths.']);
+            $templateRootPaths = array_map(static fn($templateRootPath) => $templateRootPath.$type, $template->setup['plugin.']['tx_sschhtml5videoplayer.']['view.']['templateRootPaths.']);
         }
 
         foreach ($templateRootPaths as $templateRootPath) {
